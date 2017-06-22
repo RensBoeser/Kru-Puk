@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6
 {
-    interface IArea
+    interface IArea : IDrawable, IUpdateable
     {
         string CheckArea(); // returns Inside/Outside
     }

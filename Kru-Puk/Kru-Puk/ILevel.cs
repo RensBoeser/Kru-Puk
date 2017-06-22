@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6
 {
-    interface ILevel
+    interface ILevel: IUpdateable , IDrawable
     {
         string GetLevelTime(); //Day/Night
     }
