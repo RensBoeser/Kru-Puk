@@ -7,8 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace Kru_Puk
 {
-    interface ILevel : IUpdateable , IDrawable
-    {
-        string GetLevelTime(); //Day/Night
-    }
+  interface ILevel : IUpdateable , IDrawable
+  {
+    void AddEntity(IEntity entity);
+    void RemoveEntity(IEntity entity);
+  }
 }

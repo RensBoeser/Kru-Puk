@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework;
 
 namespace ConsoleApp6
 {
-    interface IArea : IDrawable, IUpdateable
-    {
-        string CheckArea(); // returns Inside/Outside
-    }
+  interface IArea : IDrawable, IUpdateable
+  {
+    void Discover();
+  }
 }
