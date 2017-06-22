@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Kru_Puk
 {
-  interface IDrawable
+  interface IUpdatable
   {
-    void Draw(SpriteBatch spritebatch);
+    void Update(float dt);
   }
 }
