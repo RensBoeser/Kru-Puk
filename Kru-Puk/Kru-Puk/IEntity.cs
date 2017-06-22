@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Kru_Puk
 {
-  interface IEntity : IUpdatable, IDrawable
+  interface IEntity : IUpdateable, IDrawable
   {
     void Intersect(int x, int y, int w, int h);
     void AddEntity();

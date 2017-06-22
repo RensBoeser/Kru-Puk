@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Kru_Puk
 {
-  interface IUpdatable
+  public interface IUpdateable
   {
     void Update(float dt);
   }
