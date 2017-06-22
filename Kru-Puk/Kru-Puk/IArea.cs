@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp6
+namespace Kru_Puk
 {
-    interface IArea : IDrawable, IUpdateable
+    interface IArea : IDrawable, IUpdatable
     {
         string CheckArea(); // returns Inside/Outside
     }

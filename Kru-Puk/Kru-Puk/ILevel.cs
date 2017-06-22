@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp6
+namespace Kru_Puk
 {
-    interface ILevel: IUpdateable , IDrawable
+    interface ILevel: IUpdatable , IDrawable
     {
         string GetLevelTime(); //Day/Night
     }

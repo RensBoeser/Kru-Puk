@@ -43,10 +43,10 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="IArea.cs" />
-    <Compile Include="IDoor.cs" />
+    <Compile Include="IDrawable.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="ILevel.cs" />
-    <Compile Include="IStairs.cs" />
+    <Compile Include="IUpdatable.cs" />
     <Compile Include="IWeapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

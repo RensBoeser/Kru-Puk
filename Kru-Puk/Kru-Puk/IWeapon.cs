@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kru_Puk
 {
-    public interface IWeapon : IUpdateable, IDrawable
+    public interface IWeapon : IUpdatable, IDrawable
     {
         void Use();
         void Reload(int Ammo);
