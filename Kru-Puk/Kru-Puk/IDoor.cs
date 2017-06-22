@@ -7,5 +7,5 @@ using Microsoft.Xna.Framework;
 
 namespace Implementen_van_classes_en_interfaces
 {
-    interface IDoor { }
+    interface IDoor : IUpdateable, IDrawable { }
 }
