@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-  class AIPlayer : IEntity //InterfaceNotImplemented
+  class AIPlayer : IEntity
   {
     private Vector2 Velocity;
     private Vector2 Acceleration;
@@ -29,6 +29,31 @@ namespace Kru_Puk
       this.Sprite = Sprite;
       this.Width = Width;
       this.Height = Height;
+    }
+
+    public void Intersect(int x, int y, int w, int h)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void AddEntity()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void RemoveEntity()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Update(float dt)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Draw(SpriteBatch spritebatch)
+    {
+      throw new NotImplementedException();
     }
   }
 }

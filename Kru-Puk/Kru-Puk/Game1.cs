@@ -11,6 +11,7 @@ namespace Kru_Puk
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Main main;
 
         public Game1()
         {
@@ -27,7 +28,6 @@ namespace Kru_Puk
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -41,7 +41,10 @@ namespace Kru_Puk
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-        }
+
+
+            main = new Main(); // textures here
+    }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload

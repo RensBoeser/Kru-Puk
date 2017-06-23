@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Player : IEntity //InterfaceNotImplemented
+    class Player : IEntity
   {
         private Tuple<float, float> Position;
         private Vector2 Velocity;
@@ -32,5 +32,30 @@ namespace Kru_Puk
             this.Width = Width;
             this.Height = Height;
         }
+
+    public void Intersect(int x, int y, int w, int h)
+    {
+      throw new NotImplementedException();
     }
+
+    public void AddEntity()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void RemoveEntity()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Update(float dt)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Draw(SpriteBatch spritebatch)
+    {
+      throw new NotImplementedException();
+    }
+  }
 }

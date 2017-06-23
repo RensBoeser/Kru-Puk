@@ -4,30 +4,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Area: IArea //InterfaceNotImplemented
+    class Area : IArea
     {
-        private Tuple<float, float> Position;
+        private Point Position;
         private int Width;
         private int Height;
-        private string AreaType;
         private bool Discovered;
         private Texture2D[] Sprites;
-        private ???[] Assets;
+        private Asset[] Assets;
 
-        Area(Tuple<float,float> Position, int Width, int Height, string AreaType, bool Discovered, Texture2D[] Sprites, ???[] Sprites)
+        public Area(Point Position, int Width, int Height, Texture2D[] Sprites, Asset[] Assets)
         {
             this.Position = Position;
             this.Width = Width;
             this.Height = Height;
-            this.AreaType = AreaType;
-            this.Discovered = Discovered;
+            this.Discovered = false;
             this.Sprites = Sprites;
             this.Assets = Assets;
         }
+
+    public void Discover()
+    {
+      throw new NotImplementedException();
     }
+
+    public void Draw(SpriteBatch spritebatch)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Update(float dt)
+    {
+      throw new NotImplementedException();
+    }
+  }
 
 }

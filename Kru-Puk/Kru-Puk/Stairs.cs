@@ -10,15 +10,23 @@ namespace Kru_Puk
 {
   class Stairs : IStairs //InterfaceNotImplemented
   {
-    private ??? State;
     private Tuple<float, float> Position;
     private Texture2D Sprite;
 
-    public Stairs(??? State, Tuple<float,float> Position, Texture2D Sprite)
+    public Stairs(Tuple<float,float> Position, Texture2D Sprite)
     {
-      this.State = State;
       this.Position = Position;
       this.Sprite = Sprite;
+    }
+
+    public void Update(float dt)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Draw(SpriteBatch spritebatch)
+    {
+      throw new NotImplementedException();
     }
   }
 }
