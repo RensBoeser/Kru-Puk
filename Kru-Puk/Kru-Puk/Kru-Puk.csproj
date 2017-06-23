@@ -48,10 +48,12 @@
     <Compile Include="CollisionGroups.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="IDoor.cs" />
+    <Compile Include="IIterator.cs" />
     <Compile Include="IStairs.cs" />
     <Compile Include="IUpdateable.cs" />
     <Compile Include="IZombie.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="SpriteIterator.cs" />
     <Compile Include="Stairs.cs" />
     <Compile Include="WeaponPouch.cs" />
     <Compile Include="Projectile.cs" />
