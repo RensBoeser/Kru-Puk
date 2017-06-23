@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace Implementen_van_classes_en_interfaces
+namespace Kru_Puk
 {
     interface IStairs : IUpdateable, IDrawable{ }
 }
