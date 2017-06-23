@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace Implementen_van_classes_en_interfaces
+namespace Kru_Puk
 {
     interface IDoor : IUpdateable, IDrawable { }
 }
