@@ -12,22 +12,22 @@ namespace Kru_Puk
   {
     private Vector2 Velocity;
     private Vector2 Acceleration;
-    private Tuple<float, float> Position;
+    private Point Position;
     private int Health;
     private int Damage;
     private Texture2D Sprite;
     private int Width;
     private int Height;
 
-    public AIPlayer(Vector2 Velocity, Vector2 Acceleration, Tuple<float, float> Position, int Health, int Damage, Texture2D Sprite, int Width, int Height)
+    public AIPlayer(Point Position, int Health, int Damage, Texture2D Sprite, int Width, int Height)
     {
-      this.Velocity = Velocity;
-      this.Acceleration = Acceleration;
+      this.Velocity = new Vector2(0, 0);
+      this.Acceleration = new Vector2(0, 0);
       this.Position = Position;
       this.Health = Health;
       this.Damage = Damage;
       this.Sprite = Sprite;
-      this.Width = Width;
+      this.Width  = Width;
       this.Height = Height;
     }
 

@@ -46,10 +46,13 @@
     <Compile Include="Area.cs" />
     <Compile Include="AssaultRifle.cs" />
     <Compile Include="Adapter.cs" />
+    <Compile Include="Asset.cs" />
+    <Compile Include="IAsset.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="CollisionGroups.cs" />
     <Compile Include="Door.cs" />
-    <Compile Include="Factory.cs" />
+    <Compile Include="EntityFactory.cs" />
     <Compile Include="IDoor.cs" />
     <Compile Include="IIterator.cs" />
     <Compile Include="IStairs.cs" />
