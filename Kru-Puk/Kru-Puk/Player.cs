@@ -57,5 +57,41 @@ namespace Kru_Puk
     {
       throw new NotImplementedException();
     }
+
+        //Experimental Move Class
+            //Implementing a Move Class to make movement actions more clear and simple
+
+        public class Move
+        {
+            private float X;
+            private float Y;
+            private Vector2 MaxSpeedX;
+            private Vector2 MaxSpeedY;
+            private Tuple<float, float> CurrentPosition;
+
+            
+
+            public void Jump()
+            {
+                //Get CurrentPosition
+                //Change Y from 0 to the max jump height with MaxSpeedY per update.
+            }
+
+            public void Left()
+            {
+                //GetCurrentPosition
+                //Change X from 0 to the max walking distance (per called Left()) with MaxSpeedX per update.
+            }
+
+            public void Right()
+            {
+                //GetCurrentPosition
+                //Change X from 0 to the max walking distance (per called Right()) with MaxSpeedX per update.
+            }
+
+
+
+        }
+
   }
 }
