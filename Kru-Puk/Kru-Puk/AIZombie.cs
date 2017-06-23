@@ -19,12 +19,12 @@ namespace Kru_Puk
     private int Damage;
     private bool Attacking;
     private bool Idle;
-    private Texture2D Sprite;
+    private SpriteIterator animationWalking;
     private int Width;
     private int Height;
     private DrawingAdapter drawingadapter;
 
-    public AIZombie(Point Position, Vector2 Velocity, Vector2 Acceleration, int Health, ??? Pick-up, int Damage, bool Attacking, bool Idle, Texture2D Sprite,int Width, int Height)
+    public AIZombie(Point Position, Vector2 Velocity, Vector2 Acceleration, int Health, ??? Pick-up, int Damage, bool Attacking, bool Idle, Texture2D[] animationWalking,int Width, int Height)
     {
       // this.FollowingObject = FollowingObject;
       this.Position = Position;
@@ -35,7 +35,7 @@ namespace Kru_Puk
       this.Damage = Damage;
       this.Attacking = Attacking;
       this.Idle = Idle;
-      this.Sprite = Sprite;
+      this.animationWalking = new SpriteIterator(animationWalking);
       this.Width = Width;
       this.Height = Height;
     }
@@ -98,8 +98,9 @@ namespace Kru_Puk
     public void Draw(SpriteBatch spritebatch)
     {
       //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
-      //SPRITE IS UNCLEAR
-      drawingadapter.Draw(spritebatch, Sprite, Position, false);
+      bool flipped = true;
+      Texture2D sprite = animationWalking.GetNext();
+      drawingadapter.Draw(spritebatch, sprite, Position, flipped);
     }
   }
 }
