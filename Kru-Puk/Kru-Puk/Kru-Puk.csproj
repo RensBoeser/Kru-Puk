@@ -44,6 +44,8 @@
     <Compile Include="AIZombie.cs" />
     <Compile Include="AssaultRifle.cs" />
     <Compile Include="CollisionGroups.cs" />
+    <Compile Include="Door.cs" />
+    <Compile Include="IDoor.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="WeaponPouch.cs" />
     <Compile Include="Projectile.cs" />
