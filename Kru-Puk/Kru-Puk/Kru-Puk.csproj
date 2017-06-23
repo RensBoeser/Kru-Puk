@@ -45,9 +45,12 @@
     <Compile Include="AIZombie.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="AssaultRifle.cs" />
-    <Compile Include="Level.cs" />
     <Compile Include="CollisionGroups.cs" />
+    <Compile Include="Door.cs" />
+    <Compile Include="IDoor.cs" />
     <Compile Include="IStairs.cs" />
+    <Compile Include="IUpdateable.cs" />
+    <Compile Include="IZombie.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Stairs.cs" />
     <Compile Include="WeaponPouch.cs" />

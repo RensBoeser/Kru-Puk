@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Kru_Puk
 {
-  interface ILevel : IUpdateable , IDrawable
+  interface ILevel : IUpdateable, IDrawable
   {
     void AddEntity(IEntity entity);
     void RemoveEntity(IEntity entity);

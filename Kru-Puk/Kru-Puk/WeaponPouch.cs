@@ -17,7 +17,6 @@ namespace Kru_Puk
       this.Weapons = Weapons;
       this.MaxWeapons = MaxWeapons;
       this.CurrentWeapon = CurrentWeapon;
-
     }
   }
 }
