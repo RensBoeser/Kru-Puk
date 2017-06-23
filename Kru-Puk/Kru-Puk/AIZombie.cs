@@ -24,17 +24,17 @@ namespace Kru_Puk
     private int Height;
     private DrawingAdapter drawingadapter;
 
-    public AIZombie(Point Position, Vector2 Velocity, Vector2 Acceleration, int Health, ??? Pick-up, int Damage, bool Attacking, bool Idle, Texture2D[] animationWalking,int Width, int Height)
+    public AIZombie(Point Position, int Health, int Damage, Texture2D[] animationWalking, int Width, int Height)
     {
       // this.FollowingObject = FollowingObject;
       this.Position = Position;
-      this.Velocity = Velocity;
-      this.Acceleration = Acceleration;
+      this.Velocity = new Vector2(0, 0);
+      this.Acceleration = new Vector2(0, 0);
       this.Health = Health;
       // this.Pick-up = Pick-up;
       this.Damage = Damage;
-      this.Attacking = Attacking;
-      this.Idle = Idle;
+      this.Attacking = false;
+      this.Idle = true;
       this.animationWalking = new SpriteIterator(animationWalking);
       this.Width = Width;
       this.Height = Height;
