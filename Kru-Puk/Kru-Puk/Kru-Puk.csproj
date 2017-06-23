@@ -45,6 +45,7 @@
     <Compile Include="AIZombie.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="AssaultRifle.cs" />
+    <Compile Include="IIterator.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="CollisionGroups.cs" />
     <Compile Include="IStairs.cs" />
