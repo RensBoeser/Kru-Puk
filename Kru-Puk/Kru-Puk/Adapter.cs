@@ -10,12 +10,7 @@ namespace Kru_Puk
 {
   class DrawingAdapter
   {
-    private SpriteBatch spritebatch;
-    public DrawingAdapter(SpriteBatch spritebatch)
-    {
-      this.spritebatch = spritebatch;
-    }
-    public void Draw(Texture2D sprite, Point position, bool flipped)
+    public void Draw(SpriteBatch spritebatch, Texture2D sprite, Point position, bool flipped)
     {
       if (flipped)
       {
