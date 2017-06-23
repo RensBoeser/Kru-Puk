@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 
 namespace Kru_Puk
 {
-    class AssaultRifle: IWeapon //TODO InterfaceNotImplemented
+    class AssaultRifle : IWeapon //TODO InterfaceNotImplemented
     {
         private int MaxClipAmount;
         private int ClipAmount;

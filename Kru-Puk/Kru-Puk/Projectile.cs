@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Projectile: IEntity //InterfaceNotImplemented
+    class Projectile : IEntity //InterfaceNotImplemented
     {
         private Tuple<float,float> Position;
         private Vector2 Velocity;
@@ -17,7 +17,7 @@ namespace Kru_Puk
         private int Damage;
         private int Width;
         private int Height;
-        private CollisionGroups[] Collidables;
+        private CollisionGroups Collidables;
 
         Projectile(Tuple<float,float> Position, Vector2 Velocity, Vector2 Direction, Texture2D Sprite, int Damage, int Width, int Height, CollisionGroups Collidables)
         {

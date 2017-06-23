@@ -8,16 +8,16 @@ namespace Kru_Puk
 {
     class CollisionGroups
     {
-        private Players[] Players;
+        private Player[] Players;
         private Projectile[] Projectiles;
-        private AIZombies[] Zombies;
-        private AIPlayers[] AIPlayers;
+        private AIZombie[] Zombies;
+        private AIPlayer[] AIPlayers;
 
-        CollisionGroups(Players[] Players, Projectile[] Projectiles, AIZombies[] AIZombies, AIPlayers[] AIPlayers)
+        CollisionGroups(Player[] Players, Projectile[] Projectiles, AIZombie[] AIZombies, AIPlayer[] AIPlayers)
         {
             this.Players = Players;
             this.Projectiles = Projectiles;
-            this.AIZombies = AIZombies;
+            this.Zombies = AIZombies;
             this.AIPlayers = AIPlayers;
 
         }
