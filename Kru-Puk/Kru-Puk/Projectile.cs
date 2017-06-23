@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Projectile: IEntity //ClassNotImplemented
+    class Projectile: IEntity //InterfaceNotImplemented
     {
         private Tuple<float,float> Position;
         private Vector2 Velocity;

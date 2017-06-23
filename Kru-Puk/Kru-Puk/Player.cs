@@ -8,8 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Player
-    {
+    class Player : IEntity //InterfaceNotImplemented
+  {
         private Tuple<float, float> Position;
         private Vector2 Velocity;
         private Vector2 Acceleration;

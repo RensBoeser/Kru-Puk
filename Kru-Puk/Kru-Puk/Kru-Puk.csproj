@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AIZombie.cs" />
     <Compile Include="AssaultRifle.cs" />
     <Compile Include="CollisionGroups.cs" />
     <Compile Include="Player.cs" />
