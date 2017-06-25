@@ -10,11 +10,13 @@ namespace Kru_Puk
 {
   class Main : IDrawable, IUpdateable
   {
+    private SpriteFont font;
     private EntityFactory entityfactory;
     private Level[] levels;
-    public Main(Texture2D[] zombieWalking, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas) // all textures
+    public Main(SpriteFont font, Texture2D[] zombieWalking, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas) // all textures
     {
       entityfactory = new EntityFactory(zombieWalking, levels, assets, areas); // put all textures in here
+      this.font = font; //unassigned spritefont. The font works, but idk where to use it/put it yet.
     }
 
     public void AddLevels()
