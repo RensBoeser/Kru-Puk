@@ -8,10 +8,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-  class AIZombie : IZombie //InterfaceNotImplemented
+  class AIZombie : IZombie
   {
     private IEntity followingObject;
-    private Point position;
+    private Rectangle rectangle;
     private Vector2 velocity;
     private Vector2 acceleration;
     private int health;
@@ -20,15 +20,13 @@ namespace Kru_Puk
     private bool attacking;
     private bool idle;
     private SpriteIterator animationWalking;
-    private int width;
-    private int height;
     private DrawingAdapter drawingadapter;
     private Level level;
 
-    public AIZombie(Point position, int health, int damage, Texture2D[] animationWalking, int width, int height, Level level)
+    public AIZombie(Rectangle rectangle, int health, int damage, Texture2D[] animationWalking, IEntity followingObject, Level level)
     {
-      // this.FollowingObject = FollowingObject;
-      this.position = position;
+      this.followingObject = followingObject;
+      this.rectangle = rectangle;
       this.velocity = new Vector2(0, 0);
       this.acceleration = new Vector2(0, 0);
       this.health = health;
@@ -37,18 +35,16 @@ namespace Kru_Puk
       this.attacking = false;
       this.idle = true;
       this.animationWalking = new SpriteIterator(animationWalking);
-      this.width = width;
-      this.height = height;
       this.level = level;
     }
 
     public void Move()
     {
-      if (followingObject.getPosition().X > this.position.X)
+      if (followingObject.getPosition().X > this.rectangle.X)
       {
         this.velocity = new Vector2 (4,0); 
       }
-      if (followingObject.getPosition().X > this.position.X)
+      if (followingObject.getPosition().X < this.rectangle.X)
       {
         this.velocity = new Vector2(-4, 0);
       }
@@ -120,6 +116,11 @@ namespace Kru_Puk
       bool flipped = true;
       Texture2D sprite = animationWalking.GetNext();
       drawingadapter.Draw(spritebatch, sprite, position, flipped);
+    }
+
+    public bool Intersect(Rectangle rectangle)
+    {
+      throw new NotImplementedException();
     }
   }
 }

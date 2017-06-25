@@ -10,26 +10,22 @@ namespace Kru_Puk
 {
   class Area : IArea
   {
-    private Point Position;
-    private int Width;
-    private int Height;
-    private bool Discovered;
-    private Texture2D[] Sprites;
-    private Asset[] Assets;
+    private Rectangle rectangle;
+    private bool discovered;
+    private Texture2D[] sprites;
+    private Asset[] assets;
     private DrawingAdapter drawingAdapter;
 
-    public Area(Point Position, int Width, int Height, Texture2D[] Sprites, Asset[] Assets)
+    public Area(Rectangle rectangle, Texture2D[] sprites, Asset[] assets)
     {
-      this.Position = Position;
-      this.Width = Width;
-      this.Height = Height;
-      this.Discovered = false;
-      this.Sprites = Sprites;
-      this.Assets = Assets;
+      this.rectangle  = rectangle;
+      this.discovered = false;
+      this.sprites    = sprites;
+      this.assets     = assets;
             
-      for(int i = 0; i < Assets.Length; i = i + 1)
+      for(int i = 0; i < assets.Length; i = i + 1)
       {
-        Assets[i].SetRelativePosition(this.Position);
+        assets[i].SetRelativePosition(this.rectangle.Location);
       }
         
     }
@@ -41,18 +37,18 @@ namespace Kru_Puk
 
     public void Draw(SpriteBatch spritebatch)
     {      
-      if(Discovered)
+      if(discovered)
       {
-        drawingAdapter.Draw(spritebatch, Sprites[1], Position, false);
+        drawingAdapter.Draw(spritebatch, sprites[1], rectangle.Location, false);
         
-        for (int i = 0; i < Assets.Length; i = i + 1)
+        for (int i = 0; i < assets.Length; i = i + 1)
         {
-          Assets[i].Draw(spritebatch);
+          assets[i].Draw(spritebatch);
         }
       }
       else
       {
-        drawingAdapter.Draw(spritebatch, Sprites[0], Position, false);
+        drawingAdapter.Draw(spritebatch, sprites[0], rectangle.Location, false);
       }
     }
 
@@ -61,5 +57,4 @@ namespace Kru_Puk
       throw new NotImplementedException();
     }
   }
-
 }

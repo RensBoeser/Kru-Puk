@@ -10,28 +10,24 @@ namespace Kru_Puk
 {
   class AIPlayer : IEntity
   {
-    private Vector2 Velocity;
-    private Vector2 Acceleration;
-    private Point Position;
-    private int Health;
-    private int Damage;
-    private Texture2D Sprite;
-    private int Width;
-    private int Height;
+    private Vector2 velocity;
+    private Vector2 acceleration;
+    private Rectangle rectangle;
+    private int health;
+    private int damage;
+    private Texture2D sprite;
     private Level level;
     private SpriteIterator animationWalking;
-    private DrawingAdapter drawingadapter;
+    private DrawingAdapter drawingAdapter;
 
-    public AIPlayer(Point Position, int Health, int Damage, Texture2D Sprite, int Width, int Height)
+    public AIPlayer(Rectangle rectangle, int health, int damage, Texture2D sprite)
     {
-      this.Velocity = new Vector2(0, 0);
-      this.Acceleration = new Vector2(0, 0);
-      this.Position = Position;
-      this.Health = Health;
-      this.Damage = Damage;
-      this.Sprite = Sprite;
-      this.Width  = Width;
-      this.Height = Height;
+      this.velocity = new Vector2(0, 0);
+      this.acceleration = new Vector2(0, 0);
+      this.rectangle = rectangle;
+      this.health = health;
+      this.damage = damage;
+      this.sprite = sprite;
     }
     
     public void Move()
@@ -56,21 +52,19 @@ namespace Kru_Puk
 
     public void Update(float dt)
     {
-        Position.X = Position.X + (int)Velocity.X;
-        Position.Y = Position.Y + (int)Velocity.Y;
     }
 
     public void Draw(SpriteBatch spritebatch)
     {
-        //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
-        bool flipped = true;
-        Texture2D sprite = animationWalking.GetNext();
-        drawingadapter.Draw(spritebatch, sprite, Position, flipped);
+      //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
+      bool flipped = true;
+      Texture2D sprite = animationWalking.GetNext();
+      drawingAdapter.Draw(spritebatch, sprite, rectangle.Location, flipped);
     }
 
     public void TakeDamage(int damage)
     {
-        this.Health = (Health - damage);
+        this.health = (health - damage);
     }
 
     public void DoDamage()
@@ -80,7 +74,12 @@ namespace Kru_Puk
 
     public Point getPosition()
     {
-        return Position;
+        return rectangle.Location;
+    }
+
+    public bool Intersect(Rectangle rectangle)
+    {
+      throw new NotImplementedException();
     }
   }
 }

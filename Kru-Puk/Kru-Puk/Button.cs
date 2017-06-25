@@ -11,8 +11,7 @@ namespace Kru_Puk
 {
   class Button : IButton
   {
-    private Point position;
-    private int width, height;
+    private Rectangle rectangle;
     private Action function;
     private Texture2D[] sprite;
     private SpriteFont font;
@@ -21,9 +20,7 @@ namespace Kru_Puk
 
     public Button(Point position, int width, int height, Action function, Texture2D[] sprite, SpriteFont font, string label)
     {
-      this.position = position;
-      this.width = width;
-      this.height = height;
+      this.rectangle = rectangle;
       this.function = function;
       this.sprite = sprite;
       this.font = font;
@@ -33,9 +30,9 @@ namespace Kru_Puk
 
     public bool OnHover()
     {
-      if(position.X < Mouse.GetState().X && Mouse.GetState().X < position.X + width)
+      if(rectangle.X < Mouse.GetState().X && Mouse.GetState().X < rectangle.X + rectangle.Width)
       {
-        if (position.Y < Mouse.GetState().Y && Mouse.GetState().Y < position.Y + height)
+        if (rectangle.Y < Mouse.GetState().Y && Mouse.GetState().Y < rectangle.Y + rectangle.Height)
         {
           return true;
         }
@@ -56,8 +53,8 @@ namespace Kru_Puk
     {
       if (OnHover())
       {
-        drawingAdapter.Draw(spritebatch, sprite[1], position, false);
-        drawingAdapter.DrawString(spritebatch, font, label, position, Color.White);
+        drawingAdapter.Draw(spritebatch, sprite[1], rectangle.Location, false);
+        drawingAdapter.DrawString(spritebatch, font, label, rectangle.Location, Color.White);
         if (Mouse.GetState().LeftButton == ButtonState.Pressed)
         {
           Click();
