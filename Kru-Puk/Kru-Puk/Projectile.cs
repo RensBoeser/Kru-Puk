@@ -30,7 +30,11 @@ namespace Kru_Puk
       throw new NotImplementedException();
     }
 
+<<<<<<< HEAD
     public void RemoveEntity()
+=======
+    public bool Intersect(int x, int y, int w, int h)
+>>>>>>> origin/master
     {
       throw new NotImplementedException();
     }
