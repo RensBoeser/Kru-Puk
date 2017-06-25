@@ -31,7 +31,7 @@ namespace Kru_Puk
             this.Collidables = Collidables;
         }
 
-    public void Intersect(int x, int y, int w, int h)
+    public bool Intersect(int x, int y, int w, int h)
     {
       throw new NotImplementedException();
     }

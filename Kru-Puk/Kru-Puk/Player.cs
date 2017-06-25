@@ -34,7 +34,7 @@ namespace Kru_Puk
             this.Height = Height;
         }
 
-    public void Intersect(int x, int y, int w, int h)
+    public bool Intersect(int x, int y, int w, int h)
     {
       throw new NotImplementedException();
     }
