@@ -30,15 +30,6 @@ namespace Kru_Puk
       throw new NotImplementedException();
     }
 
-<<<<<<< HEAD
-    public void RemoveEntity()
-=======
-    public bool Intersect(int x, int y, int w, int h)
->>>>>>> origin/master
-    {
-      throw new NotImplementedException();
-    }
-
     public void TakeDamage(int damage)
     {
       throw new NotImplementedException();
@@ -65,6 +56,16 @@ namespace Kru_Puk
     }
 
     public bool Intersect(Rectangle rectangle)
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool Intersect(int x, int y, int w, int h)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void RemoveEntity()
     {
       throw new NotImplementedException();
     }

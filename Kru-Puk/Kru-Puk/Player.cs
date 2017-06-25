@@ -19,24 +19,7 @@ namespace Kru_Puk
     private int health;
         
 
-<<<<<<< HEAD
-    Player(Rectangle rectangle, Vector2 velocity, Vector2 acceleration, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
-=======
-        Player(Point position, Vector2 Velocity, Vector2 Acceleration, Texture2D[] Sprites,WeaponPouch WeaponPouch, int Ammo, int Health, int Width, int Height)
-        {
-            this.position = position;
-            this.Velocity = Velocity;
-            this.Acceleration = Acceleration;
-            this.Sprites = Sprites;
-            this.WeaponPouch = WeaponPouch;
-            this.Ammo = Ammo;
-            this.Health = Health;
-            this.Width = Width;
-            this.Height = Height;
-        }
-
-    public bool Intersect(int x, int y, int w, int h)
->>>>>>> origin/master
+    public Player(Rectangle rectangle, Vector2 velocity, Vector2 acceleration, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
     {
       this.rectangle = rectangle;
       this.velocity = velocity;
@@ -118,6 +101,11 @@ namespace Kru_Puk
         }
 
     public bool Intersect(Rectangle rectangle)
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool Intersect(int x, int y, int w, int h)
     {
       throw new NotImplementedException();
     }
