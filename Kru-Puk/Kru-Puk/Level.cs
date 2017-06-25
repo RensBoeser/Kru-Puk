@@ -23,6 +23,7 @@ namespace Kru_Puk
       this.spawnpoint = spawnpoint;
     }
 
+
     public void AddEntity(IEntity entity)
     {
       throw new NotImplementedException();

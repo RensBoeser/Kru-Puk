@@ -10,7 +10,7 @@ namespace Kru_Puk
 {
     class Player : IEntity
   {
-        private Tuple<float, float> Position;
+        private Point position;
         private Vector2 Velocity;
         private Vector2 Acceleration;
         private Texture2D[] Sprites;
@@ -19,10 +19,11 @@ namespace Kru_Puk
         private int Health;
         private int Width;
         private int Height;
+        
 
-        Player(Tuple<float,float> Position, Vector2 Velocity, Vector2 Acceleration, Texture2D[] Sprites,WeaponPouch WeaponPouch, int Ammo, int Health, int Width, int Height)
+        Player(Point position, Vector2 Velocity, Vector2 Acceleration, Texture2D[] Sprites,WeaponPouch WeaponPouch, int Ammo, int Health, int Width, int Height)
         {
-            this.Position = Position;
+            this.position = position;
             this.Velocity = Velocity;
             this.Acceleration = Acceleration;
             this.Sprites = Sprites;
@@ -58,10 +59,25 @@ namespace Kru_Puk
       throw new NotImplementedException();
     }
 
-        //Experimental Move Class
-            //Implementing a Move Class to make movement actions more clear and simple
+    public void TakeDamage(int damage)
+    {
+      this.Health = (this.Health - damage);
+    }
 
-        public class Move
+    public void DoDamage()
+    {
+      throw new NotImplementedException();
+    }
+
+    public Point getPosition()
+    {
+      return position;
+    }
+
+    //Experimental Move Class
+    //Implementing a Move Class to make movement actions more clear and simple
+
+    public class Move
         {
             private float X;
             private float Y;

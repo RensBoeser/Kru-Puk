@@ -10,89 +10,109 @@ namespace Kru_Puk
 {
   class AIZombie : IZombie //InterfaceNotImplemented
   {
-    // private ??? FollowingObject;
-    private Point Position;
-    private Vector2 Velocity;
-    private Vector2 Acceleration;
-    private int Health;
+    private IEntity followingObject;
+    private Point position;
+    private Vector2 velocity;
+    private Vector2 acceleration;
+    private int health;
     // private ??? Pick-up;
-    private int Damage;
-    private bool Attacking;
-    private bool Idle;
+    private int damage;
+    private bool attacking;
+    private bool idle;
     private SpriteIterator animationWalking;
-    private int Width;
-    private int Height;
+    private int width;
+    private int height;
     private DrawingAdapter drawingadapter;
+    private Level level;
 
-    public AIZombie(Point Position, int Health, int Damage, Texture2D[] animationWalking, int Width, int Height)
+    public AIZombie(Point position, int health, int damage, Texture2D[] animationWalking, int width, int height, Level level)
     {
       // this.FollowingObject = FollowingObject;
-      this.Position = Position;
-      this.Velocity = new Vector2(0, 0);
-      this.Acceleration = new Vector2(0, 0);
-      this.Health = Health;
+      this.position = position;
+      this.velocity = new Vector2(0, 0);
+      this.acceleration = new Vector2(0, 0);
+      this.health = health;
       // this.Pick-up = Pick-up;
-      this.Damage = Damage;
-      this.Attacking = false;
-      this.Idle = true;
+      this.damage = damage;
+      this.attacking = false;
+      this.idle = true;
       this.animationWalking = new SpriteIterator(animationWalking);
-      this.Width = Width;
-      this.Height = Height;
+      this.width = width;
+      this.height = height;
+      this.level = level;
     }
 
     public void Move()
     {
-      throw new NotImplementedException();
+      if (followingObject.getPosition().X > this.position.X)
+      {
+        this.velocity = new Vector2 (4,0); 
+      }
+      if (followingObject.getPosition().X > this.position.X)
+      {
+        this.velocity = new Vector2(-4, 0);
+      }
     }
 
     public void StartAttack()
     {
-      throw new NotImplementedException();
+      this.attacking = true;
     }
 
     public void Die()
     {
-      throw new NotImplementedException();
+        this.RemoveEntity();
     }
 
-    public void FindOject()
+    public void ChangeObject(IEntity newObject)
     {
-      throw new NotImplementedException();
+      followingObject = newObject;
     }
 
-    public void ChangeObject()
+    public void DoDamage()
     {
-      throw new NotImplementedException();
-    }
-
-    public void Attack()
-    {
-      throw new NotImplementedException();
+      followingObject.TakeDamage(this.damage);
     }
 
     public void TakeDamage(int damage)
     {
-      throw new NotImplementedException();
+      this.health = (this.health - damage);
     }
 
     public void Intersect(int x, int y, int w, int h)
     {
+      //x > x && x < x + w;
+      //y > y && y < y + h;
+      //Point[] puntenarray = new Point[] { new Point { X = x, Y = y }, new Point { X = (x + w), Y = y }, new Point { X = (x), Y = (y + h) }, new Point { X = (x + w), Y = (y + h) } };
+      //foreach (Point punt in puntenarray)
+      //{
+      //  Rectangle box = new Rectangle(this.position, new Point(this.width, this.height));
+      //  if (punt in box){
+      //    
+      //  }
+      //}
       throw new NotImplementedException();
     }
 
     public void AddEntity()
     {
-      throw new NotImplementedException();
+      level.AddEntity(this);
     }
 
     public void RemoveEntity()
     {
-      throw new NotImplementedException();
+      level.RemoveEntity(this);
+    }
+
+    public Point getPosition()
+    {
+      return position;
     }
 
     public void Update(float dt)
     {
-      throw new NotImplementedException();
+      position.X = position.X + (int)velocity.X;
+      position.Y = position.Y + (int)velocity.Y;
     }
 
     public void Draw(SpriteBatch spritebatch)
@@ -100,7 +120,7 @@ namespace Kru_Puk
       //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
       bool flipped = true;
       Texture2D sprite = animationWalking.GetNext();
-      drawingadapter.Draw(spritebatch, sprite, Position, flipped);
+      drawingadapter.Draw(spritebatch, sprite, position, flipped);
     }
   }
 }

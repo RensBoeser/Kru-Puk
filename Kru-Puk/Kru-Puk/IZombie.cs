@@ -11,9 +11,6 @@ namespace Kru_Puk
     void Move();
     void StartAttack();
     void Die();
-    void FindOject();
-    void ChangeObject();
-    void Attack();
-    void TakeDamage(int damage);
+    void ChangeObject(IEntity newObject);
   }
 }

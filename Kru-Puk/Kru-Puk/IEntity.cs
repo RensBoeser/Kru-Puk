@@ -12,5 +12,8 @@ namespace Kru_Puk
     void Intersect(int x, int y, int w, int h);
     void AddEntity();
     void RemoveEntity();
+    void TakeDamage(int damage);
+    void DoDamage();
+    Point getPosition();
   }
 }
