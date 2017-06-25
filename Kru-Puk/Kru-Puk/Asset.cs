@@ -17,6 +17,13 @@ namespace Kru_Puk
       this.position = position;
       this.sprite = sprite;
     }
+
+    public void SetRelativePosition(Point position)
+    {
+      this.position.X = this.position.X + position.X;
+      this.position.Y = this.position.Y + position.Y;
+    }
+
     public void Draw(SpriteBatch spritebatch)
     {
       throw new NotImplementedException();
