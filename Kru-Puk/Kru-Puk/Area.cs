@@ -34,6 +34,8 @@ namespace Kru_Puk
 
     public void Draw(SpriteBatch spritebatch)
     {
+      // when drawing the assets, add the position of the area to the assets.
+      //asset positions are relative to the area position.
       throw new NotImplementedException();
     }
 

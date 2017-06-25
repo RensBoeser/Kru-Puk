@@ -20,7 +20,8 @@ namespace Kru_Puk
     public void AddLevels()
     {
       // !!! Instantiate all asset lists here !!!
-      // by creating a list for each area, you can put assets into groups for each area
+      // By creating a list for each area, you can put assets into groups for each area
+      // The position of the assets is based on the area's position
       Asset[] assets1 = new Asset[2];
       assets1[0] = entityfactory.CreateAsset(new Point(0, 0), 0); // position, assettextureID
       assets1[1] = entityfactory.CreateAsset(new Point(100, 0), 1);
