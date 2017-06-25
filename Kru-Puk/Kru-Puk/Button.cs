@@ -62,8 +62,8 @@ namespace Kru_Puk
       }
       else
       {
-        drawingAdapter.Draw(spritebatch, sprite[0], position, false);
-        drawingAdapter.DrawString(spritebatch, font, label, position, Color.White);
+        drawingAdapter.Draw(spritebatch, sprite[0], rectangle.Location, false);
+        drawingAdapter.DrawString(spritebatch, font, label, rectangle.Location, Color.White);
       }
     }
   }

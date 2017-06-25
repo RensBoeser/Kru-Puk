@@ -54,7 +54,6 @@
     <Compile Include="IButton.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="CollisionGroups.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="EntityFactory.cs" />
     <Compile Include="IDoor.cs" />
