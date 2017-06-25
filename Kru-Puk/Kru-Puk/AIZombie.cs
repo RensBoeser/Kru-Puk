@@ -101,13 +101,11 @@ namespace Kru_Puk
 
     public Point getPosition()
     {
-      return position;
+      return rectangle.Location;
     }
 
     public void Update(float dt)
     {
-      position.X = position.X + (int)velocity.X;
-      position.Y = position.Y + (int)velocity.Y;
     }
 
     public void Draw(SpriteBatch spritebatch)
@@ -115,12 +113,7 @@ namespace Kru_Puk
       //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
       bool flipped = true;
       Texture2D sprite = animationWalking.GetNext();
-      drawingadapter.Draw(spritebatch, sprite, position, flipped);
-    }
-
-    public bool Intersect(Rectangle rectangle)
-    {
-      throw new NotImplementedException();
+      drawingadapter.Draw(spritebatch, sprite, rectangle.Location, flipped);
     }
   }
 }
