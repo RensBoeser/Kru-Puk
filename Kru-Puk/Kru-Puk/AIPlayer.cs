@@ -18,6 +18,9 @@ namespace Kru_Puk
     private Texture2D Sprite;
     private int Width;
     private int Height;
+    private Level level;
+    private SpriteIterator animationWalking;
+    private DrawingAdapter drawingadapter;
 
     public AIPlayer(Point Position, int Health, int Damage, Texture2D Sprite, int Width, int Height)
     {
@@ -30,30 +33,54 @@ namespace Kru_Puk
       this.Width  = Width;
       this.Height = Height;
     }
+    
+    public void Move()
+    {
+        
+    }
 
-    public void Intersect(int x, int y, int w, int h)
+    public bool Intersect(int x, int y, int w, int h)
     {
       throw new NotImplementedException();
     }
 
     public void AddEntity()
     {
-      throw new NotImplementedException();
+      level.AddEntity(this);
     }
 
     public void RemoveEntity()
     {
-      throw new NotImplementedException();
+      level.RemoveEntity(this);
     }
 
     public void Update(float dt)
     {
-      throw new NotImplementedException();
+        Position.X = Position.X + (int)Velocity.X;
+        Position.Y = Position.Y + (int)Velocity.Y;
     }
 
     public void Draw(SpriteBatch spritebatch)
     {
-      throw new NotImplementedException();
+        //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
+        bool flipped = true;
+        Texture2D sprite = animationWalking.GetNext();
+        drawingadapter.Draw(spritebatch, sprite, Position, flipped);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        this.Health = (Health - damage);
+    }
+
+    public void DoDamage()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Point getPosition()
+    {
+        return Position;
     }
   }
 }
