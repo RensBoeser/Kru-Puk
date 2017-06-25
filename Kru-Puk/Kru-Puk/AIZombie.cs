@@ -79,15 +79,14 @@ namespace Kru_Puk
       this.health = (this.health - damage);
     }
 
-    public bool Intersect(int x, int y, int w, int h)
+    public bool Intersect(Rectangle rectangle)
     {
       //x > x && x < x + w;
       //y > y && y < y + h;
-      Point[] puntenarray = new Point[] { new Point { X = x, Y = y }, new Point { X = (x + w), Y = y }, new Point { X = (x), Y = (y + h) }, new Point { X = (x + w), Y = (y + h) } };
+      Point[] puntenarray = new Point[] { new Point { X = rectangle.X, Y = rectangle.Y }, new Point { X = (rectangle.X + rectangle.Width), Y = rectangle.Y }, new Point { X = (rectangle.X), Y = (rectangle.Y + rectangle.Height) }, new Point { X = (rectangle.X + rectangle.Width), Y = (rectangle.Y + rectangle.Height) } };
       foreach (Point punt in puntenarray)
       {
-        Rectangle box = new Rectangle(this.position, new Point(this.width, this.height));
-        if (box.Contains(punt)){
+        if (this.rectangle.Contains(punt)){
           return true;
         }
       }
