@@ -8,15 +8,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-  class Stairs : IStairs //InterfaceNotImplemented
-  {
-    private Tuple<float, float> Position;
-    private Texture2D Sprite;
+  // DO NOT IMPLEMENT
 
-    public Stairs(Tuple<float,float> Position, Texture2D Sprite)
+  class Stairs : IStairs
+  {
+    public Stairs()
     {
-      this.Position = Position;
-      this.Sprite = Sprite;
+      throw new NotImplementedException();
     }
 
     public void Update(float dt)

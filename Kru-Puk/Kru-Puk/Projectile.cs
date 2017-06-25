@@ -8,32 +8,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Projectile : IEntity
-    {
-        private Tuple<float,float> Position;
-        private Vector2 Velocity;
-        private Vector2 Direction;
-        private Texture2D Sprite;
-        private int Damage;
-        private int Width;
-        private int Height;
-        private CollisionGroups Collidables;
+  class Projectile : IEntity
+  {
+    private Rectangle rectangle;
+    private Vector2 velocity;
+    private Vector2 direction;
+    private Texture2D sprite;
+    private int damage;
 
-        Projectile(Tuple<float,float> Position, Vector2 Velocity, Vector2 Direction, Texture2D Sprite, int Damage, int Width, int Height, CollisionGroups Collidables)
-        {
-            this.Position = Position;
-            this.Velocity = Velocity;
-            this.Direction = Direction;
-            this.Sprite = Sprite;
-            this.Damage = Damage;
-            this.Width = Width;
-            this.Height = Height;
-            this.Collidables = Collidables;
-        }
-
-    public void Intersect(int x, int y, int w, int h)
+    Projectile(Rectangle rectangle, Vector2 velocity, Vector2 direction, Texture2D sprite, int damage)
     {
-      throw new NotImplementedException();
+      this.rectangle = rectangle;
+      this.velocity = velocity;
+      this.direction = direction;
+      this.sprite = sprite;
+      this.damage = damage;
     }
 
     public void AddEntity()
@@ -46,12 +35,32 @@ namespace Kru_Puk
       throw new NotImplementedException();
     }
 
+    public void TakeDamage(int damage)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void DoDamage()
+    {
+      throw new NotImplementedException();
+    }
+
+    public Point getPosition()
+    {
+      throw new NotImplementedException();
+    }
+
     public void Update(float dt)
     {
       throw new NotImplementedException();
     }
 
     public void Draw(SpriteBatch spritebatch)
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool Intersect(Rectangle rectangle)
     {
       throw new NotImplementedException();
     }

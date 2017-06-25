@@ -15,9 +15,9 @@ namespace Kru_Puk
     {
       this.graphicsDevice = graphicsDevice;
     }
-    public Point Position()
+    public Rectangle WholeWindow()
     {
-      return graphicsDevice.PresentationParameters.Bounds.Location;
+      return graphicsDevice.PresentationParameters.Bounds;
     }
     public Point Center()
     {

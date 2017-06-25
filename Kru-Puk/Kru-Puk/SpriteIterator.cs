@@ -12,7 +12,12 @@ namespace Kru_Puk
     Texture2D[] data;
     int current;
     int timer;
-    public SpriteIterator(Texture2D[] data) { this.data = data; this.current = 0; this.timer = 0; }
+    public SpriteIterator(Texture2D[] data)
+    {
+      this.data = data;
+      this.current = 0;
+      this.timer = 0;
+    }
     public Texture2D GetNext()
     {
       timer += 1;

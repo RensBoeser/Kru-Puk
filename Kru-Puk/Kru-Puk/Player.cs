@@ -8,35 +8,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Player : IEntity
+  class Player : IEntity
   {
-        private Point position;
-        private Vector2 Velocity;
-        private Vector2 Acceleration;
-        private Texture2D[] Sprites;
-        private WeaponPouch WeaponPouch;
-        private int Ammo;
-        private int Health;
-        private int Width;
-        private int Height;
+    private Rectangle rectangle;
+    private Vector2 velocity;
+    private Vector2 acceleration;
+    private Texture2D[] sprites;
+    private WeaponPouch weaponPouch;
+    private int ammo;
+    private int health;
         
 
-        Player(Point position, Vector2 Velocity, Vector2 Acceleration, Texture2D[] Sprites,WeaponPouch WeaponPouch, int Ammo, int Health, int Width, int Height)
-        {
-            this.position = position;
-            this.Velocity = Velocity;
-            this.Acceleration = Acceleration;
-            this.Sprites = Sprites;
-            this.WeaponPouch = WeaponPouch;
-            this.Ammo = Ammo;
-            this.Health = Health;
-            this.Width = Width;
-            this.Height = Height;
-        }
-
-    public void Intersect(int x, int y, int w, int h)
+    Player(Rectangle rectangle, Vector2 velocity, Vector2 acceleration, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
     {
-      throw new NotImplementedException();
+      this.rectangle = rectangle;
+      this.velocity = velocity;
+      this.acceleration = acceleration;
+      this.sprites = sprites;
+      this.weaponPouch = weaponPouch;
+      this.ammo = ammo;
+      this.health = health;
     }
 
     public void AddEntity()
@@ -61,7 +52,7 @@ namespace Kru_Puk
 
     public void TakeDamage(int damage)
     {
-      this.Health = (this.Health - damage);
+      this.health = (this.health - damage);
     }
 
     public void DoDamage()
@@ -71,7 +62,7 @@ namespace Kru_Puk
 
     public Point getPosition()
     {
-      return position;
+      return rectangle.Location;
     }
 
     //Experimental Move Class
@@ -109,5 +100,9 @@ namespace Kru_Puk
 
         }
 
+    public bool Intersect(Rectangle rectangle)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

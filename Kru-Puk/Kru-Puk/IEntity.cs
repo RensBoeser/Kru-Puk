@@ -9,7 +9,7 @@ namespace Kru_Puk
 {
   interface IEntity : IUpdateable, IDrawable
   {
-    void Intersect(int x, int y, int w, int h);
+    bool Intersect(Rectangle rectangle);
     void AddEntity();
     void RemoveEntity();
     void TakeDamage(int damage);
