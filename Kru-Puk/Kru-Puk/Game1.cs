@@ -43,8 +43,9 @@ namespace Kru_Puk
       SpriteFont font = Content.Load<SpriteFont>("testSpriteFont");
       // TODO: use this.Content to load your game content here
 
-      main = new Main(font); // textures here
-}
+      Window window = new Window(spriteBatch.GraphicsDevice);
+      main = new Main(window, font); // textures here
+    }
 
     /// <summary>
     /// UnloadContent will be called once per game and is the place to unload

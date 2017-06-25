@@ -12,11 +12,18 @@ namespace Kru_Puk
   {
     private SpriteFont font;
     private EntityFactory entityfactory;
+    private Menu menu;
     private Level[] levels;
-    public Main(SpriteFont font, Texture2D[] zombieWalking, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas) // all textures
+    private Window window;
+    private int currentLevel;
+    private bool onMenu;
+    public Main(Window window, SpriteFont font, Texture2D[] zombieWalking, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button) // all textures
     {
       entityfactory = new EntityFactory(zombieWalking, levels, assets, areas); // put all textures in here
       this.font = font; //unassigned spritefont. The font works, but idk where to use it/put it yet.
+      this.window = window;
+      this.menu = new Menu(window, logo, menuBackground, button, font);
+      this.onMenu = true;
     }
 
     public void AddLevels()
@@ -44,10 +51,18 @@ namespace Kru_Puk
 
     public void Draw(SpriteBatch spritebatch)
     {
+      if(onMenu)
+      {
+        menu.Draw(spritebatch);
+      }
     }
 
     public void Update(float dt)
     {
+      if(onMenu)
+      {
+        menu.Update(dt);
+      }
     }
   }
 }
