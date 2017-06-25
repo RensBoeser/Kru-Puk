@@ -16,6 +16,7 @@ namespace Kru_Puk
     private bool Discovered;
     private Texture2D[] Sprites;
     private Asset[] Assets;
+    private DrawingAdapter drawingAdapter;
 
     public Area(Point Position, int Width, int Height, Texture2D[] Sprites, Asset[] Assets)
     {
@@ -40,9 +41,18 @@ namespace Kru_Puk
 
     public void Draw(SpriteBatch spritebatch)
     {      
-      for(int i = 0; i < Assets.Length; i = i + 1)
+      if(Discovered)
       {
-        Assets[i].Draw(spritebatch);
+        drawingAdapter.Draw(spritebatch, Sprites[1], Position, false);
+        
+        for (int i = 0; i < Assets.Length; i = i + 1)
+        {
+          Assets[i].Draw(spritebatch);
+        }
+      }
+      else
+      {
+        drawingAdapter.Draw(spritebatch, Sprites[0], Position, false);
       }
     }
 
