@@ -43,7 +43,7 @@ namespace Kru_Puk
       SpriteFont font = Content.Load<SpriteFont>("testSpriteFont");
       // TODO: use this.Content to load your game content here
 
-      main = new Main(); // textures here
+      main = new Main(font); // textures here
 }
 
     /// <summary>
