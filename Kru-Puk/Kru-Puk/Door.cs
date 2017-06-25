@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Door : IDoor // InterfaceNotImplemented
+    class Door : IDoor
     {
         private Texture2D[] Sprites;
         private Tuple<float, float> Position;
@@ -16,5 +16,15 @@ namespace Kru_Puk
         private int Height;
         private bool Open;
         private bool interactable;
+
+    public void Update(float dt)
+    {
+      throw new NotImplementedException();
     }
+
+    public void Draw(SpriteBatch spritebatch)
+    {
+      throw new NotImplementedException();
+    }
+  }
 }

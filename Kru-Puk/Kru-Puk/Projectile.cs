@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
-    class Projectile : IEntity //InterfaceNotImplemented
+    class Projectile : IEntity
     {
         private Tuple<float,float> Position;
         private Vector2 Velocity;
@@ -30,5 +30,30 @@ namespace Kru_Puk
             this.Height = Height;
             this.Collidables = Collidables;
         }
+
+    public void Intersect(int x, int y, int w, int h)
+    {
+      throw new NotImplementedException();
     }
+
+    public void AddEntity()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void RemoveEntity()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Update(float dt)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Draw(SpriteBatch spritebatch)
+    {
+      throw new NotImplementedException();
+    }
+  }
 }
