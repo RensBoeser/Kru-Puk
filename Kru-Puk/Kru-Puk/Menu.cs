@@ -29,8 +29,7 @@ namespace Kru_Puk
       buttons = new Button[1];
       // Put the buttons here.
       // for putting the buttons in the middle of the screen you can use window.Center to get the exact middle of the screen.
-      //                      position        width height                    function when clicked                            sprites     font     label
-      buttons[0] = new Button(window.Center(), 100, 40, () => Console.WriteLine("THIS IS DONE WHEN THE BUTTON IS CLICKED"), buttontexture, font, "Testbutton");
+      buttons[0] = new Button(new Rectangle(window.Center().X, window.Center().Y, 100, 40), () => Console.WriteLine("THIS IS DONE WHEN THE BUTTON IS CLICKED"), buttontexture, font, "Testbutton");
     }
 
     public void Update(float dt)

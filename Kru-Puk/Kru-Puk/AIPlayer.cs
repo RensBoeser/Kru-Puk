@@ -35,11 +35,6 @@ namespace Kru_Puk
         
     }
 
-    public bool Intersect(int x, int y, int w, int h)
-    {
-      throw new NotImplementedException();
-    }
-
     public void AddEntity()
     {
       level.AddEntity(this);

@@ -8,12 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kru_Puk
 {
+  //DO NOT IMPLEMENT
   class Door : IDoor
   {
-    private Texture2D[] sprites;
-    private Rectangle rectangle;
-    private bool Open;
-    private bool interactable;
 
     public void Update(float dt)
     {

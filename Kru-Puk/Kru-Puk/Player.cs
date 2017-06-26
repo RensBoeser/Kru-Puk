@@ -74,7 +74,7 @@ namespace Kru_Puk
             private float Y;
             private Vector2 MaxSpeedX;
             private Vector2 MaxSpeedY;
-            private Tuple<float, float> CurrentPosition;
+            private Point CurrentPosition;
 
             
 

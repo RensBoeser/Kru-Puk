@@ -43,8 +43,27 @@ namespace Kru_Puk
       SpriteFont font = Content.Load<SpriteFont>("testSpriteFont");
       // TODO: use this.Content to load your game content here
 
+      Texture2D[] zombieWalking = new Texture2D[3]; // zombie walking animation array
+      // zombieWalking[0] = Content.Load<Texture2D>("name_of_file");
+      // zombieWalking[1] = Content.Load<Texture2D>("name_of_file");
+      // zombieWalking[2] = Content.Load<Texture2D>("name_of_file");
+      Texture2D[] levelBackgrounds = new Texture2D[0];
+      // levelBackgrounds[0] = Content.Load<Texture2D>("name_of_file");
+      Texture2D[] assets = new Texture2D[0];
+      // assets[0] = Content.Load<Texture2D>("name_of_file");
+      Texture2D[] button = new Texture2D[2];
+      // button[0] = Content.Load<Texture2D>("name_of_file");
+      // button[1] = Content.Load<Texture2D>("name_of_file");
+      Texture2D[][] areas = new Texture2D[1][];
+      areas[0] = new Texture2D[2]; //this is the list for specific areas (not yet discovered texture / discovered texture)
+      // areas[0][0] = Content.Load<Texture2D>("name_of_file");
+      // areas[0][1] = Content.Load<Texture2D>("name_of_file");
+      Texture2D logo = Content.Load<Texture2D>("name_of_file");
+      Texture2D menuBackground = Content.Load<Texture2D>("name_of_file");
+
+
       Window window = new Window(spriteBatch.GraphicsDevice);
-      main = new Main(window, font); // textures here
+      main = new Main(window, font, zombieWalking, levelBackgrounds, assets, areas, logo, menuBackground, button); // textures here
     }
 
     /// <summary>
