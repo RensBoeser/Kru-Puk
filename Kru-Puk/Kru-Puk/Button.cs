@@ -18,7 +18,7 @@ namespace Kru_Puk
     private string label;
     private DrawingAdapter drawingAdapter;
 
-    public Button(Point position, int width, int height, Action function, Texture2D[] sprite, SpriteFont font, string label)
+    public Button(Rectangle rectangle, Action function, Texture2D[] sprite, SpriteFont font, string label)
     {
       this.rectangle = rectangle;
       this.function = function;

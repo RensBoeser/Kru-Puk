@@ -16,7 +16,7 @@ namespace Kru_Puk
     private Texture2D sprite;
     private int damage;
 
-    Projectile(Rectangle rectangle, Vector2 velocity, Vector2 direction, Texture2D sprite, int damage)
+    public Projectile(Rectangle rectangle, Vector2 velocity, Vector2 direction, Texture2D sprite, int damage)
     {
       this.rectangle = rectangle;
       this.velocity = velocity;

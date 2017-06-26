@@ -19,11 +19,11 @@ namespace Kru_Puk
     private int health;
         
 
-    public Player(Rectangle rectangle, Vector2 velocity, Vector2 acceleration, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
+    public Player(Rectangle rectangle, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
     {
       this.rectangle = rectangle;
-      this.velocity = velocity;
-      this.acceleration = acceleration;
+      this.velocity = new Vector2(0, 0);
+      this.acceleration = new Vector2(0, 0);
       this.sprites = sprites;
       this.weaponPouch = weaponPouch;
       this.ammo = ammo;

@@ -39,11 +39,11 @@ namespace Kru_Puk
 
       // by creating a list of areas, you can put areas into groups for each level
       Area[] areas = new Area[2]; // number of areas
-      areas[0] = entityfactory.CreateArea(new Point(0, 0), 500, 400, 0, assets1); // position, width, height, areabackgroundID, assets
-      areas[1] = entityfactory.CreateArea(new Point(500, 0), 500, 400, 1, assets2);
+      areas[0] = entityfactory.CreateArea(new Rectangle(0, 0, 400, 500), 0, assets1); // position, width, height, areabackgroundID, assets
+      areas[1] = entityfactory.CreateArea(new Rectangle(400, 0, 400, 500), 1, assets2);
 
-      IEntity[] entities = new IEntity[1]; // number of entities
-      entities[0] = entityfactory.CreateZombie(new Point(0, 0)); // position
+      IEntity[] entities = new IEntity[0]; // number of entities
+      // entities[0] = create an entity here
 
       levels = new Level[0]; // number of levels
       levels[0] = entityfactory.CreateLevel(areas, entities, new Point(0, 0)); //areas, entities, spawnpoint
