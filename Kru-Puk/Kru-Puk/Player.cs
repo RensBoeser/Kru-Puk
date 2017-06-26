@@ -70,30 +70,50 @@ namespace Kru_Puk
 
     public class Move
         {
+            Player player;
             private float X;
             private float Y;
-            private Vector2 MaxSpeedX;
+            private Vector2 MaxSpeedX;  
             private Vector2 MaxSpeedY;
             private Point CurrentPosition;
-
             
-
-            public void Jump()
+            public void GetCurrentPosition()
             {
-                //Get CurrentPosition
-                //Change Y from 0 to the max jump height with MaxSpeedY per update.
+               
+               CurrentPosition = player.rectangle.Location;
             }
 
-            public void Left()
+            public void Jump() // Player jumps 20 pixels
             {
-                //GetCurrentPosition
-                //Change X from 0 to the max walking distance (per called Left()) with MaxSpeedX per update.
+                GetCurrentPosition();
+                for (int i = 0; i <= 20; i = i + 1)
+                {
+                    CurrentPosition.Y = CurrentPosition.Y - 1;
+                    player.rectangle.Y = CurrentPosition.Y;
+
+                }
             }
 
-            public void Right()
+            public void Left() // Player walks left 10 pixels
             {
-                //GetCurrentPosition
-                //Change X from 0 to the max walking distance (per called Right()) with MaxSpeedX per update.
+                GetCurrentPosition();
+                for (int i = 0; i <= 10; i = i + 1)
+                {
+                    CurrentPosition.X = CurrentPosition.X - 1;
+                    player.rectangle.X = CurrentPosition.X;
+                }
+                
+            }
+
+            public void Right() // Player walks right 10 pixels
+            {
+                GetCurrentPosition();
+                for (int i = 0; i <= 10; i = i + 1)
+                {
+                    CurrentPosition.X = CurrentPosition.X + 1;
+                    player.rectangle.X = CurrentPosition.X;
+                }
+
             }
 
 

@@ -60,11 +60,6 @@ namespace Kru_Puk
       throw new NotImplementedException();
     }
 
-    public bool Intersect(int x, int y, int w, int h)
-    {
-      throw new NotImplementedException();
-    }
-
     public void RemoveEntity()
     {
       throw new NotImplementedException();

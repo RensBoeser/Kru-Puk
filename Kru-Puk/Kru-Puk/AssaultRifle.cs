@@ -15,13 +15,15 @@ namespace Kru_Puk
     private int clipAmount;
     private int ammoInClip;
     private Projectile projectile;
+    private int damage;
 
-    AssaultRifle(int maxClipAmount, int clipAmount, int ammoInClip, Projectile projectile)
+    AssaultRifle(int maxClipAmount, int clipAmount, int ammoInClip, Projectile projectile, int damage)
     {
       this.maxClipAmount = maxClipAmount;
       this.clipAmount = clipAmount;
       this.ammoInClip = ammoInClip;
       this.projectile = projectile;
+      this.damage = damage;
     }
 
     public void Draw(SpriteBatch spritebatch)
