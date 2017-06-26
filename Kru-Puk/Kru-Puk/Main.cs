@@ -24,6 +24,7 @@ namespace Kru_Puk
       this.window = window;
       this.menu = new Menu(window, logo, menuBackground, button, font);
       this.onMenu = true;
+      this.currentLevel = 0;
     }
 
     public void AddLevels()

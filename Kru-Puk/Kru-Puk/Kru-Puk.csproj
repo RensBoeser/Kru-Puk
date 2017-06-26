@@ -59,7 +59,6 @@
     <Compile Include="IDoor.cs" />
     <Compile Include="IIterator.cs" />
     <Compile Include="IStairs.cs" />
-    <Compile Include="IUpdateable.cs" />
     <Compile Include="IZombie.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Player.cs" />

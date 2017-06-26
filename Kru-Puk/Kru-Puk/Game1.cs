@@ -37,11 +37,9 @@ namespace Kru_Puk
     /// </summary>
     protected override void LoadContent()
     {
-      // Create a new SpriteBatch, which can be used to draw textures.
       spriteBatch = new SpriteBatch(GraphicsDevice);
 
       SpriteFont font = Content.Load<SpriteFont>("testSpriteFont");
-      // TODO: use this.Content to load your game content here
 
       Texture2D[] zombieWalking = new Texture2D[3]; // zombie walking animation array
       // zombieWalking[0] = Content.Load<Texture2D>("name_of_file");
