@@ -85,6 +85,10 @@ namespace Kru_Puk
         if (this.rectangle.Contains(punt)){
           return true;
         }
+        else
+        {
+          return false;
+        }
       }
       throw new NotImplementedException();
     }

@@ -122,12 +122,22 @@ namespace Kru_Puk
 
     public bool Intersect(Rectangle rectangle)
     {
+      //x > x && x < x + w;
+      //y > y && y < y + h;
+      Point[] puntenarray = new Point[] { new Point { X = rectangle.X, Y = rectangle.Y }, new Point { X = (rectangle.X + rectangle.Width), Y = rectangle.Y }, new Point { X = (rectangle.X), Y = (rectangle.Y + rectangle.Height) }, new Point { X = (rectangle.X + rectangle.Width), Y = (rectangle.Y + rectangle.Height) } };
+      foreach (Point punt in puntenarray)
+      {
+        if (this.rectangle.Contains(punt))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+      }
       throw new NotImplementedException();
     }
 
-    public bool Intersect(int x, int y, int w, int h)
-    {
-      throw new NotImplementedException();
-    }
   }
 }

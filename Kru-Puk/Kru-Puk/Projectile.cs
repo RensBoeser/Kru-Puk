@@ -15,6 +15,8 @@ namespace Kru_Puk
     private Vector2 direction;
     private Texture2D sprite;
     private int damage;
+    private Level level;
+    private DrawingAdapter drawingAdapter;
 
     public Projectile(Rectangle rectangle, Vector2 velocity, Vector2 direction, Texture2D sprite, int damage)
     {
@@ -27,7 +29,7 @@ namespace Kru_Puk
 
     public void AddEntity()
     {
-      throw new NotImplementedException();
+      level.AddEntity(this);
     }
 
     public void TakeDamage(int damage)
@@ -37,12 +39,20 @@ namespace Kru_Puk
 
     public void DoDamage()
     {
+      foreach (IEntity entity in level.GetEntities())
+      {
+        //check voor elke zombie of de kogel in range is
+        //if (entity.GetType() == )
+        //{
+
+        //}
+      }
       throw new NotImplementedException();
     }
 
     public Point getPosition()
     {
-      throw new NotImplementedException();
+      return rectangle.Location;
     }
 
     public void Update(float dt)
@@ -52,17 +62,33 @@ namespace Kru_Puk
 
     public void Draw(SpriteBatch spritebatch)
     {
-      throw new NotImplementedException();
+      //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
+      bool flipped = true;
+      drawingAdapter.Draw(spritebatch, sprite, rectangle.Location, flipped);
     }
 
     public bool Intersect(Rectangle rectangle)
     {
+      //x > x && x < x + w;
+      //y > y && y < y + h;
+      Point[] puntenarray = new Point[] { new Point { X = rectangle.X, Y = rectangle.Y }, new Point { X = (rectangle.X + rectangle.Width), Y = rectangle.Y }, new Point { X = (rectangle.X), Y = (rectangle.Y + rectangle.Height) }, new Point { X = (rectangle.X + rectangle.Width), Y = (rectangle.Y + rectangle.Height) } };
+      foreach (Point punt in puntenarray)
+      {
+        if (this.rectangle.Contains(punt))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+      }
       throw new NotImplementedException();
     }
 
     public void RemoveEntity()
     {
-      throw new NotImplementedException();
+      level.RemoveEntity(this);
     }
   }
 }

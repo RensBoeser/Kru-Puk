@@ -13,7 +13,7 @@ namespace Kru_Puk
     void AddEntity();
     void RemoveEntity();
     void TakeDamage(int damage);
-    void DoDamage();
+    void DoDamage(IEntity entity);
     Point getPosition();
   }
 }
