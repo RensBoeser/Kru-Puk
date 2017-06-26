@@ -55,7 +55,7 @@ namespace Kru_Puk
       this.health = (this.health - damage);
     }
 
-    public void DoDamage()
+    public void DoDamage(IEntity entity)
     {
       throw new NotImplementedException();
     }

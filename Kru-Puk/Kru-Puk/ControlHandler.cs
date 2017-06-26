@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Kru_Puk
 {
-  public class ControlHandler : Game //Change the Console.WriteLine for real outputs || Some possible void outputs have already been coded ||
+  public class ControlHandler //Change the Console.WriteLine for real outputs || Some possible void outputs have already been coded ||
   {
     GamePadState state = GamePad.GetState(PlayerIndex.One);
     public ControlHandler()

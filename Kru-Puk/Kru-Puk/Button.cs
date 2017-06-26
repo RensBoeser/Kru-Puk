@@ -25,6 +25,7 @@ namespace Kru_Puk
       this.sprite = sprite;
       this.font = font;
       this.label = label;
+      this.drawingAdapter = new DrawingAdapter();
     }
 
 
@@ -54,7 +55,7 @@ namespace Kru_Puk
       if (OnHover())
       {
         drawingAdapter.Draw(spritebatch, sprite[1], rectangle.Location, false);
-        drawingAdapter.DrawString(spritebatch, font, label, rectangle.Location, Color.White);
+        drawingAdapter.DrawString(spritebatch, font, label, new Point(rectangle.X + 24, rectangle.Y + 24), Color.Black);
         if (Mouse.GetState().LeftButton == ButtonState.Pressed)
         {
           Click();
@@ -63,7 +64,7 @@ namespace Kru_Puk
       else
       {
         drawingAdapter.Draw(spritebatch, sprite[0], rectangle.Location, false);
-        drawingAdapter.DrawString(spritebatch, font, label, rectangle.Location, Color.White);
+        drawingAdapter.DrawString(spritebatch, font, label, new Point(rectangle.X + 20, rectangle.Y + 20), Color.Black);
       }
     }
   }

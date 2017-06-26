@@ -49,7 +49,6 @@
     <Compile Include="DrawingAdapter.cs" />
     <Compile Include="Asset.cs" />
     <Compile Include="ControlHandler.cs" />
-    <Compile Include="ControlInput.cs" />
     <Compile Include="IAsset.cs" />
     <Compile Include="IButton.cs" />
     <Compile Include="Level.cs" />

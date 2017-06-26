@@ -14,11 +14,11 @@ namespace Kru_Puk
     {
       if (flipped)
       {
-        spritebatch.Draw(sprite, position.ToVector2(), null, Color.White, 0.0f, new Vector2(0, 0), 0.0f, SpriteEffects.FlipHorizontally, 0.0f);
+        spritebatch.Draw(sprite, position.ToVector2(), null, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.FlipHorizontally, 0.0f);
       }
       else
       {
-        spritebatch.Draw(sprite, position.ToVector2(), null, Color.White, 0.0f, new Vector2(0, 0), 0.0f, SpriteEffects.None, 0.0f);
+        spritebatch.Draw(sprite, position.ToVector2(), null, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.0f);
       }
     }
     public void DrawString(SpriteBatch spritebatch, SpriteFont font, string text, Point position, Color color)

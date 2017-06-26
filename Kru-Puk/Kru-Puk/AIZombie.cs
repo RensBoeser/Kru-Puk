@@ -65,9 +65,9 @@ namespace Kru_Puk
       followingObject = newObject;
     }
 
-    public void DoDamage()
+    public void DoDamage(IEntity entity)
     {
-      followingObject.TakeDamage(this.damage);
+      entity.TakeDamage(this.damage);
     }
 
     public void TakeDamage(int damage)

@@ -37,16 +37,16 @@ namespace Kru_Puk
       throw new NotImplementedException();
     }
 
-    public void DoDamage()
+    public void DoDamage(IEntity entity)
     {
-      foreach (IEntity entity in level.GetEntities())
-      {
-        //check voor elke zombie of de kogel in range is
-        //if (entity.GetType() == )
-        //{
+      //foreach (IEntity entity in level.GetEntities())
+      //{
+      //  //check voor elke zombie of de kogel in range is
+      //  //if (entity.GetType() == )
+      //  //{
 
-        //}
-      }
+      //  //}
+      //}
       throw new NotImplementedException();
     }
 

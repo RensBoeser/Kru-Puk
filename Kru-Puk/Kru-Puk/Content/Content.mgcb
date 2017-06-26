@@ -13,13 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin testSpriteFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:testSpriteFont.spritefont
-
 #begin button.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -44,12 +37,7 @@
 /processorParam:TextureFormat=Color
 /build:button_clicked.jpg
 
-#begin Content.mgcb
-/importer:
-/processor:
-/build:Content.mgcb
-
-#begin dmg_zombie_idle.png
+#begin LegendOfKruMainPlain.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,31 +47,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:dmg_zombie_idle.png
-
-#begin dmg_zombie_walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:dmg_zombie_walk1.png
-
-#begin dmg_zombie_walk2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:dmg_zombie_walk2.png
+/build:LegendOfKruMainPlain.jpg
 
 #begin zombie_idle.png
 /importer:TextureImporter
@@ -97,7 +61,7 @@
 /processorParam:TextureFormat=Color
 /build:zombie_idle.png
 
-#begin zombie_walk1.png
+#begin TheLegendOfKruLogo.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,7 +71,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:zombie_walk1.png
+/build:TheLegendOfKruLogo.png
 
 #begin zombie_walk2.png
 /importer:TextureImporter
@@ -120,4 +84,23 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:zombie_walk2.png
+
+#begin zombie_walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zombie_walk1.png
+
+#begin Font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font.spritefont
 
