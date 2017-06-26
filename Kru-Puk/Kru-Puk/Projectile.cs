@@ -39,19 +39,7 @@ namespace Kru_Puk
 
     public void DoDamage(IEntity entity)
     {
-<<<<<<< HEAD
-      //foreach (IEntity entity in level.GetEntities())
-      //{
-      //  //check voor elke zombie of de kogel in range is
-      //  //if (entity.GetType() == )
-      //  //{
-
-      //  //}
-      //}
-      throw new NotImplementedException();
-=======
       entity.TakeDamage(this.damage);
->>>>>>> origin/master
     }
 
     public Point getPosition()
