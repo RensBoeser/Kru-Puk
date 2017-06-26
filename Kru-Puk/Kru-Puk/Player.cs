@@ -17,7 +17,7 @@ namespace Kru_Puk
     private WeaponPouch weaponPouch;
     private int ammo;
     private int health;
-        
+
 
     public Player(Rectangle rectangle, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
     {
@@ -55,7 +55,7 @@ namespace Kru_Puk
       this.health = (this.health - damage);
     }
 
-    public void DoDamage()
+    public void DoDamage(IEntity entity)
     {
       throw new NotImplementedException();
     }
@@ -69,75 +69,78 @@ namespace Kru_Puk
     //Implementing a Move Class to make movement actions more clear and simple
 
     public class Move
+    {
+      Player player;
+      private float X;
+      private float Y;
+      private Vector2 MaxSpeedX;
+      private Vector2 MaxSpeedY;
+      private Point CurrentPosition;
+
+      public void GetCurrentPosition()
+      {
+
+        CurrentPosition = player.rectangle.Location;
+      }
+
+      public void Jump() // Player jumps 20 pixels
+      {
+        GetCurrentPosition();
+        for (int i = 0; i <= 20; i = i + 1)
         {
-            Player player;
-            private float X;
-            private float Y;
-            private Vector2 MaxSpeedX;  
-            private Vector2 MaxSpeedY;
-            private Point CurrentPosition;
-            
-            public void GetCurrentPosition()
-            {
-               
-               CurrentPosition = player.rectangle.Location;
-            }
-
-            public void Jump() // Player jumps 20 pixels
-            {
-                GetCurrentPosition();
-                for (int i = 0; i <= 20; i = i + 1)
-                {
-                    CurrentPosition.Y = CurrentPosition.Y - 1;
-                    player.rectangle.Y = CurrentPosition.Y;
-
-                }
-            }
-
-            public void Left() // Player walks left 10 pixels
-            {
-                GetCurrentPosition();
-                for (int i = 0; i <= 10; i = i + 1)
-                {
-                    CurrentPosition.X = CurrentPosition.X - 1;
-                    player.rectangle.X = CurrentPosition.X;
-                }
-                
-            }
-
-            public void Right() // Player walks right 10 pixels
-            {
-                GetCurrentPosition();
-                for (int i = 0; i <= 10; i = i + 1)
-                {
-                    CurrentPosition.X = CurrentPosition.X + 1;
-                    player.rectangle.X = CurrentPosition.X;
-                }
-
-            }
-
-
+          CurrentPosition.Y = CurrentPosition.Y - 1;
+          player.rectangle.Y = CurrentPosition.Y;
 
         }
+      }
+
+      public void Left() // Player walks left 10 pixels
+      {
+        GetCurrentPosition();
+        for (int i = 0; i <= 10; i = i + 1)
+        {
+          CurrentPosition.X = CurrentPosition.X - 1;
+          player.rectangle.X = CurrentPosition.X;
+        }
+
+      }
+
+      public void Right() // Player walks right 10 pixels
+      {
+        GetCurrentPosition();
+        for (int i = 0; i <= 10; i = i + 1)
+        {
+          CurrentPosition.X = CurrentPosition.X + 1;
+          player.rectangle.X = CurrentPosition.X;
+        }
+
+      }
+
+
+
+    }
 
     public bool Intersect(Rectangle rectangle)
     {
       //x > x && x < x + w;
-      //y > y && y < y + h;
+      //y > y && y < y + h;     
       Point[] puntenarray = new Point[] { new Point { X = rectangle.X, Y = rectangle.Y }, new Point { X = (rectangle.X + rectangle.Width), Y = rectangle.Y }, new Point { X = (rectangle.X), Y = (rectangle.Y + rectangle.Height) }, new Point { X = (rectangle.X + rectangle.Width), Y = (rectangle.Y + rectangle.Height) } };
+      Point[] puntenarray2 = new Point[] { new Point { X = this.rectangle.X, Y = this.rectangle.Y }, new Point { X = (this.rectangle.X + this.rectangle.Width), Y = this.rectangle.Y }, new Point { X = (this.rectangle.X), Y = (this.rectangle.Y + this.rectangle.Height) }, new Point { X = (this.rectangle.X + this.rectangle.Width), Y = (this.rectangle.Y + this.rectangle.Height) } };
       foreach (Point punt in puntenarray)
       {
         if (this.rectangle.Contains(punt))
         {
           return true;
         }
-        else
+      }
+      foreach (Point punt in puntenarray2)
+      {
+        if (rectangle.Contains(punt))
         {
-          return false;
+          return true;
         }
       }
-      throw new NotImplementedException();
+      return false;
     }
-
   }
 }
