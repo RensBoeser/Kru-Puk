@@ -35,6 +35,8 @@ namespace Kru_Puk
       buttons[0] = new Button(new Rectangle((int)(window.Center().X * 1.25), (int)(window.Center().Y * 0.5), 256, 128), () => Console.WriteLine("Start"), buttontexture, font, "Start Game");
       buttons[1] = new Button(new Rectangle((int)(window.Center().X * 1.25), (int)(window.Center().Y * 0.5) + 128 + 32, 256, 128), () => Console.WriteLine("Continue"), buttontexture, font, "Continue");
       buttons[2] = new Button(new Rectangle((int)(window.Center().X * 1.25), (int)(window.Center().Y * 0.5) + 256 + 64, 256, 128), () => Exit(), buttontexture, font, "Exit Game");
+
+      buttons[1].ToggleClickable(); // The continue button is inaccessable due to no saved game.
     }
 
     public void Exit()

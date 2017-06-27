@@ -19,6 +19,7 @@ namespace Kru_Puk
     private SpriteFont font;
     private string label;
     private DrawingAdapter drawingAdapter;
+    private bool clickable;
 
     public Button(Rectangle rectangle, Action function, Texture2D[] sprite, SpriteFont font, string label)
     {
@@ -29,6 +30,7 @@ namespace Kru_Puk
       this.label = label;
       this.drawingAdapter = new DrawingAdapter();
       this.pressed = false;
+      this.clickable = true;
     }
 
 
@@ -44,6 +46,14 @@ namespace Kru_Puk
       return false;
     }
 
+    public void ToggleClickable()
+    {
+      if(clickable)
+      { clickable = false; }
+      else
+      { clickable = true; }
+    }
+
     public void Click()
     {
       function();
@@ -55,23 +65,31 @@ namespace Kru_Puk
 
     public void Draw(SpriteBatch spritebatch)
     {
-      if (OnHover())
+      if (clickable)
       {
-        drawingAdapter.Draw(spritebatch, sprite[1], rectangle.Location, false);
-        drawingAdapter.DrawString(spritebatch, font, label, new Point(rectangle.X + 24, rectangle.Y + 24), Color.Black);
-        if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+        if (OnHover())
         {
-          pressed = true;
+          drawingAdapter.Draw(spritebatch, sprite[1], rectangle.Location, false);
+          drawingAdapter.DrawString(spritebatch, font, label, new Point(rectangle.X + 24, rectangle.Y + 24), Color.Black);
+          if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+          {
+            pressed = true;
+          }
+          else if (pressed)
+          {
+            pressed = false;
+            Click();
+          }
         }
-        else if (pressed)
+        else
         {
-          pressed = false;
-          Click();
+          drawingAdapter.Draw(spritebatch, sprite[0], rectangle.Location, false);
+          drawingAdapter.DrawString(spritebatch, font, label, new Point(rectangle.X + 20, rectangle.Y + 20), Color.Black);
         }
       }
       else
       {
-        drawingAdapter.Draw(spritebatch, sprite[0], rectangle.Location, false);
+        drawingAdapter.Draw(spritebatch, sprite[0], rectangle.Location, false, Color.Gray);
         drawingAdapter.DrawString(spritebatch, font, label, new Point(rectangle.X + 20, rectangle.Y + 20), Color.Black);
       }
     }
