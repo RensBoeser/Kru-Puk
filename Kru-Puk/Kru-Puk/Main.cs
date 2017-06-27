@@ -57,8 +57,8 @@ namespace Kru_Puk
       //areas[1] = entityfactory.CreateArea(new Rectangle(400, 0, 400, 500), 1, assets2);
 
       IEntity[] entities = new IEntity[2]; // number of entities
-      entities[0] = entityfactory.CreateZombie(new Rectangle(new Point(0, 0), new Point(56, 109)));
-      entities[1] = entityfactory.CreateZombie(new Rectangle(new Point(window.WholeWindow().Right - 56, 0), new Point(56, 109)));
+      entities[0] = entityfactory.CreateZombie(new Rectangle(new Point(0, window.WholeWindow().Height - 109), new Point(56, 109)));
+      entities[1] = entityfactory.CreateZombie(new Rectangle(new Point(window.WholeWindow().Right - 56, window.WholeWindow().Height - 109), new Point(56, 109)));
 
       //SET FOLLOWING OBJECTS
       entities[0].SetFollowingObject(entities[1]);
