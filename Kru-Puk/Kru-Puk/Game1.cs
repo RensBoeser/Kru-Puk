@@ -53,17 +53,17 @@ namespace Kru_Puk
       zombieAnimations[0][1] = Content.Load<Texture2D>("zombie_walk1");
       zombieAnimations[0][2] = Content.Load<Texture2D>("zombie_walk2");
       zombieAnimations[1] = new Texture2D[3];
-      //zombieAnimations[1][0] = Content.Load<Texture2D>("zombie_idle_damaged");
-      //zombieAnimations[1][1] = Content.Load<Texture2D>("zombie_walk1_damaged");
-      //zombieAnimations[1][2] = Content.Load<Texture2D>("zombie_walk2_damaged");
+      zombieAnimations[1][0] = Content.Load<Texture2D>("damaged_zombie_idle");
+      zombieAnimations[1][1] = Content.Load<Texture2D>("damaged_zombie_walk1");
+      zombieAnimations[1][2] = Content.Load<Texture2D>("damaged_zombie_walk2");
       zombieAnimations[2] = new Texture2D[3];
-      //zombieAnimations[1][0] = Content.Load<Texture2D>("zombie_attacking1");
-      //zombieAnimations[1][1] = Content.Load<Texture2D>("zombie_attacking2");
-      //zombieAnimations[1][2] = Content.Load<Texture2D>("zombie_attacking3");
-      zombieAnimations[2] = new Texture2D[3];
-      //zombieAnimations[1][0] = Content.Load<Texture2D>("zombie_attacking1_damaged");
-      //zombieAnimations[1][1] = Content.Load<Texture2D>("zombie_attacking2_damaged");
-      //zombieAnimations[1][2] = Content.Load<Texture2D>("zombie_attacking3_damaged");
+      zombieAnimations[2][0] = Content.Load<Texture2D>("zombie_attack1");
+      zombieAnimations[2][1] = Content.Load<Texture2D>("zombie_attack2");
+      zombieAnimations[2][2] = Content.Load<Texture2D>("zombie_attack3");
+      zombieAnimations[3] = new Texture2D[3];
+      zombieAnimations[3][0] = Content.Load<Texture2D>("damaged_zombie_attack1");
+      zombieAnimations[3][1] = Content.Load<Texture2D>("damaged_zombie_attack2");
+      zombieAnimations[3][2] = Content.Load<Texture2D>("damaged_zombie_attack3");
 
       Texture2D[] levelBackgrounds = new Texture2D[1];
       levelBackgrounds[0] = Content.Load<Texture2D>("LegendOfKruMainPlain");

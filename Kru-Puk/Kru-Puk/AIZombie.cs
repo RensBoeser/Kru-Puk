@@ -45,11 +45,11 @@ namespace Kru_Puk
     {
       if (followingObject.getPosition().X > this.rectangle.X)
       {
-        this.velocity = new Vector2 (1, 0); 
+        this.velocity = new Vector2 (2, 0); 
       }
       else if (followingObject.getPosition().X < this.rectangle.X)
       {
-        this.velocity = new Vector2(-1, 0);
+        this.velocity = new Vector2(-2, 0);
       }
       else
       {
