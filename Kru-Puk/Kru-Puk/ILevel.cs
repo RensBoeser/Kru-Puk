@@ -9,6 +9,7 @@ namespace Kru_Puk
 {
   interface ILevel : IUpdateable, IDrawable
   {
+    bool ExistingEntity(IEntity entity);
     void AddEntity(IEntity entity);
     void RemoveEntity(IEntity entity);
   }

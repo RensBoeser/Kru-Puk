@@ -65,7 +65,7 @@ namespace Kru_Puk
       entities[1].SetFollowingObject(entities[0]);
 
       Level[] levels = new Level[1]; // number of levels
-      levels[0] = entityfactory.CreateLevel(areas, entities, new Point(0, 0), 0); //areas, entities, spawnpoint, backgroundID
+      levels[0] = entityfactory.CreateLevel(areas, new Point(0, 0), 0); //areas, entities, spawnpoint, backgroundID
       foreach (IEntity entity in entities) { entity.AddEntity(levels[0]); }
 
 

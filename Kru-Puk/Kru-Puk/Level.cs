@@ -16,11 +16,11 @@ namespace Kru_Puk
     private Point spawnpoint;
     private DrawingAdapter drawingAdapter;
 
-    public Level(Area[] areas, Texture2D background, IEntity[] entities, Point spawnpoint)
+    public Level(Area[] areas, Texture2D background, Point spawnpoint)
     {
+      this.entities = new IEntity[0];
       this.areas = areas;
       this.background = background;
-      this.entities = entities;
       this.spawnpoint = spawnpoint;
       this.drawingAdapter = new DrawingAdapter();
     }
@@ -80,6 +80,18 @@ namespace Kru_Puk
       foreach (IEntity entity in entities)
       {
         entity.Draw(spritebatch);
+      }
+    }
+
+    public bool ExistingEntity(IEntity entity)
+    {
+      if (entities.Contains(entity))
+      {
+        return true;
+      }
+      else
+      {
+        return false;
       }
     }
   }

@@ -11,6 +11,7 @@ namespace Kru_Puk
   class AIZombie : IZombie
   {
     private IEntity followingObject;
+    private int timer;
     private Rectangle rectangle;
     private Vector2 velocity;
     private Vector2 acceleration;
@@ -35,6 +36,7 @@ namespace Kru_Puk
       this.idle = true;
       this.animationWalking = new SpriteIterator(animationWalking);
       this.drawingadapter = new DrawingAdapter();
+      
     }
 
     public void Move()
@@ -55,6 +57,7 @@ namespace Kru_Puk
 
     public void StartAttack()
     {
+      this.timer = 0;
       this.attacking = true;
     }
 
@@ -119,8 +122,52 @@ namespace Kru_Puk
 
     public void Update(float dt)
     {
-      Move();
-      rectangle.X = (int)(rectangle.X + velocity.X);
+      if (health <= 0)
+      {
+        Die();
+      }
+      if (attacking)
+      {
+        timer = timer + 1;
+        Console.WriteLine(timer);
+        if (timer > 60)
+        {
+          attacking = false;
+          foreach( IEntity entity in level.GetEntities())
+          {
+            IEntity thisisme = this;
+            if (entity != thisisme)
+            {
+              if (followingObject.getPosition().X < this.getPosition().X)
+              {
+                if (entity.Intersect(new Rectangle(this.rectangle.X - this.rectangle.Width, this.rectangle.Y, this.rectangle.Width * 2, this.rectangle.Height)))
+                {
+                  DoDamage(entity);
+                }
+              }
+              else
+              {
+                if (entity.Intersect(new Rectangle(this.rectangle.X, this.rectangle.Y, this.rectangle.Width * 2, this.rectangle.Height)))
+                {
+                  DoDamage(entity);
+                }
+              }
+            }
+          }
+        }
+      }
+      else
+      {
+        if (followingObject.Intersect(this.rectangle))
+        {
+          StartAttack();
+        }
+        else
+        {
+          Move();
+          rectangle.X = (int)(rectangle.X + velocity.X);
+        }
+      }
     }
 
     public void Draw(SpriteBatch spritebatch)
@@ -134,11 +181,9 @@ namespace Kru_Puk
       {
         flipped = false;
       }
-      Console.WriteLine(followingObject);
 
       Texture2D sprite = animationWalking.GetNext();
-      drawingadapter.Draw(spritebatch, sprite, rectangle.Location, flipped);
-      Console.WriteLine(rectangle.Location);
+      drawingadapter.Draw(spritebatch, sprite, rectangle.Location, flipped); 
     }
   }
 }

@@ -25,7 +25,7 @@ namespace Kru_Puk
 
     public AIZombie CreateZombie(Rectangle rectangle)
     {
-      return new AIZombie(rectangle, 100, new Random().Next(5, 10), zombieWalking); //the random is for random damage.
+      return new AIZombie(rectangle, 25, 5, zombieWalking); //the random is for random damage.
     }
 
     public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets)
@@ -38,9 +38,9 @@ namespace Kru_Puk
       return new Asset(position, assets[assetID]);
     }
 
-    public Level CreateLevel(Area[] areas, IEntity[] entities, Point spawnpoint, int backgroundID)
+    public Level CreateLevel(Area[] areas, Point spawnpoint, int backgroundID)
     {
-      return new Level(areas, levels[backgroundID], entities, spawnpoint);
+      return new Level(areas, levels[backgroundID], spawnpoint);
     }
   }
 }
