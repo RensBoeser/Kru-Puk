@@ -11,6 +11,8 @@ namespace Kru_Puk
 {
   class Button : IButton
   {
+    private bool pressed;
+
     private Rectangle rectangle;
     private Action function;
     private Texture2D[] sprite;
@@ -26,6 +28,7 @@ namespace Kru_Puk
       this.font = font;
       this.label = label;
       this.drawingAdapter = new DrawingAdapter();
+      this.pressed = false;
     }
 
 
@@ -58,6 +61,11 @@ namespace Kru_Puk
         drawingAdapter.DrawString(spritebatch, font, label, new Point(rectangle.X + 24, rectangle.Y + 24), Color.Black);
         if (Mouse.GetState().LeftButton == ButtonState.Pressed)
         {
+          pressed = true;
+        }
+        else if (pressed)
+        {
+          pressed = false;
           Click();
         }
       }

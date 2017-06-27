@@ -16,9 +16,11 @@ namespace Kru_Puk
 
     public Game1()
     {
-      graphics = new GraphicsDeviceManager(this);
-      graphics.PreferredBackBufferWidth = 1280;
-      graphics.PreferredBackBufferHeight = 720;
+      graphics = new GraphicsDeviceManager(this)
+      {
+        PreferredBackBufferWidth = 1280,
+        PreferredBackBufferHeight = 720
+      };
       Content.RootDirectory = "Content";
     }
 
@@ -65,7 +67,7 @@ namespace Kru_Puk
 
 
       Window window = new Window(spriteBatch.GraphicsDevice);
-      main = new Main(window, font, zombieWalking, levelBackgrounds, assets, areas, logo, menuBackground, button); // textures here
+      main = new Main(this, window, font, zombieWalking, levelBackgrounds, assets, areas, logo, menuBackground, button); // textures here
     }
 
     /// <summary>
