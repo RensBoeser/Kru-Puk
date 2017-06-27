@@ -60,7 +60,7 @@ namespace Kru_Puk
       // entities[0] = create an entity here
 
       Level[] levels = new Level[1]; // number of levels
-      levels[0] = entityfactory.CreateLevel(areas, entities, new Point(0, 0)); //areas, entities, spawnpoint
+      levels[0] = entityfactory.CreateLevel(areas, entities, new Point(0, 0), 0); //areas, entities, spawnpoint, backgroundID
       this.level = new LevelIterator(levels);
   }
 

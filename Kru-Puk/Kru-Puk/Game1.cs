@@ -51,8 +51,8 @@ namespace Kru_Puk
       zombieWalking[0] = Content.Load<Texture2D>("zombie_idle");
       zombieWalking[1] = Content.Load<Texture2D>("zombie_walk1");
       zombieWalking[2] = Content.Load<Texture2D>("zombie_walk2");
-      Texture2D[] levelBackgrounds = new Texture2D[0];
-      // levelBackgrounds[0] = Content.Load<Texture2D>("name_of_file");
+      Texture2D[] levelBackgrounds = new Texture2D[1];
+      levelBackgrounds[0] = Content.Load<Texture2D>("LegendOfKruMainPlain");
       Texture2D[] assets = new Texture2D[0];
       // assets[0] = Content.Load<Texture2D>("name_of_file");
       Texture2D[] button = new Texture2D[2];

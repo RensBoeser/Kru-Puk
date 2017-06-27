@@ -11,16 +11,18 @@ namespace Kru_Puk
   class Level : ILevel
   {
     private Area[] areas;
-    private Texture2D[] backgrounds;
+    private Texture2D background;
     private IEntity[] entities;
     private Point spawnpoint;
+    private DrawingAdapter drawingAdapter;
 
-    public Level(Area[] areas, Texture2D[] backgrounds, IEntity[] entities, Point spawnpoint)
+    public Level(Area[] areas, Texture2D background, IEntity[] entities, Point spawnpoint)
     {
       this.areas = areas;
-      this.backgrounds = backgrounds;
+      this.background = background;
       this.entities = entities;
       this.spawnpoint = spawnpoint;
+      this.drawingAdapter = new DrawingAdapter();
     }
 
     public IEntity[] GetEntities()
@@ -29,22 +31,56 @@ namespace Kru_Puk
     }
     public void AddEntity(IEntity entity)
     {
-      throw new NotImplementedException();
+      List<IEntity> templist = new List<IEntity>();
+      foreach(IEntity existingEntity in entities)
+      {
+        templist.Add(existingEntity);
+      }
+      templist.Add(entity);
+      entities = templist.ToArray();
     }
 
     public void RemoveEntity(IEntity entity)
     {
-      throw new NotImplementedException();
+      if(entities.Contains(entity))
+      {
+        List<IEntity> tempList = new List<IEntity>();
+        foreach (IEntity existingEntity in entities)
+        {
+          tempList.Add(existingEntity);
+        }
+        tempList.Remove(entity);
+        entities = tempList.ToArray();
+      }
+      else
+      {
+        throw new NotImplementedException("DOES NOT EXIST IN THE LEVEL?!");
+      }
     }
 
     public void Update(float dt)
     {
-      throw new NotImplementedException();
+      foreach(Area area in areas)
+      {
+        area.Update(dt);
+      }
+      foreach(IEntity entity in entities)
+      {
+        entity.Update(dt);
+      }
     }
 
     public void Draw(SpriteBatch spritebatch)
     {
-      throw new NotImplementedException();
+      foreach (Area area in areas)
+      {
+        area.Draw(spritebatch);
+      }
+      foreach (IEntity entity in entities)
+      {
+        entity.Draw(spritebatch);
+      }
+      drawingAdapter.Draw(spritebatch, background, new Point(0, 0), false);
     }
   }
 }

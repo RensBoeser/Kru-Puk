@@ -38,9 +38,9 @@ namespace Kru_Puk
       return new Asset(position, assets[assetID]);
     }
 
-    public Level CreateLevel(Area[] areas, IEntity[] entities, Point spawnpoint)
+    public Level CreateLevel(Area[] areas, IEntity[] entities, Point spawnpoint, int backgroundID)
     {
-      return new Level(areas, levels, entities, spawnpoint);
+      return new Level(areas, levels[backgroundID], entities, spawnpoint);
     }
   }
 }
