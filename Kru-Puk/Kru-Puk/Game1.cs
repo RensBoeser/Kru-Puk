@@ -47,27 +47,46 @@ namespace Kru_Puk
 
       SpriteFont font = Content.Load<SpriteFont>("Font");
 
-      Texture2D[] zombieWalking = new Texture2D[3]; // zombie walking animation array
-      zombieWalking[0] = Content.Load<Texture2D>("zombie_idle");
-      zombieWalking[1] = Content.Load<Texture2D>("zombie_walk1");
-      zombieWalking[2] = Content.Load<Texture2D>("zombie_walk2");
+      Texture2D[][] zombieAnimations = new Texture2D[4][];
+      zombieAnimations[0] = new Texture2D[3]; // zombie walking animation array
+      zombieAnimations[0][0] = Content.Load<Texture2D>("zombie_idle");
+      zombieAnimations[0][1] = Content.Load<Texture2D>("zombie_walk1");
+      zombieAnimations[0][2] = Content.Load<Texture2D>("zombie_walk2");
+      zombieAnimations[1] = new Texture2D[3];
+      //zombieAnimations[1][0] = Content.Load<Texture2D>("zombie_idle_damaged");
+      //zombieAnimations[1][1] = Content.Load<Texture2D>("zombie_walk1_damaged");
+      //zombieAnimations[1][2] = Content.Load<Texture2D>("zombie_walk2_damaged");
+      zombieAnimations[2] = new Texture2D[3];
+      //zombieAnimations[1][0] = Content.Load<Texture2D>("zombie_attacking1");
+      //zombieAnimations[1][1] = Content.Load<Texture2D>("zombie_attacking2");
+      //zombieAnimations[1][2] = Content.Load<Texture2D>("zombie_attacking3");
+      zombieAnimations[2] = new Texture2D[3];
+      //zombieAnimations[1][0] = Content.Load<Texture2D>("zombie_attacking1_damaged");
+      //zombieAnimations[1][1] = Content.Load<Texture2D>("zombie_attacking2_damaged");
+      //zombieAnimations[1][2] = Content.Load<Texture2D>("zombie_attacking3_damaged");
+
       Texture2D[] levelBackgrounds = new Texture2D[1];
       levelBackgrounds[0] = Content.Load<Texture2D>("LegendOfKruMainPlain");
+
       Texture2D[] assets = new Texture2D[0];
       // assets[0] = Content.Load<Texture2D>("name_of_file");
+
       Texture2D[] button = new Texture2D[2];
       button[0] = Content.Load<Texture2D>("button");
       button[1] = Content.Load<Texture2D>("button_clicked");
+
       Texture2D[][] areas = new Texture2D[1][];
       areas[0] = new Texture2D[2]; //this is the list for specific areas (not yet discovered texture / discovered texture)
       // areas[0][0] = Content.Load<Texture2D>("name_of_file");
       // areas[0][1] = Content.Load<Texture2D>("name_of_file");
+
       Texture2D logo = Content.Load<Texture2D>("TheLegendOfKruLogo");
+
       Texture2D menuBackground = Content.Load<Texture2D>("LegendOfKruMainPlain");
 
 
       Window window = new Window(spriteBatch.GraphicsDevice);
-      main = new Main(this, window, font, zombieWalking, levelBackgrounds, assets, areas, logo, menuBackground, button); // textures here
+      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button); // textures here
     }
 
     /// <summary>

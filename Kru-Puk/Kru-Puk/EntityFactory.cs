@@ -11,13 +11,13 @@ namespace Kru_Puk
   class EntityFactory
   {
     private Texture2D[]   levels;
-    private Texture2D[]   zombieWalking;
+    private Texture2D[][]   zombieAnimations;
     private Texture2D[]   assets;
     private Texture2D[][] areas;
 
-    public EntityFactory(Texture2D[] zombieWalking, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas)
+    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas)
     {
-      this.zombieWalking = zombieWalking;
+      this.zombieAnimations = zombieAnimations;
       this.levels = levels;
       this.assets = assets;
       this.areas  = areas;
@@ -25,7 +25,7 @@ namespace Kru_Puk
 
     public AIZombie CreateZombie(Rectangle rectangle)
     {
-      return new AIZombie(rectangle, 25, 5, zombieWalking); //the random is for random damage.
+      return new AIZombie(rectangle, 25, 5, zombieAnimations); //the random is for random damage.
     }
 
     public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets)

@@ -16,25 +16,27 @@ namespace Kru_Puk
     private Vector2 velocity;
     private Vector2 acceleration;
     private int health;
-    // private ??? Pick-up;
     private int damage;
     private bool attacking;
-    private bool idle;
     private SpriteIterator animationWalking;
+    private SpriteIterator animationWalkingDamaged;
+    private SpriteIterator animationAttacking;
+    private SpriteIterator animationAttackingDamaged;
     private DrawingAdapter drawingadapter;
     private Level level;
 
-    public AIZombie(Rectangle rectangle, int health, int damage, Texture2D[] animationWalking)
+    public AIZombie(Rectangle rectangle, int health, int damage, Texture2D[][] animations)
     {
       this.rectangle = rectangle;
       this.velocity = new Vector2(0, 0);
       this.acceleration = new Vector2(0, 0);
       this.health = health;
-      // this.Pick-up = Pick-up;
       this.damage = damage;
       this.attacking = false;
-      this.idle = true;
-      this.animationWalking = new SpriteIterator(animationWalking, 15);
+      this.animationWalking = new SpriteIterator(animations[0], 15);
+      this.animationWalkingDamaged = new SpriteIterator(animations[1], 15);
+      this.animationAttacking = new SpriteIterator(animations[2], 15);
+      this.animationAttackingDamaged = new SpriteIterator(animations[3], 15);
       this.drawingadapter = new DrawingAdapter();
       
     }
@@ -181,7 +183,29 @@ namespace Kru_Puk
         flipped = false;
       }
 
-      Texture2D sprite = animationWalking.GetNext();
+      Texture2D sprite;
+      if (health > 10)
+      {
+        if (attacking)
+        {
+          sprite = animationAttacking.GetNext();
+        }
+        else
+        {
+          sprite = animationWalking.GetNext();
+        }
+      }
+      else
+      {
+        if (attacking)
+        {
+          sprite = animationAttackingDamaged.GetNext();
+        }
+        else
+        {
+          sprite = animationWalkingDamaged.GetNext();
+        }
+      }
       drawingadapter.Draw(spritebatch, sprite, rectangle.Location, flipped); 
     }
   }
