@@ -35,8 +35,9 @@ namespace Kru_Puk
         
     }
 
-    public void AddEntity()
+    public void AddEntity(Level level)
     {
+      this.level = level;
       level.AddEntity(this);
     }
 
@@ -93,6 +94,11 @@ namespace Kru_Puk
         }
       }
       return false;
+    }
+
+    public void SetFollowingObject(IEntity entity)
+    {
+      throw new NotImplementedException();
     }
   }
 }

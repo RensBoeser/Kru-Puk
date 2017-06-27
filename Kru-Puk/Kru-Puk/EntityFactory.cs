@@ -23,9 +23,9 @@ namespace Kru_Puk
       this.areas  = areas;
     }
 
-    public AIZombie CreateZombie(Rectangle rectangle, IEntity followingObject, Level level)
+    public AIZombie CreateZombie(Rectangle rectangle)
     {
-      return new AIZombie(rectangle, 100, new Random().Next(5, 10), zombieWalking, followingObject, level); //the random is for random damage.
+      return new AIZombie(rectangle, 100, new Random().Next(5, 10), zombieWalking); //the random is for random damage.
     }
 
     public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets)

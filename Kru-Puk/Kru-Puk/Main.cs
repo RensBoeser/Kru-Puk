@@ -56,11 +56,20 @@ namespace Kru_Puk
       //areas[0] = entityfactory.CreateArea(new Rectangle(0, 0, 400, 500), 0, assets1); // position, width, height, areabackgroundID, assets
       //areas[1] = entityfactory.CreateArea(new Rectangle(400, 0, 400, 500), 1, assets2);
 
-      IEntity[] entities = new IEntity[0]; // number of entities
-      // entities[0] = create an entity here
+      IEntity[] entities = new IEntity[2]; // number of entities
+      entities[0] = entityfactory.CreateZombie(new Rectangle(new Point(0, 0), new Point(56, 109)));
+      entities[1] = entityfactory.CreateZombie(new Rectangle(new Point(window.WholeWindow().Right - 56, 0), new Point(56, 109)));
+
+      //SET FOLLOWING OBJECTS
+      entities[0].SetFollowingObject(entities[1]);
+      entities[1].SetFollowingObject(entities[0]);
 
       Level[] levels = new Level[1]; // number of levels
       levels[0] = entityfactory.CreateLevel(areas, entities, new Point(0, 0), 0); //areas, entities, spawnpoint, backgroundID
+      foreach (IEntity entity in entities) { entity.AddEntity(levels[0]); }
+
+
+
       this.level = new LevelIterator(levels);
   }
 

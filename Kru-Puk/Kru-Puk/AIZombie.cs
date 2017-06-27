@@ -23,9 +23,8 @@ namespace Kru_Puk
     private DrawingAdapter drawingadapter;
     private Level level;
 
-    public AIZombie(Rectangle rectangle, int health, int damage, Texture2D[] animationWalking, IEntity followingObject, Level level)
+    public AIZombie(Rectangle rectangle, int health, int damage, Texture2D[] animationWalking)
     {
-      this.followingObject = followingObject;
       this.rectangle = rectangle;
       this.velocity = new Vector2(0, 0);
       this.acceleration = new Vector2(0, 0);
@@ -35,18 +34,22 @@ namespace Kru_Puk
       this.attacking = false;
       this.idle = true;
       this.animationWalking = new SpriteIterator(animationWalking);
-      this.level = level;
+      this.drawingadapter = new DrawingAdapter();
     }
 
     public void Move()
     {
       if (followingObject.getPosition().X > this.rectangle.X)
       {
-        this.velocity = new Vector2 (4,0); 
+        this.velocity = new Vector2 (1, 0); 
       }
-      if (followingObject.getPosition().X < this.rectangle.X)
+      else if (followingObject.getPosition().X < this.rectangle.X)
       {
-        this.velocity = new Vector2(-4, 0);
+        this.velocity = new Vector2(-1, 0);
+      }
+      else
+      {
+        this.velocity = new Vector2(0, 0);
       }
     }
 
@@ -60,9 +63,9 @@ namespace Kru_Puk
         this.RemoveEntity();
     }
 
-    public void ChangeObject(IEntity newObject)
+    public void SetFollowingObject(IEntity entity)
     {
-      followingObject = newObject;
+      followingObject = entity;
     }
 
     public void DoDamage(IEntity entity)
@@ -98,8 +101,9 @@ namespace Kru_Puk
       return false;
     }
 
-    public void AddEntity()
+    public void AddEntity(Level level)
     {
+      this.level = level;
       level.AddEntity(this);
     }
 
@@ -115,14 +119,26 @@ namespace Kru_Puk
 
     public void Update(float dt)
     {
+      Move();
+      rectangle.X = (int)(rectangle.X + velocity.X);
     }
 
     public void Draw(SpriteBatch spritebatch)
     {
-      //UNABLE TO SEE IF HE GOES RIGHT OR LEFT
-      bool flipped = true;
+      bool flipped;
+      if (followingObject.getPosition().X < this.getPosition().X)
+      {
+        flipped = true;
+      }
+      else
+      {
+        flipped = false;
+      }
+      Console.WriteLine(followingObject);
+
       Texture2D sprite = animationWalking.GetNext();
       drawingadapter.Draw(spritebatch, sprite, rectangle.Location, flipped);
+      Console.WriteLine(rectangle.Location);
     }
   }
 }

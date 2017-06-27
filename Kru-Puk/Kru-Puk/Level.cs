@@ -72,6 +72,7 @@ namespace Kru_Puk
 
     public void Draw(SpriteBatch spritebatch)
     {
+      drawingAdapter.Draw(spritebatch, background, new Point(0, 0), false);
       foreach (Area area in areas)
       {
         area.Draw(spritebatch);
@@ -80,7 +81,6 @@ namespace Kru_Puk
       {
         entity.Draw(spritebatch);
       }
-      drawingAdapter.Draw(spritebatch, background, new Point(0, 0), false);
     }
   }
 }

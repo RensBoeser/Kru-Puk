@@ -21,7 +21,7 @@ namespace Kru_Puk
     public Texture2D GetNext()
     {
       timer += 1;
-      if (timer > 6)
+      if (timer > 16)
       {
         current += 1;
         timer = 0;

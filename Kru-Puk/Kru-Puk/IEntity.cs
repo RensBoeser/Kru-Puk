@@ -10,10 +10,11 @@ namespace Kru_Puk
   interface IEntity : IUpdateable, IDrawable
   {
     bool Intersect(Rectangle rectangle);
-    void AddEntity();
+    void AddEntity(Level level);
     void RemoveEntity();
     void TakeDamage(int damage);
     void DoDamage(IEntity entity);
+    void SetFollowingObject(IEntity entity);
     Point getPosition();
   }
 }

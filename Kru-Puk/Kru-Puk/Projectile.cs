@@ -27,8 +27,9 @@ namespace Kru_Puk
       this.damage = damage;
     }
 
-    public void AddEntity()
+    public void AddEntity(Level level)
     {
+      this.level = level;
       level.AddEntity(this);
     }
 
@@ -93,6 +94,11 @@ namespace Kru_Puk
     public void RemoveEntity()
     {
       level.RemoveEntity(this);
+    }
+
+    public void SetFollowingObject(IEntity entity)
+    {
+      throw new NotImplementedException();
     }
   }
 }

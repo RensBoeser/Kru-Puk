@@ -30,7 +30,7 @@ namespace Kru_Puk
       this.health = health;
     }
 
-    public void AddEntity()
+    public void AddEntity(Level level)
     {
       throw new NotImplementedException();
     }
@@ -141,6 +141,11 @@ namespace Kru_Puk
         }
       }
       return false;
+    }
+
+    public void SetFollowingObject(IEntity entity)
+    {
+      throw new NotImplementedException();
     }
   }
 }
