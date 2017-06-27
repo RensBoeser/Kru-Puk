@@ -17,6 +17,7 @@ namespace Kru_Puk
     private WeaponPouch weaponPouch;
     private int ammo;
     private int health;
+    private Level level;
 
 
     public Player(Rectangle rectangle, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
@@ -32,12 +33,13 @@ namespace Kru_Puk
 
     public void AddEntity(Level level)
     {
-      throw new NotImplementedException();
+      this.level = level;
+      level.AddEntity(this);
     }
 
     public void RemoveEntity()
     {
-      throw new NotImplementedException();
+      level.RemoveEntity(this);
     }
 
     public void Update(float dt)
