@@ -51,7 +51,9 @@
     <Compile Include="ControlHandler.cs" />
     <Compile Include="IAsset.cs" />
     <Compile Include="IButton.cs" />
+    <Compile Include="IOption.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="LevelIterator.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="EntityFactory.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="IStairs.cs" />
     <Compile Include="IZombie.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="Option.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="SpriteIterator.cs" />
     <Compile Include="Stairs.cs" />

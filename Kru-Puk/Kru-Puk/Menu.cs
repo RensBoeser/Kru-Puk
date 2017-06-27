@@ -32,7 +32,7 @@ namespace Kru_Puk
       buttons = new Button[3];
       // Put the buttons here.
       // for putting the buttons in the middle of the screen you can use window.Center to get the exact middle of the screen.
-      buttons[0] = new Button(new Rectangle((int)(window.Center().X * 1.25), (int)(window.Center().Y * 0.5), 256, 128), () => Console.WriteLine("Start"), buttontexture, font, "Start Game");
+      buttons[0] = new Button(new Rectangle((int)(window.Center().X * 1.25), (int)(window.Center().Y * 0.5), 256, 128), () => main.ToggleMenu(), buttontexture, font, "Start Game");
       buttons[1] = new Button(new Rectangle((int)(window.Center().X * 1.25), (int)(window.Center().Y * 0.5) + 128 + 32, 256, 128), () => Console.WriteLine("Continue"), buttontexture, font, "Continue");
       buttons[2] = new Button(new Rectangle((int)(window.Center().X * 1.25), (int)(window.Center().Y * 0.5) + 256 + 64, 256, 128), () => Exit(), buttontexture, font, "Exit Game");
 
