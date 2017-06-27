@@ -13,7 +13,7 @@ namespace Kru_Puk
     private IEntity followingObject;
     private int timer;
     private Rectangle rectangle;
-    private Vector2 velocity;
+    private Point velocity;
     private Vector2 acceleration;
     private int health;
     private int damage;
@@ -24,11 +24,12 @@ namespace Kru_Puk
     private SpriteIterator animationAttackingDamaged;
     private DrawingAdapter drawingadapter;
     private Level level;
+    private bool hasJumped;
 
     public AIZombie(Rectangle rectangle, int health, int damage, Texture2D[][] animations)
     {
       this.rectangle = rectangle;
-      this.velocity = new Vector2(0, 0);
+      this.velocity = new Point(0,0);
       this.acceleration = new Vector2(0, 0);
       this.health = health;
       this.damage = damage;
@@ -38,22 +39,39 @@ namespace Kru_Puk
       this.animationAttacking = new SpriteIterator(animations[2], 15);
       this.animationAttackingDamaged = new SpriteIterator(animations[3], 15);
       this.drawingadapter = new DrawingAdapter();
-      
+      hasJumped = true;
     }
 
     public void Move()
     {
-      if (followingObject.getPosition().X > this.rectangle.X)
+      //Point random = new Point(0, 0);
+      if (followingObject.getPosition().X > rectangle.X)
       {
-        this.velocity = new Vector2 (2, 0); 
+        this.velocity.X = 2;// = new Point (2, 0); 
       }
-      else if (followingObject.getPosition().X < this.rectangle.X)
+      else if (followingObject.getPosition().X < rectangle.X)
       {
-        this.velocity = new Vector2(-2, 0);
+        this.velocity.X = - 2;// = new Point(-2, 0);
       }
       else
       {
-        this.velocity = new Vector2(0, 0);
+        this.velocity.X = 0;// = new Point(0, 0);
+      }
+
+      if (hasJumped == true)
+      {
+        int i = 1;
+
+        velocity.Y = velocity.Y + 1 * i;
+      }
+      if (rectangle.Y + rectangle.Height >= 720)
+      {
+        hasJumped = false;
+      }
+
+      if (hasJumped == false)
+      {
+        velocity.Y = 0;
       }
     }
 
@@ -166,9 +184,11 @@ namespace Kru_Puk
         else
         {
           Move();
-          rectangle.X = (int)(rectangle.X + velocity.X);
+          rectangle.Location = rectangle.Location + velocity;
+          
         }
       }
+      
     }
 
     public void Draw(SpriteBatch spritebatch)
