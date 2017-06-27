@@ -12,16 +12,18 @@ namespace Kru_Puk
     Texture2D[] data;
     int current;
     int timer;
-    public SpriteIterator(Texture2D[] data)
+    int time;
+    public SpriteIterator(Texture2D[] data, int time)
     {
       this.data = data;
       this.current = 0;
       this.timer = 0;
+      this.time = time;
     }
     public Texture2D GetNext()
     {
       timer += 1;
-      if (timer > 16)
+      if (timer >= time)
       {
         current += 1;
         timer = 0;

@@ -34,7 +34,7 @@ namespace Kru_Puk
       this.damage = damage;
       this.attacking = false;
       this.idle = true;
-      this.animationWalking = new SpriteIterator(animationWalking);
+      this.animationWalking = new SpriteIterator(animationWalking, 15);
       this.drawingadapter = new DrawingAdapter();
       
     }
@@ -129,7 +129,6 @@ namespace Kru_Puk
       if (attacking)
       {
         timer = timer + 1;
-        Console.WriteLine(timer);
         if (timer > 60)
         {
           attacking = false;
