@@ -131,7 +131,7 @@ namespace Kru_Puk
       if (attacking)
       {
         timer = timer + 1;
-        if (timer > 60)
+        if (timer > 40)
         {
           attacking = false;
           foreach( IEntity entity in level.GetEntities())
