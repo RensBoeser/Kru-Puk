@@ -47,7 +47,17 @@ namespace Kru_Puk
 
     public Platform CreatePlatform(Rectangle rectangle, int platformID)
     {
-      return new Platform(platforms[platformID], rectangle);
+      Rectangle collisionRectangle;
+      switch (platformID)
+      {
+        case 0:
+          collisionRectangle = new Rectangle(rectangle.X, rectangle.Y + 88, rectangle.Width, rectangle.Height - 88);
+          break;
+        default:
+          collisionRectangle = rectangle;
+          break;
+      }
+      return new Platform(platforms[platformID], rectangle, collisionRectangle);
     }
   }
 }

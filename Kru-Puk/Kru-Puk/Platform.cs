@@ -11,12 +11,14 @@ namespace Kru_Puk
   class Platform : IDrawable, IUpdateable
   {
     private Texture2D sprite;
+    private Rectangle collisionRectangle;
     public Rectangle rectangle;
 
-    public Platform(Texture2D sprite, Rectangle rectangle)
+    public Platform(Texture2D sprite, Rectangle rectangle, Rectangle collisionRectangle)
     {
       this.sprite = sprite;
       this.rectangle = rectangle;
+      this.collisionRectangle = collisionRectangle;
     }
 
     public void Draw(SpriteBatch spritebatch)
@@ -31,12 +33,12 @@ namespace Kru_Puk
     public bool Intersect(Rectangle rectangle)
     {
       //x > x && x < x + w;
-      //y > y && y < y + h;     
+      //y > y && y < y + h;   
       Point[] puntenarray = new Point[] { new Point { X = rectangle.X, Y = rectangle.Y }, new Point { X = (rectangle.X + rectangle.Width), Y = rectangle.Y }, new Point { X = (rectangle.X), Y = (rectangle.Y + rectangle.Height) }, new Point { X = (rectangle.X + rectangle.Width), Y = (rectangle.Y + rectangle.Height) } };
-      Point[] puntenarray2 = new Point[] { new Point { X = this.rectangle.X, Y = this.rectangle.Y }, new Point { X = (this.rectangle.X + this.rectangle.Width), Y = this.rectangle.Y }, new Point { X = (this.rectangle.X), Y = (this.rectangle.Y + this.rectangle.Height) }, new Point { X = (this.rectangle.X + this.rectangle.Width), Y = (this.rectangle.Y + this.rectangle.Height) } };
+      Point[] puntenarray2 = new Point[] { new Point { X = this.collisionRectangle.X, Y = this.collisionRectangle.Y }, new Point { X = (this.collisionRectangle.X + this.collisionRectangle.Width), Y = this.collisionRectangle.Y }, new Point { X = (this.collisionRectangle.X), Y = (this.collisionRectangle.Y + this.collisionRectangle.Height) }, new Point { X = (this.collisionRectangle.X + this.collisionRectangle.Width), Y = (this.collisionRectangle.Y + this.collisionRectangle.Height) } };
       foreach (Point punt in puntenarray)
       {
-        if (this.rectangle.Contains(punt))
+        if (this.collisionRectangle.Contains(punt))
         {
           return true;
         }

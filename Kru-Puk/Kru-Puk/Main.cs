@@ -65,7 +65,7 @@ namespace Kru_Puk
       entities[1].SetFollowingObject(entities[0]);
 
       Platform[] platforms = new Platform[1];
-      platforms[0] = entityfactory.CreatePlatform(new Rectangle(10, 280, 128, 40), 0);
+      platforms[0] = entityfactory.CreatePlatform(new Rectangle(10, 280, 128, 128), 0);
 
       Level[] levels = new Level[1]; // number of levels
       levels[0] = entityfactory.CreateLevel(areas, new Point(0, 0), 0, platforms); //areas, entities, spawnpoint, backgroundID

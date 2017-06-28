@@ -62,9 +62,22 @@ namespace Kru_Puk
       {
         velocity.Y = 15 ;
       }
+      
       foreach(Platform platform in level.GetPlatforms())
       {
         Rectangle nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
+        if(velocity.Y > 0)
+        {
+          if (platform.Intersect(nextFrame))
+          {
+            while(platform.Intersect(rectangle))
+            {
+              nextFrame.Y = rectangle.Y - 1;
+            }
+            velocity.Y = rectangle.Y;
+            isFloating = false;
+          }
+        }
         if (platform.Intersect(nextFrame))
         {
           isFloating = false;
