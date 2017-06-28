@@ -74,7 +74,7 @@ namespace Kru_Puk
       platforms[7] = entityfactory.CreatePlatform(new Rectangle(896, 592, 128, 128), 0);
       platforms[8] = entityfactory.CreatePlatform(new Rectangle(1024, 592, 128, 128), 0);
       platforms[9] = entityfactory.CreatePlatform(new Rectangle(1152, 592, 128, 128), 0);
-      platforms[10] = entityfactory.CreatePlatform(new Rectangle(576, 552, 128, 128), 0); //<- The one that blocks the zombies
+      platforms[10] = entityfactory.CreatePlatform(new Rectangle(576, 552, 128, 128), 1); //<- The one that blocks the zombies
 
       Level[] levels = new Level[1]; // number of levels
       levels[0] = entityfactory.CreateLevel(areas, new Point(0, 0), 0, platforms); //areas, entities, spawnpoint, backgroundID
