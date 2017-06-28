@@ -10,19 +10,21 @@ namespace Kru_Puk
 {
   class EntityFactory
   {
-    private Texture2D[]   levels;
+    private Texture2D[] levels;
     private Texture2D[][] zombieAnimations;
-    private Texture2D[]   assets;
+    private Texture2D[] assets;
     private Texture2D[][] areas;
-    private Texture2D[]   platforms;
+    private Texture2D[] platforms;
+    private Texture2D projectile;
 
-    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms)
+    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile)
     {
       this.zombieAnimations = zombieAnimations;
       this.levels = levels;
       this.assets = assets;
-      this.areas  = areas;
+      this.areas = areas;
       this.platforms = platforms;
+      this.projectile = projectile;
     }
 
     public AIZombie CreateZombie(Rectangle rectangle)
@@ -59,5 +61,21 @@ namespace Kru_Puk
       }
       return new Platform(platforms[platformID], rectangle, collisionRectangle);
     }
+
+    public Projectile CreateProjectile(Rectangle rectangle, Point velocity, Point direction, int damage)
+    {
+      return new Projectile(rectangle, velocity, direction, projectile, damage);
+    }
+
+    public WeaponPouch CreateStarterPouch(IWeapon[] weapons, int MaxWeapons)
+    {
+      return new WeaponPouch(weapons, MaxWeapons, 0, this);
+    }
+
+    public AssaultRifle CreateAssaultRifle(int clipamount, int ammoInClip, int damage)
+    {
+      return new AssaultRifle(clipamount,ammoInClip,damage); 
+    }
+
   }
 }

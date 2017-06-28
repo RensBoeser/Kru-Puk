@@ -14,15 +14,13 @@ namespace Kru_Puk
     private int maxClipAmount;
     private int clipAmount;
     private int ammoInClip;
-    private Projectile projectile;
     private int damage;
+    
 
-    AssaultRifle(int maxClipAmount, int clipAmount, int ammoInClip, Projectile projectile, int damage)
+    public AssaultRifle( int clipAmount, int ammoInClip, int damage)
     {
-      this.maxClipAmount = maxClipAmount;
       this.clipAmount = clipAmount;
       this.ammoInClip = ammoInClip;
-      this.projectile = projectile;
       this.damage = damage;
     }
 
@@ -33,8 +31,8 @@ namespace Kru_Puk
 
     public void Reload(int ammoInClip)
     {
-      ammoInClip = 30;
-      clipAmount = clipAmount - 1;
+      ammoInClip = clipAmount;
+      
     }
 
     public void Update(float dt)
@@ -47,10 +45,10 @@ namespace Kru_Puk
       if (ammoInClip > 0)
       {
         ammoInClip = ammoInClip - 1;
-        //TODO Create new projectile
+        
       }
 
-      else if (ammoInClip <= 0 && clipAmount > 0)
+      else if (ammoInClip <= 0)
       {
         this.Reload(ammoInClip);
       }
