@@ -80,13 +80,16 @@ namespace Kru_Puk
       // areas[0][0] = Content.Load<Texture2D>("name_of_file");
       // areas[0][1] = Content.Load<Texture2D>("name_of_file");
 
+      Texture2D[] platforms = new Texture2D[1];
+      platforms[0] = Content.Load<Texture2D>("Outline_Horizontal");
+
       Texture2D logo = Content.Load<Texture2D>("TheLegendOfKruLogo");
 
       Texture2D menuBackground = Content.Load<Texture2D>("LegendOfKruMainPlain");
 
 
       Window window = new Window(spriteBatch.GraphicsDevice);
-      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button); // textures here
+      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button, platforms); // textures here
     }
 
     /// <summary>

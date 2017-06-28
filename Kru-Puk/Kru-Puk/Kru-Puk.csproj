@@ -63,6 +63,7 @@
     <Compile Include="IZombie.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Option.cs" />
+    <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="SpriteIterator.cs" />
     <Compile Include="Stairs.cs" />

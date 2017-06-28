@@ -15,14 +15,16 @@ namespace Kru_Puk
     private IEntity[] entities;
     private Point spawnpoint;
     private DrawingAdapter drawingAdapter;
+    private Platform[] platforms;
 
-    public Level(Area[] areas, Texture2D background, Point spawnpoint)
+    public Level(Area[] areas, Texture2D background, Point spawnpoint, Platform[] platforms)
     {
       this.entities = new IEntity[0];
       this.areas = areas;
       this.background = background;
       this.spawnpoint = spawnpoint;
       this.drawingAdapter = new DrawingAdapter();
+      this.platforms = platforms;
     }
 
     public IEntity[] GetEntities()
@@ -58,6 +60,11 @@ namespace Kru_Puk
       }
     }
 
+    public Platform[] GetPlatforms()
+    {
+      return this.platforms;
+    }
+
     public void Update(float dt)
     {
       foreach(Area area in areas)
@@ -67,6 +74,10 @@ namespace Kru_Puk
       foreach(IEntity entity in entities)
       {
         entity.Update(dt);
+      }
+      foreach (Platform platform in platforms)
+      {
+        platform.Update(dt);
       }
     }
 
@@ -80,6 +91,10 @@ namespace Kru_Puk
       foreach (IEntity entity in entities)
       {
         entity.Draw(spritebatch);
+      }
+      foreach (Platform platform in platforms)
+      {
+        platform.Draw(spritebatch);
       }
     }
 

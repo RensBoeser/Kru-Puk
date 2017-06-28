@@ -24,7 +24,7 @@ namespace Kru_Puk
     private SpriteIterator animationAttackingDamaged;
     private DrawingAdapter drawingadapter;
     private Level level;
-    private bool hasJumped;
+    private bool isFloating;
 
     public AIZombie(Rectangle rectangle, int health, int damage, Texture2D[][] animations)
     {
@@ -39,7 +39,7 @@ namespace Kru_Puk
       this.animationAttacking = new SpriteIterator(animations[2], 15);
       this.animationAttackingDamaged = new SpriteIterator(animations[3], 15);
       this.drawingadapter = new DrawingAdapter();
-      hasJumped = true;
+      this.isFloating = true;
     }
 
     public void Move()
@@ -58,18 +58,29 @@ namespace Kru_Puk
         this.velocity.X = 0;// = new Point(0, 0);
       }
 
-      if (hasJumped == true)
+      if (isFloating)
       {
-        int i = 1;
-
-        velocity.Y = velocity.Y + 1 * i;
+        velocity.Y = 15 ;
       }
+      foreach(Platform platform in level.GetPlatforms())
+      {
+        Rectangle nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
+        if (platform.Intersect(nextFrame))
+        {
+          isFloating = false;
+        }
+        else
+        {
+          isFloating = true;
+        }
+      }
+
       if (rectangle.Y + rectangle.Height >= 720)
       {
-        hasJumped = false;
+        isFloating = false;
       }
 
-      if (hasJumped == false)
+      if (!isFloating)
       {
         velocity.Y = 0;
       }

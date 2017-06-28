@@ -17,9 +17,9 @@ namespace Kru_Puk
     private LevelIterator level;
     private Game game;
     private bool onMenu;
-    public Main(Game game, Window window, SpriteFont font, Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button) // all textures
+    public Main(Game game, Window window, SpriteFont font, Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button, Texture2D[] platforms) // all textures
     {
-      entityfactory = new EntityFactory(zombieAnimations, levels, assets, areas); // put all textures in here
+      entityfactory = new EntityFactory(zombieAnimations, levels, assets, areas, platforms); // put all textures in here
       this.font = font; //unassigned spritefont. The font works, but idk where to use it/put it yet.
       this.window = window;
       this.menu = new Menu(this, window, logo, menuBackground, button, font);
@@ -58,17 +58,18 @@ namespace Kru_Puk
 
       IEntity[] entities = new IEntity[2]; // number of entities
       entities[0] = entityfactory.CreateZombie(new Rectangle(new Point(0, 0), new Point(56, 109)));
-      entities[1] = entityfactory.CreateZombie(new Rectangle(new Point(window.WholeWindow().Right - 56, window.WholeWindow().Height - 109), new Point(56, 109)));
+      entities[1] = entityfactory.CreateZombie(new Rectangle(new Point(window.WholeWindow().Right - 56, 0), new Point(56, 109)));
 
       //SET FOLLOWING OBJECTS
       entities[0].SetFollowingObject(entities[1]);
       entities[1].SetFollowingObject(entities[0]);
 
+      Platform[] platforms = new Platform[1];
+      platforms[0] = entityfactory.CreatePlatform(new Rectangle(10, 280, 128, 40), 0);
+
       Level[] levels = new Level[1]; // number of levels
-      levels[0] = entityfactory.CreateLevel(areas, new Point(0, 0), 0); //areas, entities, spawnpoint, backgroundID
+      levels[0] = entityfactory.CreateLevel(areas, new Point(0, 0), 0, platforms); //areas, entities, spawnpoint, backgroundID
       foreach (IEntity entity in entities) { entity.AddEntity(levels[0]); }
-
-
 
       this.level = new LevelIterator(levels);
   }
