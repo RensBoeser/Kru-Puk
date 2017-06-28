@@ -12,13 +12,13 @@ namespace Kru_Puk
   {
     private Rectangle rectangle;
     private Point velocity;
-    private Vector2 direction;
+    private Point direction;
     private Texture2D sprite;
     private int damage;
     private Level level;
     private DrawingAdapter drawingAdapter;
 
-    public Projectile(Rectangle rectangle, Point velocity, Vector2 direction, Texture2D sprite, int damage)
+    public Projectile(Rectangle rectangle, Point velocity, Point direction, Texture2D sprite, int damage)
     {
       this.rectangle = rectangle;
       this.velocity = velocity;
