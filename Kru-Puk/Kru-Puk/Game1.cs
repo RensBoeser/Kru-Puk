@@ -65,6 +65,12 @@ namespace Kru_Puk
       zombieAnimations[3][1] = Content.Load<Texture2D>("damaged_zombie_attack2");
       zombieAnimations[3][2] = Content.Load<Texture2D>("damaged_zombie_attack3");
 
+      Texture2D[][] playerAnimations = new Texture2D[1][];
+      playerAnimations[0] = new Texture2D[3];
+      playerAnimations[0][0] = Content.Load<Texture2D>("kru_idle");
+      playerAnimations[0][1] = Content.Load<Texture2D>("kru_walk1");
+      playerAnimations[0][2] = Content.Load<Texture2D>("kru_walk2");
+
       Texture2D[] levelBackgrounds = new Texture2D[1];
       levelBackgrounds[0] = Content.Load<Texture2D>("LegendOfKruMainPlain");
 
@@ -91,7 +97,7 @@ namespace Kru_Puk
 
 
       Window window = new Window(spriteBatch.GraphicsDevice);
-      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button, platforms, projectile); // textures here
+      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button, platforms, projectile, playerAnimations); // textures here
     }
 
     /// <summary>
@@ -114,7 +120,6 @@ namespace Kru_Puk
           Exit();
 
       // TODO: Add your update logic here
-      ControlHandler controlhandler = new ControlHandler();
 
       // Check the device for Player One
       GamePadCapabilities capabilities = GamePad.GetCapabilities(PlayerIndex.One);
@@ -136,34 +141,34 @@ namespace Kru_Puk
 
           //Move player left
           if (state.ThumbSticks.Left.X < 0.0f)
-            controlhandler.MoveLeft();
+            ControlHandler.MoveLeft(main.GetPlayer());
           //Move player right
           if (state.ThumbSticks.Left.X > 0.0f)
-            controlhandler.MoveRight();
+            ControlHandler.MoveRight(main.GetPlayer());
 
           /*
           //Move crosshair up
           if (state.ThumbSticks.Right.Y > 0.0f)
           {
-            controlhandler.GunUp();
+            ControlHandler.GunUp();
           }
           //Move crosshair down
           if (state.ThumbSticks.Right.Y < 0.0f)
           {
-            controlhandler.GunDown();
+            ControlHandler.GunDown();
           }
           */
 
           //Player Jump
           if (state.IsButtonDown(Buttons.A))
-            controlhandler.Jump();
+            ControlHandler.Jump(main.GetPlayer());
 
 
           //ACTIONS
           //Fire + Vibrate FOR RIGHT TRIGGER
           if (state.IsButtonDown(Buttons.RightTrigger))
           {
-            controlhandler.Fire();
+            ControlHandler.Fire(main.GetPlayer());
             GamePad.SetVibration(PlayerIndex.One, 0.4f, 0.4f);
           }
           else
@@ -171,13 +176,13 @@ namespace Kru_Puk
 
           //Reload
           if (state.IsButtonDown(Buttons.RightStick))
-            controlhandler.Reload();
+            ControlHandler.Reload(main.GetPlayer());
           if (state.IsButtonDown(Buttons.X))
-            controlhandler.Reload();
+            ControlHandler.Reload(main.GetPlayer());
 
           //Interact
           if (state.IsButtonDown(Buttons.B))
-            controlhandler.Interact();
+            ControlHandler.Interact(main.GetPlayer());
         }
       }
 
@@ -186,33 +191,33 @@ namespace Kru_Puk
         //ACTIONS
         //RELOAD
         if (Keyboard.GetState().IsKeyDown(Keys.R))
-          controlhandler.Reload();
+          ControlHandler.Reload(main.GetPlayer());
         //INTERACT
         if (Keyboard.GetState().IsKeyDown(Keys.E))
-          controlhandler.Interact();
+          ControlHandler.Interact(main.GetPlayer());
         //FIRE
         if (Keyboard.GetState().IsKeyDown(Keys.Space))
-          controlhandler.Fire();
+          ControlHandler.Fire(main.GetPlayer());
 
         //MOVEMENT
         //JUMP
         if (Keyboard.GetState().IsKeyDown(Keys.W))
-          controlhandler.Jump();
+          ControlHandler.Jump(main.GetPlayer());
         //MOVE LEFT
         if (Keyboard.GetState().IsKeyDown(Keys.A))
-          controlhandler.MoveLeft();
+          ControlHandler.MoveLeft(main.GetPlayer());
         //MOVE RIGHT
         if (Keyboard.GetState().IsKeyDown(Keys.D))
-          controlhandler.MoveRight();
+          ControlHandler.MoveRight(main.GetPlayer());
 
         /*
         //CROSSHAIR
         //MOVE CROSSHAIR UP
         if (Keyboard.GetState().IsKeyDown(Keys.Up))
-          controlhandler.GunUp();
+          ControlHandler.GunUp();
         //MOVE CROSSHAIR DOWN
         if (Keyboard.GetState().IsKeyDown(Keys.Down))
-          controlhandler.GunDown();
+          ControlHandler.GunDown();
         */
 
       }

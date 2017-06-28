@@ -10,58 +10,61 @@ using System.Collections.Generic;
 
 namespace Kru_Puk
 {
-  public class ControlHandler //Change the Console.WriteLine for real outputs || Some possible void outputs have already been coded ||
+  static class ControlHandler //Change the Console.WriteLine for real outputs || Some possible void outputs have already been coded ||
   {
-    GamePadState state = GamePad.GetState(PlayerIndex.One);
-    public ControlHandler()
-    {
-
-    }
-    public void MoveLeft()
+    public static void MoveLeft(IOption<Player> player)
     {
       Console.WriteLine("Move left!");
+      player.Visit((currentPlayer) => currentPlayer.Move("left"), () => { });
       //player1.Move.Left();
     }
 
-    public void MoveRight()
+    public static void MoveRight(IOption<Player> player)
     {
       Console.WriteLine("Move Right!");
+      player.Visit((currentPlayer) => currentPlayer.Move("right"), () => { });
       //player1.Move.Right();
     }
 
-    public void Jump()
+    public static void Jump(IOption<Player> player)
     {
       Console.WriteLine("Jump!");
+      player.Visit((currentPlayer) => currentPlayer.Move("jump"), () => { });
       //player1.Move.Jump();
     }
 
-    public void GunUp()
+    public static void GunUp(IOption<Player> player)
     {
       Console.WriteLine("Move gun up");
+      player.Visit((currentPlayer) => currentPlayer.Move("gun_up"), () => { });
       //NotYetImplemented
     }
 
-    public void GunDown()
+    public static void GunDown(IOption<Player> player)
     {
       Console.WriteLine("Move gun down");
+      player.Visit((currentPlayer) => currentPlayer.Move("gun_down"), () => { });
       //NotYetImplemented
     }
 
-    public void Fire()
+    public static void Fire(IOption<Player> player)
     {
       Console.WriteLine("Fire!");
+      player.Visit((currentPlayer) => currentPlayer.Move("fire"), () => { });
       //player1.WeaponPouch.Currentweapon.Use();
     }
 
-    public void Reload()
+    public static void Reload(IOption<Player> player)
     {
       Console.WriteLine("Reloading");
+      player.Visit((currentPlayer) => currentPlayer.Move("reload"), () => { });
       //player1.WeaponPouch.Currentweapon.Reload();
     }
 
-    public void Interact()
+    public static void Interact(IOption<Player> player)
     {
       Console.WriteLine("Interacting");
+      player.Visit((currentPlayer) => currentPlayer.Move("interacting"), () => { });
     }
   }
 }

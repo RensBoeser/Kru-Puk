@@ -12,5 +12,10 @@ namespace Kru_Puk
     bool ExistingEntity(IEntity entity);
     void AddEntity(IEntity entity);
     void RemoveEntity(IEntity entity);
+
+    Point GetSpawnPoint();
+
+    void AddPlayer(Player player);
+    Player GetPlayer();
   }
 }

@@ -11,45 +11,59 @@ namespace Kru_Puk
   class Player : IEntity
   {
     private Rectangle rectangle;
-    private Vector2 velocity;
-    private Vector2 acceleration;
-    private Texture2D[] sprites;
+    private Point velocity;
+    private SpriteIterator animationWalkingUnarmed;
     private WeaponPouch weaponPouch;
     private int ammo; // In weaponpouch
     private int health;
     private Level level;
+    private DrawingAdapter drawingAdapter;
+    private bool isFloating;
 
 
-    public Player(Rectangle rectangle, Texture2D[] sprites, WeaponPouch weaponPouch, int ammo, int health)
+    public Player(Rectangle rectangle, Texture2D[][] animations, WeaponPouch weaponPouch, int ammo, int health)
     {
       this.rectangle = rectangle;
-      this.velocity = new Vector2(0, 0);
-      this.acceleration = new Vector2(0, 0);
-      this.sprites = sprites;
+      this.velocity = new Point(0, 0);
+      this.animationWalkingUnarmed = new SpriteIterator(animations[0], 15);
       this.weaponPouch = weaponPouch;
       this.ammo = ammo;
       this.health = health;
+      this.drawingAdapter = new DrawingAdapter();
+      this.isFloating = true;
+    }
+
+    public void Die()
+    {
+      RemoveEntity();
     }
 
     public void AddEntity(Level level)
     {
       this.level = level;
-      level.AddEntity(this);
+      level.AddPlayer(this);
+      rectangle.Location = level.GetSpawnPoint();
     }
 
     public void RemoveEntity()
     {
-      level.RemoveEntity(this);
+      health = 100;
+      rectangle.Location = level.GetSpawnPoint();
     }
 
     public void Update(float dt)
     {
-      throw new NotImplementedException();
+      if (health <= 0)
+      {
+        Die();
+      }
+      rectangle.Location = rectangle.Location + velocity;
+      Move("");
     }
 
     public void Draw(SpriteBatch spritebatch)
     {
-      throw new NotImplementedException();
+      drawingAdapter.Draw(spritebatch, animationWalkingUnarmed.GetNext(), rectangle.Location, false);
     }
 
     public void TakeDamage(int damage)
@@ -65,62 +79,6 @@ namespace Kru_Puk
     public Point getPosition()
     {
       return rectangle.Location;
-    }
-
-    
-    //Experimental Move Class
-    //Implementing a Move Class to make movement actions more clear and simple
-
-    public class Move
-    {
-      Player player;
-      private float X;
-      private float Y;
-      private Vector2 MaxSpeedX;
-      private Vector2 MaxSpeedY;
-      private Point CurrentPosition;
-
-      public void GetCurrentPosition()
-      {
-
-        CurrentPosition = player.rectangle.Location;
-      }
-
-      public void Jump() // Player jumps 20 pixels
-      {
-        GetCurrentPosition();
-        for (int i = 0; i <= 20; i = i + 1)
-        {
-          CurrentPosition.Y = CurrentPosition.Y - 1;
-          player.rectangle.Y = CurrentPosition.Y;
-
-        }
-      }
-
-      public void Left() // Player walks left 10 pixels
-      {
-        GetCurrentPosition();
-        for (int i = 0; i <= 10; i = i + 1)
-        {
-          CurrentPosition.X = CurrentPosition.X - 1;
-          player.rectangle.X = CurrentPosition.X;
-        }
-
-      }
-
-      public void Right() // Player walks right 10 pixels
-      {
-        GetCurrentPosition();
-        for (int i = 0; i <= 10; i = i + 1)
-        {
-          CurrentPosition.X = CurrentPosition.X + 1;
-          player.rectangle.X = CurrentPosition.X;
-        }
-
-      }
-
-
-
     }
 
     public bool Intersect(Rectangle rectangle)
@@ -149,6 +107,65 @@ namespace Kru_Puk
     public void SetFollowingObject(IEntity entity)
     {
       throw new NotImplementedException();
+    }
+
+    public void Move(string action)
+    {
+      switch (action)
+      {
+        case "left":
+          velocity.X = -3;
+          break;
+        case "right":
+          velocity.X = 3;
+          break;
+        case "jump":
+          if (!isFloating)
+          {
+            velocity.Y = velocity.Y - 15;
+          }
+          break;
+        default:
+          velocity.X = 0;
+          break;
+      }
+
+      if (isFloating)
+      {
+        velocity.Y = 15;
+      }
+
+      foreach (Platform platform in level.GetPlatforms())
+      {
+        Rectangle nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
+        if (velocity.Y > 0)
+        {
+          while (platform.Intersect(nextFrame))
+          {
+            velocity.Y = velocity.Y - 1;
+            nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, rectangle.Width, rectangle.Height);
+          }
+          isFloating = false;
+        }
+        if (platform.Intersect(nextFrame))
+        {
+          isFloating = false;
+        }
+        else
+        {
+          isFloating = true;
+        }
+      }
+
+      if (rectangle.Y + rectangle.Height >= 720)
+      {
+        isFloating = false;
+      }
+
+      if (!isFloating)
+      {
+        velocity.Y = 0;
+      }
     }
   }
 }

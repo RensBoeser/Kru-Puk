@@ -68,15 +68,12 @@ namespace Kru_Puk
         Rectangle nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
         if(velocity.Y > 0)
         {
-          if (platform.Intersect(nextFrame))
+          while (platform.Intersect(nextFrame))
           {
-            while(platform.Intersect(rectangle))
-            {
-              nextFrame.Y = rectangle.Y - 1;
-            }
-            velocity.Y = rectangle.Y;
-            isFloating = false;
+            velocity.Y = velocity.Y - 1;
+            nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, rectangle.Width, rectangle.Height);
           }
+          isFloating = false;
         }
         if (platform.Intersect(nextFrame))
         {

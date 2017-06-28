@@ -16,6 +16,7 @@ namespace Kru_Puk
     private Point spawnpoint;
     private DrawingAdapter drawingAdapter;
     private Platform[] platforms;
+    private Player player;
 
     public Level(Area[] areas, Texture2D background, Point spawnpoint, Platform[] platforms)
     {
@@ -108,6 +109,28 @@ namespace Kru_Puk
       {
         return false;
       }
+    }
+
+    public void AddPlayer(Player player)
+    {
+      List<IEntity> templist = new List<IEntity>();
+      foreach (IEntity existingEntity in entities)
+      {
+        templist.Add(existingEntity);
+      }
+      templist.Add(player);
+      entities = templist.ToArray();
+      this.player = player;
+    }
+
+    public Player GetPlayer()
+    {
+      return player;
+    }
+
+    public Point GetSpawnPoint()
+    {
+      return spawnpoint;
     }
   }
 }
