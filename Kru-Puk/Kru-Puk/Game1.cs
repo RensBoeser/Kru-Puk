@@ -83,6 +83,8 @@ namespace Kru_Puk
       Texture2D[] platforms = new Texture2D[1];
       platforms[0] = Content.Load<Texture2D>("Outline_Horizontal");
 
+      Texture2D projectile = Content.Load<Texture2D>("vlad_idle"); // NEEDS TO GET FIXED :D
+
       Texture2D logo = Content.Load<Texture2D>("TheLegendOfKruLogo");
 
       Texture2D menuBackground = Content.Load<Texture2D>("LegendOfKruMainPlain");

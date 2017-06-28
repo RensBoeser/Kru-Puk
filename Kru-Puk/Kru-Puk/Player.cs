@@ -15,7 +15,7 @@ namespace Kru_Puk
     private Vector2 acceleration;
     private Texture2D[] sprites;
     private WeaponPouch weaponPouch;
-    private int ammo;
+    private int ammo; // In weaponpouch
     private int health;
     private Level level;
 
@@ -67,6 +67,7 @@ namespace Kru_Puk
       return rectangle.Location;
     }
 
+    
     //Experimental Move Class
     //Implementing a Move Class to make movement actions more clear and simple
 

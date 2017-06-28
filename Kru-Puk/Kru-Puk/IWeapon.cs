@@ -11,5 +11,6 @@ namespace Kru_Puk
     {
         void Use();
         void Reload(int Ammo);
+        
     }
 }

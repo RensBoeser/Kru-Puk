@@ -17,9 +17,9 @@ namespace Kru_Puk
     private LevelIterator level;
     private Game game;
     private bool onMenu;
-    public Main(Game game, Window window, SpriteFont font, Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button, Texture2D[] platforms) // all textures
+    public Main(Game game, Window window, SpriteFont font, Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button, Texture2D[] platforms, Texture2D projectile) // all textures
     {
-      entityfactory = new EntityFactory(zombieAnimations, levels, assets, areas, platforms); // put all textures in here
+      entityfactory = new EntityFactory(zombieAnimations, levels, assets, areas, platforms, projectile); // put all textures in here
       this.font = font; //unassigned spritefont. The font works, but idk where to use it/put it yet.
       this.window = window;
       this.menu = new Menu(this, window, logo, menuBackground, button, font);
