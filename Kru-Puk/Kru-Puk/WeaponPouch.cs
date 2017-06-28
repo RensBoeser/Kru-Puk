@@ -18,5 +18,26 @@ namespace Kru_Puk
       this.MaxWeapons = MaxWeapons;
       this.CurrentWeapon = CurrentWeapon;
     }
+
+    public void AddWeapon(IWeapon Weapon)
+    {
+
+    }
+
+    public void RemoveWeapon(IWeapon Weapon)
+    {
+
+    }
+
+    public void SwitchWeapon(IWeapon Weapon)
+    {
+
+    }
+
+    public IWeapon GetWeapon(IWeapon Weapon)
+    {
+      return null;
+    }
+
   }
 }
