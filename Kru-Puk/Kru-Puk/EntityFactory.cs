@@ -76,6 +76,5 @@ namespace Kru_Puk
     {
       return new AssaultRifle(clipamount,ammoInClip,damage); 
     }
-
   }
 }
