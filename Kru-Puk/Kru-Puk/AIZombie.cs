@@ -68,10 +68,10 @@ namespace Kru_Puk
         Rectangle nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
         if(velocity.Y > 0)
         {
-          while (platform.Intersect(nextFrame))
+          while(platform.Intersect(nextFrame))
           {
             velocity.Y = velocity.Y - 1;
-            nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, rectangle.Width, rectangle.Height);
+            nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
           }
           isFloating = false;
         }
@@ -93,6 +93,7 @@ namespace Kru_Puk
       if (!isFloating)
       {
         velocity.Y = 0;
+        velocity.X = 0;
       }
     }
 

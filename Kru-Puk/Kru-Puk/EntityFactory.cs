@@ -62,6 +62,9 @@ namespace Kru_Puk
         case 0:
           collisionRectangle = new Rectangle(rectangle.X, rectangle.Y + 88, rectangle.Width, rectangle.Height - 88);
           break;
+        case 1:
+          collisionRectangle = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width - 88, rectangle.Height);
+          break;
         default:
           collisionRectangle = rectangle;
           break;
