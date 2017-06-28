@@ -70,11 +70,11 @@ namespace Kru_Puk
         {
           if (platform.Intersect(nextFrame))
           {
-            while(platform.Intersect(rectangle))
+            while(platform.Intersect(nextFrame))
             {
-              nextFrame.Y = rectangle.Y - 1;
+              velocity.Y = velocity.Y - 1;
+              nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
             }
-            velocity.Y = rectangle.Y;
             isFloating = false;
           }
         }
@@ -96,6 +96,7 @@ namespace Kru_Puk
       if (!isFloating)
       {
         velocity.Y = 0;
+        velocity.X = 0;
       }
     }
 
