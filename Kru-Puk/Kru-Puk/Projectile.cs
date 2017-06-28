@@ -11,7 +11,7 @@ namespace Kru_Puk
   class Projectile : IEntity
   {
     private Rectangle rectangle;
-    private Vector2 velocity;
+    private Point velocity;
     private Vector2 direction;
     private Texture2D sprite;
     private int damage;
