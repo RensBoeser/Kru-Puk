@@ -72,9 +72,9 @@ namespace Kru_Puk
       return new Platform(platforms[platformID], rectangle, collisionRectangle);
     }
 
-    public Projectile CreateProjectile(Rectangle rectangle, Point velocity, Point direction, int damage)
+    public Projectile CreateProjectile(Rectangle rectangle, Point velocity, int damage)
     {
-      return new Projectile(rectangle, velocity, direction, projectile, damage);
+      return new Projectile(rectangle, velocity, projectile, damage);
     }
 
     public WeaponPouch CreateStarterPouch(IWeapon[] weapons, int MaxWeapons)

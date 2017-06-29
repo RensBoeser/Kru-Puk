@@ -19,10 +19,14 @@ namespace Kru_Puk
     private Level level;
     private DrawingAdapter drawingAdapter;
     private bool isFloating;
+<<<<<<< HEAD
     private bool flipped;
+=======
+    private EntityFactory entityFactory;
+>>>>>>> origin/master
 
 
-    public Player(Rectangle rectangle, Texture2D[][] animations, WeaponPouch weaponPouch, int ammo, int health)
+    public Player(Rectangle rectangle, Texture2D[][] animations, WeaponPouch weaponPouch, int ammo, int health, EntityFactory entityFactory)
     {
       this.rectangle = rectangle;
       this.velocity = new Point(0, 0);
@@ -32,8 +36,12 @@ namespace Kru_Puk
       this.health = health;
       this.drawingAdapter = new DrawingAdapter();
       this.isFloating = true;
+<<<<<<< HEAD
       this.flipped = false;
 
+=======
+      this.entityFactory = entityFactory;
+>>>>>>> origin/master
     }
 
     public void Die()
@@ -112,7 +120,29 @@ namespace Kru_Puk
     {
       throw new NotImplementedException();
     }
-
+    public void Action(string action)
+    {
+      switch (action)
+      {
+        case "fire":
+          if (flipped)
+          {
+            weaponPouch.GetWeapon().Use((damage) => level.AddEntity(entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(-6, 0), damage)));
+          }
+          else
+          {
+            weaponPouch.GetWeapon().Use((damage) => level.AddEntity(entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(6, 0), damage)));
+          }
+          break;
+        case "reload":
+          ammo = weaponPouch.GetWeapon().Reload(ammo);
+          break;
+        case "interact":
+          break;
+        default:
+          break;
+      }
+    }
     public void Move(string action)
     {
       switch (action)

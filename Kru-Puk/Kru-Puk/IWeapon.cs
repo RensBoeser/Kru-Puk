@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace Kru_Puk
 {
-    public interface IWeapon : IUpdateable, IDrawable
+    public interface IWeapon : IUpdateable
     {
-        void Use();
-        void Reload(int Ammo);
+        void Use(Action<int> createBullet);
+        int Reload(int Ammo);
         
     }
 }
