@@ -36,7 +36,7 @@ namespace Kru_Puk
 
     public AIZombie CreateZombie(Rectangle rectangle)
     {
-      return new AIZombie(rectangle, 25, 5, zombieAnimations); //the random is for random damage.
+      return new AIZombie(rectangle, 25, 5, zombieAnimations);
     }
 
     public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets)

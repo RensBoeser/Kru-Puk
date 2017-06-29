@@ -19,6 +19,7 @@ namespace Kru_Puk
     private Level level;
     private DrawingAdapter drawingAdapter;
     private bool isFloating;
+    private bool flipped;
 
 
     public Player(Rectangle rectangle, Texture2D[][] animations, WeaponPouch weaponPouch, int ammo, int health)
@@ -31,6 +32,8 @@ namespace Kru_Puk
       this.health = health;
       this.drawingAdapter = new DrawingAdapter();
       this.isFloating = true;
+      this.flipped = false;
+
     }
 
     public void Die()
@@ -57,13 +60,14 @@ namespace Kru_Puk
       {
         Die();
       }
+      Console.WriteLine(velocity.Y);
       rectangle.Location = rectangle.Location + velocity;
       Move("");
     }
 
     public void Draw(SpriteBatch spritebatch)
     {
-      drawingAdapter.Draw(spritebatch, animationWalkingUnarmed.GetNext(), rectangle.Location, false);
+      drawingAdapter.Draw(spritebatch, animationWalkingUnarmed.GetNext(), rectangle.Location, flipped);
     }
 
     public void TakeDamage(int damage)
@@ -115,14 +119,18 @@ namespace Kru_Puk
       {
         case "left":
           velocity.X = -3;
+          flipped = true;
           break;
         case "right":
           velocity.X = 3;
+          flipped = false;
           break;
         case "jump":
           if (!isFloating)
           {
-            velocity.Y = velocity.Y - 15;
+            rectangle.Y -= 10;
+            velocity.Y = -30;
+            isFloating = true;
           }
           break;
         default:
@@ -132,7 +140,9 @@ namespace Kru_Puk
 
       if (isFloating)
       {
-        velocity.Y = 15;
+        int i = 1;
+
+        velocity.Y = velocity.Y+ 1* i;
       }
 
       foreach (Platform platform in level.GetPlatforms())
@@ -145,7 +155,6 @@ namespace Kru_Puk
             velocity.Y = velocity.Y - 1;
             nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, rectangle.Width, rectangle.Height);
           }
-          isFloating = false;
         }
         if (platform.Intersect(nextFrame))
         {

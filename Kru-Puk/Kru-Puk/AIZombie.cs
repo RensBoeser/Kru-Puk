@@ -248,7 +248,7 @@ namespace Kru_Puk
           sprite = animationWalkingDamaged.GetNext();
         }
       }
-      drawingadapter.Draw(spritebatch, sprite, rectangle.Location, flipped); 
+      drawingadapter.Draw(spritebatch, sprite, rectangle.Location, flipped);
     }
   }
 }
