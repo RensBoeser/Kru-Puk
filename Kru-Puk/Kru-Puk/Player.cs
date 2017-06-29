@@ -181,7 +181,7 @@ namespace Kru_Puk
           }
         }
 
-        if (platform.Intersect(nextFrame))
+        if (platform.rectangle.Y == this.rectangle.Y + this.rectangle.Height + 1)
         {
           isFloating = false;
         }
