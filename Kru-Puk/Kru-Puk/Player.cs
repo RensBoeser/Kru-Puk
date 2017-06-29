@@ -19,11 +19,9 @@ namespace Kru_Puk
     private Level level;
     private DrawingAdapter drawingAdapter;
     private bool isFloating;
-<<<<<<< HEAD
     private bool flipped;
-=======
     private EntityFactory entityFactory;
->>>>>>> origin/master
+
 
 
     public Player(Rectangle rectangle, Texture2D[][] animations, WeaponPouch weaponPouch, int ammo, int health, EntityFactory entityFactory)
@@ -36,12 +34,8 @@ namespace Kru_Puk
       this.health = health;
       this.drawingAdapter = new DrawingAdapter();
       this.isFloating = true;
-<<<<<<< HEAD
       this.flipped = false;
-
-=======
       this.entityFactory = entityFactory;
->>>>>>> origin/master
     }
 
     public void Die()
