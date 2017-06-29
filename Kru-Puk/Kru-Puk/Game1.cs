@@ -87,7 +87,7 @@ namespace Kru_Puk
       // areas[0][1] = Content.Load<Texture2D>("name_of_file");
 
       Texture2D[] platforms = new Texture2D[2];
-      platforms[0] = Content.Load<Texture2D>("Outline_Horizontal");
+      platforms[0] = Content.Load<Texture2D>("Outline_Horizontal_NO");
       platforms[1] = Content.Load<Texture2D>("Outline_Vertical");
 
       Texture2D projectile = Content.Load<Texture2D>("bullet"); // NEEDS TO GET FIXED :D

@@ -56,20 +56,7 @@ namespace Kru_Puk
 
     public Platform CreatePlatform(Rectangle rectangle, int platformID)
     {
-      Rectangle collisionRectangle;
-      switch (platformID)
-      {
-        case 0:
-          collisionRectangle = new Rectangle(rectangle.X, rectangle.Y + 88, rectangle.Width, rectangle.Height - 88);
-          break;
-        case 1:
-          collisionRectangle = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width - 88, rectangle.Height);
-          break;
-        default:
-          collisionRectangle = rectangle;
-          break;
-      }
-      return new Platform(platforms[platformID], rectangle, collisionRectangle);
+      return new Platform(platforms[platformID], rectangle);
     }
 
     public Projectile CreateProjectile(Rectangle rectangle, Point velocity, int damage)
