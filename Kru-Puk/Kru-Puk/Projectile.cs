@@ -12,19 +12,18 @@ namespace Kru_Puk
   {
     private Rectangle rectangle;
     private Point velocity;
-    private Point direction;
     private Texture2D sprite;
     private int damage;
     private Level level;
     private DrawingAdapter drawingAdapter;
 
-    public Projectile(Rectangle rectangle, Point velocity, Point direction, Texture2D sprite, int damage)
+    public Projectile(Rectangle rectangle, Point velocity, Texture2D sprite, int damage)
     {
       this.rectangle = rectangle;
       this.velocity = velocity;
-      this.direction = direction;
       this.sprite = sprite;
       this.damage = damage;
+      this.drawingAdapter = new DrawingAdapter();
     }
 
     public void AddEntity(Level level)
@@ -35,7 +34,6 @@ namespace Kru_Puk
 
     public void TakeDamage(int damage)
     {
-      throw new NotImplementedException();
     }
 
     public void DoDamage(IEntity entity)
@@ -59,6 +57,14 @@ namespace Kru_Puk
           this.RemoveEntity();
         }
       }
+      foreach (Platform platform in level.GetPlatforms())
+      {
+        if (platform.Intersect(this.rectangle))
+        {
+          RemoveEntity();
+        }
+      }
+      this.rectangle.Location = rectangle.Location + velocity;
     }
 
     public void Draw(SpriteBatch spritebatch)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kru_Puk
 {
-  class WeaponPouch
+  class WeaponPouch : IUpdateable
   {
     private IWeapon[] Weapons;
     private int MaxWeapons;
@@ -47,5 +47,9 @@ namespace Kru_Puk
       return Weapons[CurrentWeapon];
     }
 
+    public void Update(float dt)
+    {
+      Weapons[CurrentWeapon].Update(dt);
+    }
   }
 }

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 
 namespace Kru_Puk
@@ -14,6 +8,10 @@ namespace Kru_Puk
     private int maxClipAmount;
     private int ammoInClip;
     private int damage;
+    private bool reloadable;
+    private bool useable;
+    private int reloadTimer;
+    private int useTimer;
     
 
     public AssaultRifle( int maxClipAmount, int ammoInClip, int damage)
@@ -21,45 +19,73 @@ namespace Kru_Puk
       this.maxClipAmount = maxClipAmount;
       this.ammoInClip = ammoInClip;
       this.damage = damage;
+      this.useable = true;
+      this.reloadable = true;
+      this.reloadTimer = 0;
+      this.useTimer = 0;
     }
 
     public int Reload(int ammo)
     {
-      int amount = maxClipAmount - ammoInClip;
-      
-      if (ammo >= amount)
+      if (reloadable)
       {
-        ammoInClip = maxClipAmount;
-        return ammo - amount;
-      }
-      else if(amount == 0)
-      {
-        return ammo;
+        int amount = maxClipAmount - ammoInClip;
+
+        if (ammo >= amount)
+        {
+          ammoInClip = maxClipAmount;
+          reloadable = false;
+          return ammo - amount;
+        }
+        else if (amount == 0)
+        {
+          return ammo;
+        }
+        else
+        {
+          ammoInClip = ammoInClip + ammo;
+          reloadable = false;
+          return 0;
+        }
       }
       else
       {
-        ammoInClip = ammoInClip + ammo;
-        return 0;
+        return ammo;
       }
     }
 
     public void Update(float dt)
     {
-      throw new NotImplementedException();
       //UPDATE TIMERS FOR THE RELOADING / USING OF WEAPON
+      if (!reloadable)
+      {
+        reloadTimer = reloadTimer + 1;
+      }
+      if (!useable)
+      {
+        useTimer = useTimer + 1;
+      }
+
+      if (reloadTimer > 60) // 1 second
+      {
+        reloadable = true;
+        reloadTimer = 0;
+      }
+      if (useTimer > 10)
+      {
+        useable = true;
+        useTimer = 0;
+      }
+
     }
 
     public void Use(Action<int> createBullet)
     {
-      if (ammoInClip > 0)
+      if (ammoInClip > 0 && useable)
       {
         ammoInClip = ammoInClip - 1;
         createBullet(damage);
-      }
-
-      else if (ammoInClip <= 0)
-      {
-        this.Reload(ammoInClip);
+        useable = false;
       }
     }
   }

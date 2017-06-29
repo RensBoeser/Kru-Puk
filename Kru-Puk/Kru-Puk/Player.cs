@@ -62,9 +62,9 @@ namespace Kru_Puk
       {
         Die();
       }
-      Console.WriteLine(velocity.Y);
       rectangle.Location = rectangle.Location + velocity;
       Move("");
+      weaponPouch.Update(dt);
     }
 
     public void Draw(SpriteBatch spritebatch)
@@ -121,11 +121,11 @@ namespace Kru_Puk
         case "fire":
           if (flipped)
           {
-            weaponPouch.GetWeapon().Use((damage) => level.AddEntity(entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(-6, 0), damage)));
+            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(-6, 0), damage).AddEntity(level));
           }
           else
           {
-            weaponPouch.GetWeapon().Use((damage) => level.AddEntity(entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(6, 0), damage)));
+            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(6, 0), damage).AddEntity(level));
           }
           break;
         case "reload":
@@ -166,7 +166,10 @@ namespace Kru_Puk
       {
         int i = 1;
 
-        velocity.Y = velocity.Y+ 1* i;
+        Vector2 vel = velocity.ToVector2();
+        vel.Y = vel.Y + 1 * i;
+        velocity.Y = (int)vel.Y;
+
       }
 
       foreach (Platform platform in level.GetPlatforms())
@@ -198,6 +201,7 @@ namespace Kru_Puk
       if (!isFloating)
       {
         velocity.Y = 0;
+        velocity.X = 0;
       }
     }
   }
