@@ -42,9 +42,9 @@ namespace Kru_Puk
 
     }
 
-    public IWeapon GetWeapon(IWeapon Weapon)
-    { 
-      return null;
+    public IWeapon GetWeapon()
+    {
+      return Weapons[CurrentWeapon];
     }
 
   }

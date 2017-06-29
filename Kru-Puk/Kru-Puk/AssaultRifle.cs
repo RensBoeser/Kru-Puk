@@ -12,40 +12,49 @@ namespace Kru_Puk
   class AssaultRifle : IWeapon
   {
     private int maxClipAmount;
-    private int clipAmount;
     private int ammoInClip;
     private int damage;
     
 
-    public AssaultRifle( int clipAmount, int ammoInClip, int damage)
+    public AssaultRifle( int maxClipAmount, int ammoInClip, int damage)
     {
-      this.clipAmount = clipAmount;
+      this.maxClipAmount = maxClipAmount;
       this.ammoInClip = ammoInClip;
       this.damage = damage;
     }
 
-    public void Draw(SpriteBatch spritebatch)
+    public int Reload(int ammo)
     {
-      throw new NotImplementedException();
-    }
-
-    public void Reload(int ammoInClip)
-    {
-      ammoInClip = clipAmount;
+      int amount = maxClipAmount - ammoInClip;
       
+      if (ammo >= amount)
+      {
+        ammoInClip = maxClipAmount;
+        return ammo - amount;
+      }
+      else if(amount == 0)
+      {
+        return ammo;
+      }
+      else
+      {
+        ammoInClip = ammoInClip + ammo;
+        return 0;
+      }
     }
 
     public void Update(float dt)
     {
       throw new NotImplementedException();
+      //UPDATE TIMERS FOR THE RELOADING / USING OF WEAPON
     }
 
-    public void Use()
+    public void Use(Action<int> createBullet)
     {
       if (ammoInClip > 0)
       {
         ammoInClip = ammoInClip - 1;
-        
+        createBullet(damage);
       }
 
       else if (ammoInClip <= 0)

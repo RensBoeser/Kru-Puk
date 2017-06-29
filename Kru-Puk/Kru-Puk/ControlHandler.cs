@@ -36,35 +36,35 @@ namespace Kru_Puk
     public static void GunUp(IOption<Player> player)
     {
       Console.WriteLine("Move gun up");
-      player.Visit((currentPlayer) => currentPlayer.Move("gun_up"), () => { });
+      player.Visit((currentPlayer) => currentPlayer.Action("gun_up"), () => { });
       //NotYetImplemented
     }
 
     public static void GunDown(IOption<Player> player)
     {
       Console.WriteLine("Move gun down");
-      player.Visit((currentPlayer) => currentPlayer.Move("gun_down"), () => { });
+      player.Visit((currentPlayer) => currentPlayer.Action("gun_down"), () => { });
       //NotYetImplemented
     }
 
     public static void Fire(IOption<Player> player)
     {
       Console.WriteLine("Fire!");
-      player.Visit((currentPlayer) => currentPlayer.Move("fire"), () => { });
+      player.Visit((currentPlayer) => currentPlayer.Action("fire"), () => { });
       //player1.WeaponPouch.Currentweapon.Use();
     }
 
     public static void Reload(IOption<Player> player)
     {
       Console.WriteLine("Reloading");
-      player.Visit((currentPlayer) => currentPlayer.Move("reload"), () => { });
+      player.Visit((currentPlayer) => currentPlayer.Action("reload"), () => { });
       //player1.WeaponPouch.Currentweapon.Reload();
     }
 
     public static void Interact(IOption<Player> player)
     {
       Console.WriteLine("Interacting");
-      player.Visit((currentPlayer) => currentPlayer.Move("interacting"), () => { });
+      player.Visit((currentPlayer) => currentPlayer.Action("interacting"), () => { });
     }
   }
 }
