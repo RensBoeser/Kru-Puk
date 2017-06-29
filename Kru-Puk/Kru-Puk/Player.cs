@@ -166,16 +166,13 @@ namespace Kru_Puk
       {
         int i = 1;
 
-        Vector2 vel = velocity.ToVector2();
-        vel.Y = vel.Y + 1 * i;
-        velocity.Y = (int)vel.Y;
-
+        velocity.Y = velocity.Y + 1 * i;
       }
 
       foreach (Platform platform in level.GetPlatforms())
       {
         Rectangle nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, this.rectangle.Width, this.rectangle.Height);
-        if (velocity.Y > 0)
+        if (velocity.Y >= 0)
         {
           while (platform.Intersect(nextFrame))
           {
@@ -183,6 +180,7 @@ namespace Kru_Puk
             nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, rectangle.Width, rectangle.Height);
           }
         }
+
         if (platform.Intersect(nextFrame))
         {
           isFloating = false;
@@ -192,7 +190,6 @@ namespace Kru_Puk
           isFloating = true;
         }
       }
-
       if (rectangle.Y + rectangle.Height >= 720)
       {
         isFloating = false;
@@ -201,7 +198,6 @@ namespace Kru_Puk
       if (!isFloating)
       {
         velocity.Y = 0;
-        velocity.X = 0;
       }
     }
   }

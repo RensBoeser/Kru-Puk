@@ -11,7 +11,7 @@ namespace Kru_Puk
   class Platform : IDrawable, IUpdateable
   {
     private Texture2D sprite;
-    private Rectangle collisionRectangle;
+    public Rectangle collisionRectangle;
     public Rectangle rectangle;
 
     public Platform(Texture2D sprite, Rectangle rectangle, Rectangle collisionRectangle)
