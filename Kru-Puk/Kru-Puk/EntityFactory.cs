@@ -31,7 +31,7 @@ namespace Kru_Puk
 
     public Player CreatePlayer(Rectangle rectangle, WeaponPouch weaponpouch, int ammo, int health)
     {
-      return new Player(rectangle, playerAnimations, weaponpouch, ammo, health);
+      return new Player(rectangle, playerAnimations, weaponpouch, ammo, health, this);
     }
 
     public AIZombie CreateZombie(Rectangle rectangle)
