@@ -158,16 +158,19 @@ namespace Kru_Puk
             nextFrame = new Rectangle(this.rectangle.X + velocity.X, this.rectangle.Y + velocity.Y, rectangle.Width, rectangle.Height);
           }
         }
-
-        if (platform.rectangle.Y == this.rectangle.Y + this.rectangle.Height + 1)
+        if (platform.Intersect(new Rectangle(rectangle.X, rectangle.Y + 1, rectangle.Width, rectangle.Height)))
         {
-          isFloating = false;
-        }
-        else
-        {
-          isFloating = true;
+          if (platform.rectangle.Y == this.rectangle.Y + this.rectangle.Height + 1 && (rectangle.X <= (platform.rectangle.X + platform.rectangle.Width) && rectangle.X >= platform.rectangle.X) || (rectangle.X + rectangle.Width <= (platform.rectangle.X + platform.rectangle.Width) && rectangle.X + rectangle.Width >= platform.rectangle.X))
+          {
+             isFloating = false;
+          }
+          else
+          {
+            isFloating = true;
+          }
         }
       }
+
       if (rectangle.Y + rectangle.Height >= 720)
       {
         isFloating = false;

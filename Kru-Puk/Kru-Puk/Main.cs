@@ -72,7 +72,7 @@ namespace Kru_Puk
       entities[0].SetFollowingObject(player);
       entities[1].SetFollowingObject(player);
 
-      Platform[] platforms = new Platform[10];
+      Platform[] platforms = new Platform[11];
      platforms[0] =  entityfactory.CreatePlatform(new Rectangle(0, 680, 128, 40), 0);
      platforms[1] =  entityfactory.CreatePlatform(new Rectangle(128, 680, 128, 40), 0);
      platforms[2] =  entityfactory.CreatePlatform(new Rectangle(256, 680, 128, 40), 0);
@@ -83,6 +83,7 @@ namespace Kru_Puk
      platforms[7] =  entityfactory.CreatePlatform(new Rectangle(896, 680, 128, 40), 0);
      platforms[8] =  entityfactory.CreatePlatform(new Rectangle(1024, 680, 128, 40), 0);
      platforms[9] =  entityfactory.CreatePlatform(new Rectangle(1152, 680, 128, 40), 0);
+     platforms[10] = entityfactory.CreatePlatform(new Rectangle(768, 500, 128, 40), 0);
 
       Level[] levels = new Level[1]; // number of levels
       levels[0] = entityfactory.CreateLevel(areas, new Point(0, 0), 0, platforms); //areas, entities, spawnpoint, backgroundID
