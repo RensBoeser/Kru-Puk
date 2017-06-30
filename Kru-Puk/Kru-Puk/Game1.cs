@@ -90,15 +90,18 @@ namespace Kru_Puk
       platforms[0] = Content.Load<Texture2D>("Outline_Horizontal_NO");
       platforms[1] = Content.Load<Texture2D>("Outline_Vertical");
 
-      Texture2D projectile = Content.Load<Texture2D>("bullet"); // NEEDS TO GET FIXED :D
+      Texture2D projectile = Content.Load<Texture2D>("bullet");
 
       Texture2D logo = Content.Load<Texture2D>("TheLegendOfKruLogo");
 
       Texture2D menuBackground = Content.Load<Texture2D>("LegendOfKruMainPlain");
 
+      Texture2D assaultRifle = Content.Load<Texture2D>("kru_idle"); // WRONG TEXTURE
+
+      Texture2D backboard = Content.Load<Texture2D>("kru_idle"); //WRONG TEXTURE
 
       Window window = new Window(spriteBatch.GraphicsDevice);
-      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button, platforms, projectile, playerAnimations); // textures here
+      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button, platforms, projectile, playerAnimations, assaultRifle, backboard); // textures here
     }
 
     /// <summary>

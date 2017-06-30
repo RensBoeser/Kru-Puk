@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 
 
 namespace Kru_Puk
@@ -12,9 +13,10 @@ namespace Kru_Puk
     private bool useable;
     private int reloadTimer;
     private int useTimer;
+    private Texture2D sprite;
     
 
-    public AssaultRifle( int maxClipAmount, int ammoInClip, int damage)
+    public AssaultRifle( int maxClipAmount, int ammoInClip, int damage, Texture2D sprite)
     {
       this.maxClipAmount = maxClipAmount;
       this.ammoInClip = ammoInClip;
@@ -23,6 +25,7 @@ namespace Kru_Puk
       this.reloadable = true;
       this.reloadTimer = 0;
       this.useTimer = 0;
+      this.sprite = sprite;
     }
 
     public int Reload(int ammo)
@@ -87,6 +90,16 @@ namespace Kru_Puk
         createBullet(damage);
         useable = false;
       }
+    }
+
+    public int GetAmmo()
+    {
+      return ammoInClip;
+    }
+
+    public Texture2D GetSprite()
+    {
+      return sprite;
     }
   }
 }

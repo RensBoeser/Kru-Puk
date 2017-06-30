@@ -17,8 +17,9 @@ namespace Kru_Puk
     private Texture2D[][] areas;
     private Texture2D[] platforms;
     private Texture2D projectile;
+    private Texture2D assaultRifle;
 
-    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile)
+    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile, Texture2D assaultRifle)
     {
       this.zombieAnimations = zombieAnimations;
       this.playerAnimations = playerAnimations;
@@ -27,6 +28,7 @@ namespace Kru_Puk
       this.areas = areas;
       this.platforms = platforms;
       this.projectile = projectile;
+      this.assaultRifle = assaultRifle;
     }
 
     public Player CreatePlayer(Rectangle rectangle, WeaponPouch weaponpouch, int ammo, int health)
@@ -49,9 +51,9 @@ namespace Kru_Puk
       return new Asset(position, assets[assetID]);
     }
 
-    public Level CreateLevel(Area[] areas, Point spawnpoint, int backgroundID, Platform[] platforms)
+    public Level CreateLevel(Area[] areas, Point spawnpoint, int backgroundID, Platform[] platforms, int levelID)
     {
-      return new Level(areas, levels[backgroundID], spawnpoint, platforms);
+      return new Level(areas, levels[backgroundID], spawnpoint, platforms, levelID);
     }
 
     public Platform CreatePlatform(Rectangle rectangle, int platformID)
@@ -71,7 +73,7 @@ namespace Kru_Puk
 
     public AssaultRifle CreateAssaultRifle(int clipamount, int ammoInClip, int damage)
     {
-      return new AssaultRifle(clipamount,ammoInClip,damage); 
+      return new AssaultRifle(clipamount, ammoInClip, damage, assaultRifle); 
     }
   }
 }
