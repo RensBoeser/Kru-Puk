@@ -18,8 +18,9 @@ namespace Kru_Puk
     private Player player;
     private Func<int,int> action;
     private int ActionTimer;
+    private int levelID;
 
-    public Level(Area[] areas, Texture2D background, Point spawnpoint)
+    public Level(Area[] areas, Texture2D background, Point spawnpoint, int levelID)
     {
       this.entities = new IEntity[0];
       this.areas = areas;
@@ -27,6 +28,12 @@ namespace Kru_Puk
       this.spawnpoint = spawnpoint;
       this.drawingAdapter = new DrawingAdapter();
       this.ActionTimer = 0;
+      this.levelID = levelID;
+    }
+
+    public int GetLevelID()
+    {
+      return levelID;
     }
 
     public IEntity[] GetEntities()

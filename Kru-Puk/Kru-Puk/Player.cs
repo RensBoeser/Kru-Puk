@@ -38,6 +38,21 @@ namespace Kru_Puk
       this.entityFactory = entityFactory;
     }
 
+    public int GetHealth()
+    {
+      return health;
+    }
+
+    public WeaponPouch GetWeaponPouch()
+    {
+      return weaponPouch;
+    }
+
+    public int GetAmmo()
+    {
+      return ammo;
+    }
+
     public void Die()
     {
       RemoveEntity();
