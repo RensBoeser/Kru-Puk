@@ -12,7 +12,6 @@ namespace Kru_Puk
   class Button : IButton
   {
     private bool pressed;
-
     private Rectangle rectangle;
     private Action function;
     private Texture2D[] sprite;

@@ -64,6 +64,7 @@ namespace Kru_Puk
       }
       rectangle.Location = rectangle.Location + velocity;
       Move("");
+      Gravity();
       weaponPouch.Update(dt);
     }
 
@@ -121,11 +122,11 @@ namespace Kru_Puk
         case "fire":
           if (flipped)
           {
-            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(-6, 0), damage).AddEntity(level));
+            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0,5)), new Point(4, 2)), new Point(-6, 0), damage).AddEntity(level));
           }
           else
           {
-            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle(rectangle.Center, new Point(4, 2)), new Point(6, 0), damage).AddEntity(level));
+            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0, 5)), new Point(4, 2)), new Point(6, 0), damage).AddEntity(level));
           }
           break;
         case "reload":
@@ -137,31 +138,8 @@ namespace Kru_Puk
           break;
       }
     }
-    public void Move(string action)
+    public void Gravity()
     {
-      switch (action)
-      {
-        case "left":
-          velocity.X = -3;
-          flipped = true;
-          break;
-        case "right":
-          velocity.X = 3;
-          flipped = false;
-          break;
-        case "jump":
-          if (!isFloating)
-          {
-            rectangle.Y -= 10;
-            velocity.Y = -30;
-            isFloating = true;
-          }
-          break;
-        default:
-          velocity.X = 0;
-          break;
-      }
-
       if (isFloating)
       {
         int i = 1;
@@ -198,6 +176,31 @@ namespace Kru_Puk
       if (!isFloating)
       {
         velocity.Y = 0;
+      }
+    }
+    public void Move(string action)
+    {
+      switch (action)
+      {
+        case "left":
+          velocity.X = -3;
+          flipped = true;
+          break;
+        case "right":
+          velocity.X = 3;
+          flipped = false;
+          break;
+        case "jump":
+          if (!isFloating)
+          {
+            rectangle.Y -= 10;
+            velocity.Y = -20;
+            isFloating = true;
+          }
+          break;
+        default:
+          velocity.X = 0;
+          break;
       }
     }
   }
