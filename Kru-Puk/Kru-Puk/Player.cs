@@ -41,6 +41,7 @@ namespace Kru_Puk
     public void Die()
     {
       RemoveEntity();
+      isFloating = true;
     }
 
     public void AddEntity(Level level)

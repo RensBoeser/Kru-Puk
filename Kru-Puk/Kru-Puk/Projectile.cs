@@ -55,6 +55,7 @@ namespace Kru_Puk
           //check voor elke zombie of de kogel in range is
           this.DoDamage(entity);
           this.RemoveEntity();
+          break;
         }
       }
       foreach (Platform platform in level.GetPlatforms())
