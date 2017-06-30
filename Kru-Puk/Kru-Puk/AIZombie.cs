@@ -176,8 +176,7 @@ namespace Kru_Puk
           attacking = false;
           foreach( IEntity entity in level.GetEntities())
           {
-            IEntity thisisme = this;
-            if (entity != thisisme)
+            if (!(entity is IZombie))
             {
               if (followingObject.getPosition().X < this.getPosition().X)
               {
