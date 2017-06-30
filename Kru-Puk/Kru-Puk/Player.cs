@@ -162,7 +162,7 @@ namespace Kru_Puk
         {
           if (platform.rectangle.Y == this.rectangle.Y + this.rectangle.Height + 1 && (rectangle.X <= (platform.rectangle.X + platform.rectangle.Width) && rectangle.X >= platform.rectangle.X) || (rectangle.X + rectangle.Width <= (platform.rectangle.X + platform.rectangle.Width) && rectangle.X + rectangle.Width >= platform.rectangle.X))
           {
-             isFloating = false;
+            isFloating = false;
           }
           else
           {
@@ -188,10 +188,12 @@ namespace Kru_Puk
         case "left":
           velocity.X = -3;
           flipped = true;
+          isFloating = true;
           break;
         case "right":
           velocity.X = 3;
           flipped = false;
+          isFloating = true;
           break;
         case "jump":
           if (!isFloating)
