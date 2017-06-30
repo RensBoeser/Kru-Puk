@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using System;
 
 namespace Kru_Puk
@@ -46,6 +47,15 @@ namespace Kru_Puk
       spriteBatch = new SpriteBatch(GraphicsDevice);
 
       SpriteFont font = Content.Load<SpriteFont>("Font");
+
+      SoundEffect[] KruSounds = new SoundEffect[5];
+      KruSounds[0] = Content.Load<SoundEffect>("Kru_Fire");
+      KruSounds[1] = Content.Load<SoundEffect>("Kru_Reload1");
+      KruSounds[2] = Content.Load<SoundEffect>("Kru_Reload2");
+      KruSounds[3] = Content.Load<SoundEffect>("Scream");
+
+      
+
 
       Texture2D[][] zombieAnimations = new Texture2D[4][];
       zombieAnimations[0] = new Texture2D[3]; // zombie walking animation array
@@ -98,7 +108,7 @@ namespace Kru_Puk
 
 
       Window window = new Window(spriteBatch.GraphicsDevice);
-      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button, platforms, projectile, playerAnimations); // textures here
+      main = new Main(this, window, font, zombieAnimations, levelBackgrounds, assets, areas, logo, menuBackground, button, platforms, projectile, playerAnimations, KruSounds); // textures here
     }
 
     /// <summary>

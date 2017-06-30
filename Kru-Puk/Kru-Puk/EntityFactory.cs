@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Kru_Puk
 {
@@ -17,9 +18,11 @@ namespace Kru_Puk
     private Texture2D[][] areas;
     private Texture2D[] platforms;
     private Texture2D projectile;
+    private SoundEffect[] kruSounds;
 
-    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile)
+    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile, SoundEffect[] kruSounds)
     {
+      this.kruSounds = kruSounds;
       this.zombieAnimations = zombieAnimations;
       this.playerAnimations = playerAnimations;
       this.levels = levels;
@@ -31,7 +34,7 @@ namespace Kru_Puk
 
     public Player CreatePlayer(Rectangle rectangle, WeaponPouch weaponpouch, int ammo, int health)
     {
-      return new Player(rectangle, playerAnimations, weaponpouch, ammo, health, this);
+      return new Player(rectangle, playerAnimations, weaponpouch, ammo, health, this, new SoundEngine(kruSounds));
     }
 
     public AIZombie CreateZombie(Rectangle rectangle)

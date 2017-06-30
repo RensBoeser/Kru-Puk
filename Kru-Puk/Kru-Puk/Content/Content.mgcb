@@ -500,3 +500,27 @@
 /processorParam:TextureFormat=Color
 /build:Outline_Horizontal_NO.png
 
+#begin Kru_Fire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Kru_Fire.wav
+
+#begin Kru_Reload1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Kru_Reload1.wav
+
+#begin Kru_Reload2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Kru_Reload2.wav
+
+#begin Scream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Scream.wav
+

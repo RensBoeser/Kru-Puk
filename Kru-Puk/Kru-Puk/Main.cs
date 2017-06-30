@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,23 @@ namespace Kru_Puk
   {
     private SpriteFont font;
     private EntityFactory entityfactory;
+    private SoundEngine soundengine;
     private Menu menu;
     private Window window;
     private LevelIterator level;
     private Game game;
     private bool onMenu;
-    public Main(Game game, Window window, SpriteFont font, Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button, Texture2D[] platforms, Texture2D projectile, Texture2D[][] playerAnimations) // all textures
+   
+    public Main(Game game, Window window, SpriteFont font, Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button, Texture2D[] platforms, Texture2D projectile, Texture2D[][] playerAnimations, SoundEffect[] KruSounds) // all textures
     {
-      entityfactory = new EntityFactory(zombieAnimations, playerAnimations, levels, assets, areas, platforms, projectile); // put all textures in here
+      entityfactory = new EntityFactory(zombieAnimations, playerAnimations, levels, assets, areas, platforms, projectile, KruSounds); // put all textures in here
+      soundengine = new SoundEngine(KruSounds);
       this.font = font; //unassigned spritefont. The font works, but idk where to use it/put it yet.
       this.window = window;
       this.menu = new Menu(this, window, logo, menuBackground, button, font);
       this.onMenu = true;
       this.game = game;
+      
       AddLevels();
     }
 

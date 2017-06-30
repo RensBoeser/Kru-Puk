@@ -21,10 +21,11 @@ namespace Kru_Puk
     private bool isFloating;
     private bool flipped;
     private EntityFactory entityFactory;
+    private SoundEngine soundengine;
 
 
 
-    public Player(Rectangle rectangle, Texture2D[][] animations, WeaponPouch weaponPouch, int ammo, int health, EntityFactory entityFactory)
+    public Player(Rectangle rectangle, Texture2D[][] animations, WeaponPouch weaponPouch, int ammo, int health, EntityFactory entityFactory,SoundEngine soundengine)
     {
       this.rectangle = rectangle;
       this.velocity = new Point(0, 0);
@@ -36,6 +37,8 @@ namespace Kru_Puk
       this.isFloating = true;
       this.flipped = false;
       this.entityFactory = entityFactory;
+      this.soundengine = soundengine;
+      
     }
 
     public void Die()
@@ -76,7 +79,9 @@ namespace Kru_Puk
 
     public void TakeDamage(int damage)
     {
+      soundengine.PlayScream();
       this.health = (this.health - damage);
+      
     }
 
     public void DoDamage(IEntity entity)
@@ -123,15 +128,18 @@ namespace Kru_Puk
         case "fire":
           if (flipped)
           {
-            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0,5)), new Point(4, 2)), new Point(-12, 0), damage).AddEntity(level));
+            weaponPouch.GetWeapon().Use((damage) => { entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0, 5)), new Point(4, 2)), new Point(-12, 0), damage).AddEntity(level); soundengine.PlayKruFire(); });
+
           }
           else
           {
-            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0, 5)), new Point(4, 2)), new Point(12, 0), damage).AddEntity(level));
+            weaponPouch.GetWeapon().Use((damage) => {entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0, 5)), new Point(4, 2)), new Point(12, 0), damage).AddEntity(level); soundengine.PlayKruFire(); });
+            
           }
           break;
         case "reload":
           ammo = weaponPouch.GetWeapon().Reload(ammo);
+          
           break;
         case "interact":
           break;

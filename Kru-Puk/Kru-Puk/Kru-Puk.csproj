@@ -46,6 +46,7 @@
     <Compile Include="Area.cs" />
     <Compile Include="AssaultRifle.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="SoundEngine.cs" />
     <Compile Include="DrawingAdapter.cs" />
     <Compile Include="Asset.cs" />
     <Compile Include="ControlHandler.cs" />
