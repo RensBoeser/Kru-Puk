@@ -39,9 +39,9 @@ namespace Kru_Puk
       return new AIZombie(rectangle, 25, 5, zombieAnimations);
     }
 
-    public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets)
+    public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets, IEntity[] spawnableEntities, Platform[] platforms)
     {
-      return new Area(rectangle, areas[areabackground], assets);
+      return new Area(rectangle, areas[areabackground], assets, spawnableEntities, platforms);
     }
 
     public Asset CreateAsset(Point position, int assetID)
@@ -49,9 +49,9 @@ namespace Kru_Puk
       return new Asset(position, assets[assetID]);
     }
 
-    public Level CreateLevel(Area[] areas, Point spawnpoint, int backgroundID, Platform[] platforms)
+    public Level CreateLevel(Area[] areas, Point spawnpoint, int backgroundID)
     {
-      return new Level(areas, levels[backgroundID], spawnpoint, platforms);
+      return new Level(areas, levels[backgroundID], spawnpoint);
     }
 
     public Platform CreatePlatform(Rectangle rectangle, int platformID)

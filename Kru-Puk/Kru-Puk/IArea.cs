@@ -9,6 +9,6 @@ namespace Kru_Puk
 {
   interface IArea : IDrawable, IUpdateable
   {
-    void Discover();
+    void Discover(Level level);
   }
 }

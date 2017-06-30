@@ -12,16 +12,22 @@ namespace Kru_Puk
   {
     private Rectangle rectangle;
     private bool discovered;
-    private Texture2D[] sprites;
+    private SpriteIterator sprite;
     private Asset[] assets;
     private DrawingAdapter drawingAdapter;
+    private IEntity[] spawnableEntities;
+    private Platform[] platforms;
 
-    public Area(Rectangle rectangle, Texture2D[] sprites, Asset[] assets)
+    public Area(Rectangle rectangle, Texture2D[] sprites, Asset[] assets, IEntity[] spawnableEntities, Platform[] platforms)
     {
       this.rectangle  = rectangle;
       this.discovered = false;
-      this.sprites    = sprites;
+      this.sprite    = new SpriteIterator(sprites, 1);
       this.assets     = assets;
+      this.spawnableEntities = spawnableEntities;
+      this.platforms = platforms;
+      this.drawingAdapter = new DrawingAdapter();
+      
             
       for(int i = 0; i < assets.Length; i = i + 1)
       {
@@ -30,16 +36,27 @@ namespace Kru_Puk
         
     }
 
-    public void Discover()
+    public void Discover(Level level)
     {
-      throw new NotImplementedException();
+      foreach (IEntity entity in spawnableEntities)
+      {
+        entity.AddEntity(level);
+      }
+
+      sprite.GetNext();
+
+    }
+
+    public Platform[] GetPlatforms()
+    {
+      return platforms;
     }
 
     public void Draw(SpriteBatch spritebatch)
     {      
       if(discovered)
       {
-        drawingAdapter.Draw(spritebatch, sprites[1], rectangle.Location, false);
+        drawingAdapter.Draw(spritebatch, sprite.GetCurrent(), rectangle.Location, false);
         
         for (int i = 0; i < assets.Length; i = i + 1)
         {
@@ -48,7 +65,7 @@ namespace Kru_Puk
       }
       else
       {
-        drawingAdapter.Draw(spritebatch, sprites[0], rectangle.Location, false);
+        drawingAdapter.Draw(spritebatch, sprite.GetCurrent(), rectangle.Location, false);
       }
     }
 
