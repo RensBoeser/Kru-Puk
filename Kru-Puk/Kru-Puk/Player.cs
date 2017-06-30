@@ -122,11 +122,11 @@ namespace Kru_Puk
         case "fire":
           if (flipped)
           {
-            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0,5)), new Point(4, 2)), new Point(-6, 0), damage).AddEntity(level));
+            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0,5)), new Point(4, 2)), new Point(-12, 0), damage).AddEntity(level));
           }
           else
           {
-            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0, 5)), new Point(4, 2)), new Point(6, 0), damage).AddEntity(level));
+            weaponPouch.GetWeapon().Use((damage) => entityFactory.CreateProjectile(new Rectangle((rectangle.Center + new Point(0, 5)), new Point(4, 2)), new Point(12, 0), damage).AddEntity(level));
           }
           break;
         case "reload":

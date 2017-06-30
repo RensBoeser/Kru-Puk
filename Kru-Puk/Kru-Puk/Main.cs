@@ -86,6 +86,8 @@ namespace Kru_Puk
 
       Level[] levels = new Level[1]; // number of levels
       levels[0] = entityfactory.CreateLevel(areas, new Point(0, 0), 0, platforms); //areas, entities, spawnpoint, backgroundID
+      //spawn new zombie if timer hits 60
+      levels[0].setAction((timer) => { if (timer ==60) { timer = 0;  IZombie zombie = entityfactory.CreateZombie(new Rectangle(new Point(window.WholeWindow().Right - 65,0), new Point(56, 109))); zombie.SetFollowingObject(player); zombie.AddEntity(levels[0]); }return timer; });
       player.AddEntity(levels[0]);
       foreach (IEntity entity in entities) { entity.AddEntity(levels[0]); }
       

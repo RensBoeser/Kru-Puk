@@ -17,6 +17,8 @@ namespace Kru_Puk
     private DrawingAdapter drawingAdapter;
     private Platform[] platforms;
     private Player player;
+    private Func<int,int> action;
+    private int ActionTimer;
 
     public Level(Area[] areas, Texture2D background, Point spawnpoint, Platform[] platforms)
     {
@@ -26,11 +28,18 @@ namespace Kru_Puk
       this.spawnpoint = spawnpoint;
       this.drawingAdapter = new DrawingAdapter();
       this.platforms = platforms;
+      this.ActionTimer = 0;
     }
 
     public IEntity[] GetEntities()
     {
       return entities;
+    }
+
+    public void setAction(Func<int,int> action)
+    {
+      this.action = action;
+
     }
     public void AddEntity(IEntity entity)
     {
@@ -76,10 +85,15 @@ namespace Kru_Puk
       {
         entity.Update(dt);
       }
-      foreach (Platform platform in platforms)
+      
+      if (action != null)
       {
-        platform.Update(dt);
+        ActionTimer = ActionTimer + 1;
+        ActionTimer = action(ActionTimer);
+
       }
+
+      
     }
 
     public void Draw(SpriteBatch spritebatch)
