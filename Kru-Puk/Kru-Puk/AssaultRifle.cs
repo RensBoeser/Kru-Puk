@@ -81,7 +81,7 @@ namespace Kru_Puk
 
     public void Use(Action<int> createBullet)
     {
-      if (ammoInClip > 0 && useable)
+      if (ammoInClip > 0 && useable && reloadable)
       {
         ammoInClip = ammoInClip - 1;
         createBullet(damage);
