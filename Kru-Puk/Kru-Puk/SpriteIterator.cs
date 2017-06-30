@@ -34,5 +34,9 @@ namespace Kru_Puk
       }
       return data[current];
     }
+    public Texture2D GetCurrent()
+    {
+      return data[current];
+    }
   }
 }

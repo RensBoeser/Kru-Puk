@@ -19,8 +19,9 @@ namespace Kru_Puk
     private Texture2D[] platforms;
     private Texture2D projectile;
     private SoundEffect[] kruSounds;
+    private Texture2D assaultRifle;
+    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile, Texture2D assaultRifle ,SoundEffect[] kruSounds)
 
-    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile, SoundEffect[] kruSounds)
     {
       this.kruSounds = kruSounds;
       this.zombieAnimations = zombieAnimations;
@@ -30,6 +31,8 @@ namespace Kru_Puk
       this.areas = areas;
       this.platforms = platforms;
       this.projectile = projectile;
+      this.assaultRifle = assaultRifle;
+      this.kruSounds = kruSounds;
     }
 
     public Player CreatePlayer(Rectangle rectangle, WeaponPouch weaponpouch, int ammo, int health)
@@ -42,9 +45,9 @@ namespace Kru_Puk
       return new AIZombie(rectangle, 25, 5, zombieAnimations);
     }
 
-    public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets)
+    public Area CreateArea(Rectangle rectangle, int areabackground, Asset[] assets, IEntity[] spawnableEntities, Platform[] platforms)
     {
-      return new Area(rectangle, areas[areabackground], assets);
+      return new Area(rectangle, areas[areabackground], assets, spawnableEntities, platforms);
     }
 
     public Asset CreateAsset(Point position, int assetID)
@@ -52,9 +55,9 @@ namespace Kru_Puk
       return new Asset(position, assets[assetID]);
     }
 
-    public Level CreateLevel(Area[] areas, Point spawnpoint, int backgroundID, Platform[] platforms)
+    public Level CreateLevel(Area[] areas, Point spawnpoint, int backgroundID, int levelID)
     {
-      return new Level(areas, levels[backgroundID], spawnpoint, platforms);
+      return new Level(areas, levels[backgroundID], spawnpoint, levelID);
     }
 
     public Platform CreatePlatform(Rectangle rectangle, int platformID)
@@ -74,7 +77,7 @@ namespace Kru_Puk
 
     public AssaultRifle CreateAssaultRifle(int clipamount, int ammoInClip, int damage)
     {
-      return new AssaultRifle(clipamount,ammoInClip,damage); 
+      return new AssaultRifle(clipamount, ammoInClip, damage, assaultRifle); 
     }
   }
 }
