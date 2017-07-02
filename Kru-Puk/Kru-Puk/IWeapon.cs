@@ -13,6 +13,7 @@ namespace Kru_Puk
     void Use(Action<int> createBullet);
     int Reload(int Ammo);
     int GetAmmo();
+    bool IsReloading();
     Texture2D GetSprite();
   }
 }

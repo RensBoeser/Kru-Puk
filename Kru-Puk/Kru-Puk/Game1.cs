@@ -93,8 +93,8 @@ namespace Kru_Puk
 
       Texture2D[][] areas = new Texture2D[1][];
       areas[0] = new Texture2D[2]; //this is the list for specific areas (not yet discovered texture / discovered texture)
-      // areas[0][0] = Content.Load<Texture2D>("name_of_file");
-      // areas[0][1] = Content.Load<Texture2D>("name_of_file");
+      areas[0][0] = Content.Load<Texture2D>("kru_idle");
+      areas[0][1] = Content.Load<Texture2D>("kru_idle");
 
       Texture2D[] platforms = new Texture2D[2];
       platforms[0] = Content.Load<Texture2D>("Outline_Horizontal_NO");
@@ -106,9 +106,9 @@ namespace Kru_Puk
 
       Texture2D menuBackground = Content.Load<Texture2D>("LegendOfKruMainPlain");
 
-      Texture2D assaultRifle = Content.Load<Texture2D>("kru_idle"); // WRONG TEXTURE
+      Texture2D assaultRifle = Content.Load<Texture2D>("SCAR-L"); // WRONG TEXTURE
 
-      Texture2D backboard = Content.Load<Texture2D>("kru_idle"); //WRONG TEXTURE
+      Texture2D backboard = Content.Load<Texture2D>("hud_bg"); //WRONG TEXTURE
 
       Window window = new Window(spriteBatch.GraphicsDevice);
 

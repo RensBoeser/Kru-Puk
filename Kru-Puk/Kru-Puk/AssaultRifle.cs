@@ -81,6 +81,7 @@ namespace Kru_Puk
       }
 
     }
+    public bool IsReloading() { return !reloadable; }
 
     public void Use(Action<int> createBullet)
     {

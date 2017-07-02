@@ -23,15 +23,15 @@ namespace Kru_Puk
 
     public Main(Game game, Window window, SpriteFont font, Texture2D[][] zombieAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D logo, Texture2D menuBackground, Texture2D[] button, Texture2D[] platforms, Texture2D projectile, Texture2D[][] playerAnimations, Texture2D assaultRifle, Texture2D backboard, SoundEffect[] KruSounds) // all textures
     {
-      entityfactory = new EntityFactory(zombieAnimations, playerAnimations, levels, assets, areas, platforms, projectile, assaultRifle, KruSounds); // put all textures in here
+      entityfactory = new EntityFactory(zombieAnimations, playerAnimations, levels, assets, areas, platforms, projectile, assaultRifle, button, KruSounds); // put all textures in here
         soundengine = new SoundEngine(KruSounds);
       this.font = font; //unassigned spritefont. The font works, but idk where to use it/put it yet.
       this.window = window;
-      this.menu = new Menu(this, window, logo, menuBackground, button, font);
+      this.menu = new Menu(this, window, logo, menuBackground, entityfactory, font);
       this.onMenu = true;
       this.game = game;
 
-      this.HUD = new GUI(this, font, window, backboard);
+      this.HUD = new GUI(this, font, window, entityfactory, backboard);
       AddLevels();
     }
 
@@ -75,16 +75,16 @@ namespace Kru_Puk
       area1entities[0] = entityfactory.CreateZombie(new Rectangle(new Point(0, 0), new Point(56, 109)));
 
       Platform[] area1platforms = new Platform[11];
-      area1platforms[0] = entityfactory.CreatePlatform(new Rectangle(0, 680, 128, 40), 0);
-      area1platforms[1] = entityfactory.CreatePlatform(new Rectangle(128, 680, 128, 40), 0);
-      area1platforms[2] = entityfactory.CreatePlatform(new Rectangle(256, 680, 128, 40), 0);
-      area1platforms[3] = entityfactory.CreatePlatform(new Rectangle(384, 680, 128, 40), 0);
-      area1platforms[4] = entityfactory.CreatePlatform(new Rectangle(512, 680, 128, 40), 0);
-      area1platforms[5] = entityfactory.CreatePlatform(new Rectangle(640, 680, 128, 40), 0);
-      area1platforms[6] = entityfactory.CreatePlatform(new Rectangle(768, 680, 128, 40), 0);
-      area1platforms[7] = entityfactory.CreatePlatform(new Rectangle(896, 680, 128, 40), 0);
-      area1platforms[8] = entityfactory.CreatePlatform(new Rectangle(1024, 680, 128, 40), 0);
-      area1platforms[9] = entityfactory.CreatePlatform(new Rectangle(1152, 680, 128, 40), 0);
+      area1platforms[0] = entityfactory.CreatePlatform(new Rectangle(0, 600, 128, 40), 0);
+      area1platforms[1] = entityfactory.CreatePlatform(new Rectangle(128, 600, 128, 40), 0);
+      area1platforms[2] = entityfactory.CreatePlatform(new Rectangle(256, 600, 128, 40), 0);
+      area1platforms[3] = entityfactory.CreatePlatform(new Rectangle(384, 600, 128, 40), 0);
+      area1platforms[4] = entityfactory.CreatePlatform(new Rectangle(512, 600, 128, 40), 0);
+      area1platforms[5] = entityfactory.CreatePlatform(new Rectangle(640, 600, 128, 40), 0);
+      area1platforms[6] = entityfactory.CreatePlatform(new Rectangle(768, 600, 128, 40), 0);
+      area1platforms[7] = entityfactory.CreatePlatform(new Rectangle(896, 600, 128, 40), 0);
+      area1platforms[8] = entityfactory.CreatePlatform(new Rectangle(1024, 600, 128, 40), 0);
+      area1platforms[9] = entityfactory.CreatePlatform(new Rectangle(1152, 600, 128, 40), 0);
       area1platforms[10] = entityfactory.CreatePlatform(new Rectangle(768, 500, 128, 40), 0);
 
       areas[0] = entityfactory.CreateArea(new Rectangle(0, 0, 400, 500), 0, assets1, area1entities, area1platforms); // position, width, height, areabackgroundID, assets

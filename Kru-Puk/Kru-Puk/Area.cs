@@ -71,7 +71,7 @@ namespace Kru_Puk
 
     public void Update(float dt)
     {
-      throw new NotImplementedException();
+      //FIX DIS SHIT
     }
   }
 }

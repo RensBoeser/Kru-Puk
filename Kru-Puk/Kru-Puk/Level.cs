@@ -71,7 +71,7 @@ namespace Kru_Puk
       }
       else
       {
-        throw new NotImplementedException("DOES NOT EXIST IN THE LEVEL?!");
+        Console.WriteLine("can not remove non-existing object " + entity + ". Already removed?");
       }
     }
 
@@ -104,10 +104,7 @@ namespace Kru_Puk
       {
         ActionTimer = ActionTimer + 1;
         ActionTimer = action(ActionTimer);
-
-      }
-
-      
+      }      
     }
 
     public void Draw(SpriteBatch spritebatch)

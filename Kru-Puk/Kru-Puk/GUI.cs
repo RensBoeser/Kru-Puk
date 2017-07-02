@@ -15,79 +15,47 @@ namespace Kru_Puk
     SpriteFont font;
     Texture2D backboardSprite;
     Button[] buttons;
+    EntityFactory entityFactory;
     Point healthPosition;
     Point zombieAmountPosition;
     Point ammoPosition;
     Point weaponPosition;
     Point levelNumberPosition;
 
-    public GUI(Main main, SpriteFont font, Window window, Texture2D backboardSprite)
+    public GUI(Main main, SpriteFont font, Window window, EntityFactory entityFactory, Texture2D backboardSprite)
     {
       this.main = main;
       this.font = font;
       this.backboardSprite = backboardSprite;
+      this.entityFactory = entityFactory;
       this.drawingAdapter = new DrawingAdapter();
-
-      this.healthPosition = new Point(window.WholeWindow().Left + 16, window.WholeWindow().Bottom - 32);
-      this.zombieAmountPosition = new Point(0, 0); //DON'T KNOW YET
-      this.ammoPosition = new Point(0, 0); //DON'T KNOW YET
-      this.weaponPosition = new Point(0, 0); // DON'T KNOW YET
-      this.levelNumberPosition = new Point(0, 0); //DON'T KNOW YET
-
-      this.buttons = new Button[0];
-      //buttons[0] = new Button();
+      this.healthPosition = new Point(window.WholeWindow().Left + 16, window.WholeWindow().Bottom - 56);
+      this.zombieAmountPosition = new Point(window.WholeWindow().Left + 256, window.WholeWindow().Bottom - 56); //DON'T KNOW YET
+      this.ammoPosition = new Point(window.WholeWindow().Right - 256, window.WholeWindow().Bottom - 56); //DON'T KNOW YET
+      this.weaponPosition = new Point(window.WholeWindow().Right - 234, window.WholeWindow().Bottom - 72); // DON'T KNOW YET
+      this.levelNumberPosition = new Point(window.WholeWindow().Left + 16, window.WholeWindow().Top + 16); //DON'T KNOW YET
+      this.buttons = new Button[1];
+      buttons[0] = entityFactory.CreateButton(new Rectangle(window.WholeWindow().Right - 256, window.WholeWindow().Top, 256, 128), () => main.ToggleMenu(), font, "Menu");
     }
-
-    public void DrawHealth(SpriteBatch spritebatch)
-    {
-      string text = main.GetPlayer().Visit<string>((player) => Convert.ToString(player.GetHealth()) + "/100", () => "N/A");
-      drawingAdapter.DrawString(spritebatch, font, text, healthPosition, Color.White);
-    }
+    public void DrawHealth(SpriteBatch spritebatch) { drawingAdapter.DrawString(spritebatch, font, main.GetPlayer().Visit<string>((player) => Convert.ToString(player.GetHealth()) + "/100", () => "N/A"), healthPosition, Color.White); }
     public void DrawZombieAmount(SpriteBatch spritebatch)
     {
-      Func<Level, int> countZombies = (level) =>
-      {
-        int counter = 0;
-        foreach (IEntity entity in level.GetEntities()) { if (entity is IZombie) { counter = counter + 1; } }
-        return counter;
-      };
-      int zombieAmount = main.GetLevel().Visit<int>(countZombies, () => 0);
-      drawingAdapter.DrawString(spritebatch, font, "Zombies remaining: " + Convert.ToString(zombieAmount), zombieAmountPosition, Color.White);
-
+      Func<Level, int> countZombies = (level) => { int counter = 0; foreach (IEntity entity in level.GetEntities()) { if (entity is IZombie) { counter = counter + 1; } } return counter; };
+      drawingAdapter.DrawString(spritebatch, font, "Zombies remaining: " + Convert.ToString(main.GetLevel().Visit<int>(countZombies, () => 0)), zombieAmountPosition, Color.White);
     }
     public void DrawAmmo(SpriteBatch spritebatch)
     {
-      string playerAmmo = main.GetPlayer().Visit<string>((player) => Convert.ToString(player.GetAmmo()), () => "N/A");
-      string weaponAmmo = main.GetPlayer().Visit<string>((player) => Convert.ToString(player.GetWeaponPouch().GetWeapon().GetAmmo()), () => "N/A");
-      drawingAdapter.DrawString(spritebatch, font, weaponAmmo + "/" + playerAmmo, ammoPosition, Color.White);
+      if (main.GetPlayer().Visit<bool>((player) => player.GetWeaponPouch().GetWeapon().IsReloading(), () => true))
+      { drawingAdapter.DrawString(spritebatch, font, "Reloading..", ammoPosition, Color.White); }
+      else
+      { drawingAdapter.DrawString(spritebatch, font, main.GetPlayer().Visit<string>((player) => Convert.ToString(player.GetAmmo()), () => "N/A") + "/" + main.GetPlayer().Visit<string>((player) => Convert.ToString(player.GetWeaponPouch().GetWeapon().GetAmmo()), () => "N/A"), ammoPosition, Color.White); }
     }
-    public void DrawWeapon(SpriteBatch spritebatch)
-    {
-      main.GetPlayer().Visit((player) => drawingAdapter.Draw(spritebatch, player.GetWeaponPouch().GetWeapon().GetSprite(), weaponPosition, false), () => Console.WriteLine("Couldn't find weapon texture."));
-    }
-    public void DrawLevelNumber(SpriteBatch spritebatch)
-    {
-      string levelID = "level: " + main.GetLevel().Visit<string>((level) => Convert.ToString(level.GetLevelID()), () => "N/A");
-      drawingAdapter.DrawString(spritebatch, font, levelID, levelNumberPosition, Color.White);
-    }
-    public void DrawBackboard(SpriteBatch spritebatch)
-    {
-      drawingAdapter.Draw(spritebatch, backboardSprite, new Point(0, 0), false);
-    }
-    public void UpdateButtons(float dt)
-    {
-      foreach(Button button in buttons) { button.Update(dt); }
-    }
-    public void DrawButtons(SpriteBatch spritebatch)
-    {
-      foreach(Button button in buttons) { button.Draw(spritebatch); }
-    }
-
-    public void Update(float dt)
-    {
-      UpdateButtons(dt);
-    }
-
+    public void DrawWeapon(SpriteBatch spritebatch) { main.GetPlayer().Visit((player) => drawingAdapter.Draw(spritebatch, player.GetWeaponPouch().GetWeapon().GetSprite(), weaponPosition, false), () => Console.WriteLine("Couldn't find weapon texture.")); }
+    public void DrawLevelNumber(SpriteBatch spritebatch) { drawingAdapter.DrawString(spritebatch, font, "level: " + main.GetLevel().Visit<string>((level) => Convert.ToString(level.GetLevelID()), () => "N/A"), levelNumberPosition, Color.White); }
+    public void DrawBackboard(SpriteBatch spritebatch) { drawingAdapter.Draw(spritebatch, backboardSprite, new Point(0, 0), false); }
+    public void UpdateButtons(float dt) { foreach(Button button in buttons) { button.Update(dt); } }
+    public void DrawButtons(SpriteBatch spritebatch) { foreach(Button button in buttons) { button.Draw(spritebatch); } }
+    public void Update(float dt) { UpdateButtons(dt); }
     public void Draw(SpriteBatch spritebatch)
     {
       DrawBackboard(spritebatch);

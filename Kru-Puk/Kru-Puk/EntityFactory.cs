@@ -16,11 +16,12 @@ namespace Kru_Puk
     private Texture2D[][] playerAnimations;
     private Texture2D[] assets;
     private Texture2D[][] areas;
+    private Texture2D[] buttons;
     private Texture2D[] platforms;
     private Texture2D projectile;
     private SoundEffect[] kruSounds;
     private Texture2D assaultRifle;
-    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile, Texture2D assaultRifle ,SoundEffect[] kruSounds)
+    public EntityFactory(Texture2D[][] zombieAnimations, Texture2D[][] playerAnimations, Texture2D[] levels, Texture2D[] assets, Texture2D[][] areas, Texture2D[] platforms, Texture2D projectile, Texture2D assaultRifle, Texture2D[] buttons, SoundEffect[] kruSounds)
 
     {
       this.kruSounds = kruSounds;
@@ -32,6 +33,7 @@ namespace Kru_Puk
       this.platforms = platforms;
       this.projectile = projectile;
       this.assaultRifle = assaultRifle;
+      this.buttons = buttons;
       this.kruSounds = kruSounds;
     }
 
@@ -78,6 +80,10 @@ namespace Kru_Puk
     public AssaultRifle CreateAssaultRifle(int clipamount, int ammoInClip, int damage)
     {
       return new AssaultRifle(clipamount, ammoInClip, damage, assaultRifle); 
+    }
+    public Button CreateButton(Rectangle rectangle, Action action, SpriteFont font, string label)
+    {
+      return new Button(rectangle, action, buttons, font, label);
     }
   }
 }
