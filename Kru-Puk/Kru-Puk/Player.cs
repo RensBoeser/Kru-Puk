@@ -210,15 +210,37 @@ namespace Kru_Puk
       switch (action)
       {
         case "left":
-          velocity.X = -3;
-          flipped = true;
-          isFloating = true;
-          break;
+          if (rectangle.X -3 < 0)
+          {
+            velocity.X = 0;
+            flipped = true;
+            isFloating = true;
+            break;
+          }
+          else
+          {
+            velocity.X = -3;
+            flipped = true;
+            isFloating = true;
+            break;
+          }
+
         case "right":
-          velocity.X = 3;
-          flipped = false;
-          isFloating = true;
-          break;
+          if (rectangle.X + 3 > 1280 - rectangle.Width)
+          {
+            velocity.X = 0;
+            isFloating = true;
+            flipped = false;
+            break;
+          }
+          else
+          {
+            velocity.X = 3;
+            flipped = false;
+            isFloating = true;
+            break;
+          }
+
         case "jump":
           if (!isFloating)
           {
